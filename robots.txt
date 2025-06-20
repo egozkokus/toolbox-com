@@ -1,0 +1,40 @@
+# Tools4Anything Robots.txt
+# Last Updated: 2024-12-20
+
+# Default - Allow all crawlers
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /*?print=
+Disallow: /*?session=
+Crawl-delay: 1
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemaps
+Sitemap: https://tools4anything.com/sitemap.xml
+Sitemap: https://tools4anything.com/sitemap-tools.xml
+Sitemap: https://tools4anything.com/sitemap-categories.xml
