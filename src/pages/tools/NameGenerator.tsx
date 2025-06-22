@@ -89,7 +89,7 @@ const NameGenerator = () => {
           subtitle={t('name_generator_page.subtitle')}
           icon={<User className="h-16 w-16 text-indigo-600" />}
           backPath="/categories/generators"
-          backLabel={t('common.back.category')}
+          backLabel={t('common.back_category')}
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

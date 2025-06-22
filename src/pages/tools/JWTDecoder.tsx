@@ -70,7 +70,7 @@ const JWTDecoder = () => {
       if (decodedPayload.admin === true || decodedPayload.role === 'admin') {
         logError(
           ERROR_CODES.SECURITY_VIOLATION,
-          t('jwt_decoder_page.admin_warning'),
+          t('jwt_decoder_page.toasts.admin_warning'),
           'warning'
         );
       }

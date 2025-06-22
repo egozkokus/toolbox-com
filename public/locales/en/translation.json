@@ -421,66 +421,6 @@
       "expired": "Token expired at {{date}}"
     }
   },
-  "regex_tester_page": {
-    "back": "Back to Developer Tools",
-    "title": "Regex Tester",
-    "subtitle": "Test and debug regular expressions easily",
-    "pattern_title": "Regex Pattern",
-    "pattern_desc": "Enter your regex pattern",
-    "test_label": "Test Text",
-    "regex_placeholder": "Enter regex pattern here...",
-    "text_placeholder": "Enter text to test...",
-    "test_button": "Test Regex",
-    "matches_title": "Matches Found: {{count}}",
-    "position": "Position: {{start}}-{{end}}",
-    "samples_title": "Common Patterns",
-    "samples_desc": "Click to copy",
-    "samples": {
-      "email": "Email",
-      "phone": "Phone",
-      "url": "URL",
-      "number": "Number",
-      "word": "Word",
-      "date": "Date"
-    },
-    "toasts": {
-      "error_title": "Error",
-      "no_pattern": "Please enter a regex pattern",
-      "success_title": "Done!",
-      "found": "{{count}} matches found",
-      "invalid": "Invalid regular expression"
-    }
-  },
-  "jwt_decoder_page": {
-    "back": "Back to Developer Tools",
-    "title": "JWT Decoder",
-    "subtitle": "Decode JWT tokens and view their contents",
-    "security_warning_title": "Security Warning",
-    "security_warning_desc": "Do not share real JWT tokens containing sensitive data. Use sample tokens only on public sites.",
-    "token_title": "JWT Token",
-    "token_desc": "Paste the token you want to decode",
-    "decode_button": "Decode JWT",
-    "header_title": "Header",
-    "header_desc": "Information about the algorithm and token type",
-    "payload_title": "Payload",
-    "payload_desc": "Data encoded in the token",
-    "signature_title": "Signature",
-    "signature_desc": "Digital signature (cannot be verified without the secret key)",
-    "copy_button": "Copy",
-    "toasts": {
-      "success_title": "Success!",
-      "success_desc": "JWT decoded successfully",
-      "copied_title": "Copied!",
-      "copied_desc": "{{type}} copied to clipboard",
-      "error": "Error decoding JWT - ensure the token is valid",
-      "invalid": "Invalid JWT token",
-      "no_token": "Please enter a JWT token",
-      "invalid_header": "Invalid JWT header",
-      "invalid_payload": "Invalid JWT payload",
-      "admin_warning": "Admin privileges token detected - verify the source",
-      "expired": "Token expired at {{date}}"
-    }
-  },
   "video_trimmer_page": {
     "back": "Back to Video Tools",
     "title": "Video Trimmer",
@@ -737,6 +677,7 @@
     "converting": "Converting...",
     "converted_title": "Converted File",
     "converted_desc": "Download the converted file",
+    "download_button": "Download Converted File",
     "formats_title": "Supported Formats",
     "placeholder": "Converted file will appear here",
     "toasts": {
@@ -801,6 +742,7 @@
     "merging": "Merging...",
     "merged_title": "Merged File",
     "merged_desc": "Download the merged file",
+    "download_button": "Download Merged File",
     "instructions_title": "Usage Instructions",
     "instructions": [
       "1. Upload files",
@@ -852,8 +794,12 @@
       "success_desc": "File split into {{count}} parts",
       "split_error": "Error splitting file",
       "downloaded": "Part {{index}} saved",
-      "all_downloaded": "All parts saved"
-    }
+      "all_downloaded": "All parts saved",
+      "add_point": "Added split point",
+      "processing_desc": "Splitting audio, please wait"
+    },
+    "play": "Play",
+    "pause": "Pause"
   },
   "footer": {
     "categories": "Categories",
