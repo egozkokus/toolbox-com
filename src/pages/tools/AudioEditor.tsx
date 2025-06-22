@@ -1,5 +1,6 @@
 
 import { useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -17,6 +18,7 @@ const AudioEditor = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -25,8 +27,8 @@ const AudioEditor = () => {
       setIsPlaying(false);
     } else {
       toast({
-        title: "שגיאה",
-        description: "אנא בחר קובץ אודיו תקין"
+        title: t('audio_editor_page.toasts.error_title'),
+        description: t('audio_editor_page.toasts.invalid_file')
       });
     }
   };
@@ -45,8 +47,8 @@ const AudioEditor = () => {
   const applyEffect = async (effectType: string) => {
     setIsProcessing(true);
     toast({
-      title: "מעבד...",
-      description: `מחיל אפקט ${effectType}`
+      title: t('audio_editor_page.toasts.processing_title'),
+      description: t('audio_editor_page.toasts.processing_desc', { effect: effectType })
     });
 
     // Simulate processing
@@ -54,8 +56,8 @@ const AudioEditor = () => {
     
     setIsProcessing(false);
     toast({
-      title: "הושלם!",
-      description: `אפקט ${effectType} הוחל בהצלחה`
+      title: t('audio_editor_page.toasts.success_title'),
+      description: t('audio_editor_page.toasts.success_desc', { effect: effectType })
     });
   };
 
@@ -66,8 +68,8 @@ const AudioEditor = () => {
       link.download = `edited_${selectedFile.name}`;
       link.click();
       toast({
-        title: "הורד בהצלחה!",
-        description: "הקובץ הערוך נשמר"
+        title: t('audio_editor_page.toasts.success_title'),
+        description: t('audio_editor_page.toasts.downloaded')
       });
     }
   };
@@ -75,26 +77,26 @@ const AudioEditor = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
       <div className="container mx-auto max-w-6xl">
-        <Button 
-          onClick={() => navigate("/categories/audio-tools")} 
-          variant="outline" 
+        <Button
+          onClick={() => navigate('/categories/audio-tools')}
+          variant="outline"
           className="mb-4"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          חזרה לכלי אודיו
+          {t('audio_editor_page.back')}
         </Button>
 
         <div className="mb-8 text-center">
           <Volume2 className="h-12 w-12 mx-auto mb-4 text-teal-600" />
-          <h1 className="text-4xl font-bold mb-2">עורך אודיו</h1>
-          <p className="text-gray-600">ערוך קבצי אודיו עם אפקטים מתקדמים</p>
+          <h1 className="text-4xl font-bold mb-2">{t('audio_editor_page.title')}</h1>
+          <p className="text-gray-600">{t('audio_editor_page.subtitle')}</p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>העלה קובץ אודיו</CardTitle>
-              <CardDescription>בחר קובץ אודיו לעריכה</CardDescription>
+              <CardTitle>{t('audio_editor_page.upload_title')}</CardTitle>
+              <CardDescription>{t('audio_editor_page.upload_desc')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <Input
@@ -115,11 +117,11 @@ const AudioEditor = () => {
                   <div className="flex items-center space-x-4">
                     <Button onClick={togglePlayback} size="sm">
                       {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-                      {isPlaying ? "עצור" : "נגן"}
+                      {isPlaying ? t('audio_editor_page.pause') : t('audio_editor_page.play')}
                     </Button>
                     
                     <div className="flex-1">
-                      <label className="text-sm font-medium">עוצמת קול: {volume[0]}%</label>
+                      <label className="text-sm font-medium">{t('audio_editor_page.volume', { value: volume[0] })}</label>
                       <Slider
                         value={volume}
                         onValueChange={(value) => {
@@ -136,7 +138,7 @@ const AudioEditor = () => {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium">מהירות נגינה: {playbackSpeed[0]}x</label>
+                    <label className="text-sm font-medium">{t('audio_editor_page.speed', { value: playbackSpeed[0] })}</label>
                     <Slider
                       value={playbackSpeed}
                       onValueChange={(value) => {
@@ -158,55 +160,55 @@ const AudioEditor = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle>אפקטים</CardTitle>
-              <CardDescription>החל אפקטים על הקובץ</CardDescription>
+              <CardTitle>{t('audio_editor_page.effects_title')}</CardTitle>
+              <CardDescription>{t('audio_editor_page.effects_desc')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-2">
-                <Button 
-                  onClick={() => applyEffect("הדהוד")} 
+                <Button
+                  onClick={() => applyEffect(t('audio_editor_page.reverb'))}
                   disabled={!selectedFile || isProcessing}
                   variant="outline"
                 >
-                  הדהוד
+                  {t('audio_editor_page.reverb')}
                 </Button>
-                <Button 
-                  onClick={() => applyEffect("חיזוק בס")} 
+                <Button
+                  onClick={() => applyEffect(t('audio_editor_page.bass'))}
                   disabled={!selectedFile || isProcessing}
                   variant="outline"
                 >
-                  חיזוק בס
+                  {t('audio_editor_page.bass')}
                 </Button>
-                <Button 
-                  onClick={() => applyEffect("חיזוק טרבל")} 
+                <Button
+                  onClick={() => applyEffect(t('audio_editor_page.treble'))}
                   disabled={!selectedFile || isProcessing}
                   variant="outline"
                 >
-                  חיזוק טרבל
+                  {t('audio_editor_page.treble')}
                 </Button>
-                <Button 
-                  onClick={() => applyEffect("נורמליזציה")} 
+                <Button
+                  onClick={() => applyEffect(t('audio_editor_page.normalize'))}
                   disabled={!selectedFile || isProcessing}
                   variant="outline"
                 >
-                  נורמליזציה
+                  {t('audio_editor_page.normalize')}
                 </Button>
               </div>
 
               <div className="border-t pt-4">
-                <h4 className="font-medium mb-2">כלי עריכה</h4>
+                <h4 className="font-medium mb-2">{t('audio_editor_page.tools_title')}</h4>
                 <div className="flex space-x-2">
                   <Button size="sm" variant="outline">
                     <Scissors className="h-4 w-4 mr-1" />
-                    חתוך
+                    {t('audio_editor_page.cut')}
                   </Button>
                   <Button size="sm" variant="outline">
                     <Undo className="h-4 w-4 mr-1" />
-                    בטל
+                    {t('audio_editor_page.undo')}
                   </Button>
                   <Button size="sm" variant="outline">
                     <Redo className="h-4 w-4 mr-1" />
-                    חזור
+                    {t('audio_editor_page.redo')}
                   </Button>
                 </div>
               </div>
@@ -214,7 +216,7 @@ const AudioEditor = () => {
               {selectedFile && (
                 <Button onClick={downloadProcessed} className="w-full">
                   <Download className="h-4 w-4 mr-2" />
-                  הורד קובץ ערוך
+                  {t('audio_editor_page.download_button')}
                 </Button>
               )}
             </CardContent>

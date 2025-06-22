@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Palette } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import PageHeader from "@/components/common/PageHeader";
@@ -17,6 +18,7 @@ const AdvancedImageEditor = () => {
   const [imagePreview, setImagePreview] = useState<string>("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -32,7 +34,10 @@ const AdvancedImageEditor = () => {
       };
       reader.readAsDataURL(file);
     } else {
-      toast({ title: "שגיאה", description: "אנא בחר קובץ תמונה תקין" });
+      toast({
+        title: t('advanced_image_editor_page.toasts.error_title'),
+        description: t('advanced_image_editor_page.toasts.error_desc'),
+      });
     }
   };
 
@@ -93,7 +98,10 @@ const AdvancedImageEditor = () => {
       link.href = editedImage;
       link.download = `edited_${selectedFile?.name || 'image.png'}`;
       link.click();
-      toast({ title: "הצלחה!", description: "התמונה הערוכה הורדה בהצלחה" });
+      toast({
+        title: t('advanced_image_editor_page.toasts.success_title'),
+        description: t('advanced_image_editor_page.toasts.success_desc'),
+      });
     }
   };
 
@@ -101,11 +109,11 @@ const AdvancedImageEditor = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
       <div className="container mx-auto max-w-6xl">
         <PageHeader
-          title="עורך תמונות מתקדם"
-          subtitle="ערוך תמונות עם פילטרים ואפקטים מתקדמים"
+          title={t('advanced_image_editor_page.title')}
+          subtitle={t('advanced_image_editor_page.subtitle')}
           icon={<Palette className="h-16 w-16 text-purple-600" />}
           backPath="/categories/image-tools"
-          backLabel="חזרה לכלי תמונות"
+          backLabel={t('advanced_image_editor_page.back')}
         />
 
         <div className="grid gap-6 lg:grid-cols-3">

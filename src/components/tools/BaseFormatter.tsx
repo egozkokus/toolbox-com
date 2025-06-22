@@ -1,6 +1,7 @@
 // src/components/tools/BaseFormatter.tsx
 
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -37,12 +38,13 @@ const BaseFormatter = ({
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const handleFormat = () => {
     if (!input.trim()) {
       toast({
-        title: "שגיאה",
-        description: `אנא הכנס קוד ${toolType.toUpperCase()}`,
+        title: t('base_formatter_page.toasts.error_title'),
+        description: t('base_formatter_page.toasts.error_desc', { tool: toolType.toUpperCase() }),
         variant: "destructive"
       });
       return;
@@ -55,7 +57,7 @@ const BaseFormatter = ({
       if (result.error) {
         setError(result.error);
         toast({
-          title: "שגיאה",
+          title: t('base_formatter_page.toasts.error_title'),
           description: result.error,
           variant: "destructive"
         });
@@ -63,12 +65,15 @@ const BaseFormatter = ({
       }
 
       setOutput(result.formatted);
-      toast({ title: "הצלחה!", description: `קוד ${toolType.toUpperCase()} עוצב בהצלחה` });
+      toast({
+        title: t('base_formatter_page.toasts.success_title'),
+        description: t('base_formatter_page.toasts.format_success', { tool: toolType.toUpperCase() })
+      });
     } catch (err) {
-      const errorMessage = `שגיאה בעיצוב ${toolType.toUpperCase()}`;
+      const errorMessage = t('base_formatter_page.toasts.format_error', { tool: toolType.toUpperCase() });
       setError(errorMessage);
       toast({
-        title: "שגיאה",
+        title: t('base_formatter_page.toasts.error_title'),
         description: errorMessage,
         variant: "destructive"
       });
@@ -78,7 +83,10 @@ const BaseFormatter = ({
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(output);
-    toast({ title: "הועתק!", description: "הקוד הועתק ללוח" });
+    toast({
+      title: t('base_formatter_page.toasts.success_title'),
+      description: t('base_formatter_page.toasts.copied')
+    });
   };
 
   const downloadFile = () => {
@@ -89,7 +97,10 @@ const BaseFormatter = ({
     link.download = `formatted.${fileExtension}`;
     link.click();
     URL.revokeObjectURL(url);
-    toast({ title: "הורד!", description: `קובץ ${toolType.toUpperCase()} הורד בהצלחה` });
+    toast({
+      title: t('base_formatter_page.toasts.success_title'),
+      description: t('base_formatter_page.toasts.downloaded', { tool: toolType.toUpperCase() })
+    });
   };
 
   const resetFields = () => {
@@ -106,14 +117,14 @@ const BaseFormatter = ({
           subtitle={subtitle}
           icon={<Code className={`h-16 w-16 ${iconColor}`} />}
           backPath={backPath}
-          backLabel="חזרה לכלי מפתחים"
+          backLabel={t('base_formatter_page.back')}
         />
 
         <div className="grid gap-6 lg:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>{toolType.toUpperCase()} לא מעוצב</CardTitle>
-              <CardDescription>הדבק כאן את קוד ה-{toolType.toUpperCase()} שלך</CardDescription>
+              <CardTitle>{t('base_formatter_page.unformatted_title', { tool: toolType.toUpperCase() })}</CardTitle>
+              <CardDescription>{t('base_formatter_page.unformatted_desc', { tool: toolType.toUpperCase() })}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <Textarea
@@ -125,7 +136,7 @@ const BaseFormatter = ({
               <div className="flex gap-2">
                 <Button onClick={handleFormat} className="flex-1">
                   <Code className="h-4 w-4 mr-2" />
-                  עצב {toolType.toUpperCase()}
+                  {t('base_formatter_page.format_button', { tool: toolType.toUpperCase() })}
                 </Button>
                 <Button onClick={resetFields} variant="outline">
                   <RotateCcw className="h-4 w-4" />
@@ -136,14 +147,14 @@ const BaseFormatter = ({
 
           <Card>
             <CardHeader>
-              <CardTitle>{toolType.toUpperCase()} מעוצב</CardTitle>
-              <CardDescription>הקוד המעוצב יופיע כאן</CardDescription>
+              <CardTitle>{t('base_formatter_page.formatted_title', { tool: toolType.toUpperCase() })}</CardTitle>
+              <CardDescription>{t('base_formatter_page.formatted_desc')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <Textarea
                 value={output}
                 readOnly
-                placeholder="הקוד המעוצב יופיע כאן..."
+                placeholder={t('base_formatter_page.formatted_desc') + '...'}
                 className="min-h-96 font-mono text-sm bg-gray-50"
               />
               {error && (
@@ -152,11 +163,11 @@ const BaseFormatter = ({
               <div className="flex gap-2">
                 <Button onClick={copyToClipboard} variant="outline" disabled={!output}>
                   <Copy className="h-4 w-4 mr-2" />
-                  העתק
+                  {t('base_formatter_page.copy_button')}
                 </Button>
                 <Button onClick={downloadFile} variant="outline" disabled={!output}>
                   <Download className="h-4 w-4 mr-2" />
-                  הורד
+                  {t('base_formatter_page.download_button')}
                 </Button>
               </div>
             </CardContent>

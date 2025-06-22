@@ -81,6 +81,611 @@
     "title": "יצירת קשר",
     "intro": "נתקלתם בבעיה? יש לכם הצעה לכלי חדש? נשמח לשמוע מכם! ניתן ליצור איתנו קשר בכתובת המייל: <0>your-email@example.com</0>"
   },
+  "not_found_page": {
+    "title": "404",
+    "subtitle": "אופס! העמוד לא נמצא",
+    "home_link": "חזרה לדף הבית"
+  },
+  "privacy_policy_page": {
+    "meta_title": "מדיניות פרטיות",
+    "meta_description": "מדיניות פרטיות עבור {{siteName}}. אנו מחויבים להגנת הפרטיות שלכם. הכלים שלנו פועלים בדפדפן שלכם.",
+    "title": "מדיניות פרטיות עבור {{siteName}}",
+    "effective_date_label": "תאריך תחילה:",
+    "effective_date_value": "22 ביוני 2025",
+    "intro_p1": "הפרטיות שלכם חשובה לנו מאוד. ב{{siteName}} אנו דוגלים בכמה עקרונות יסוד:",
+    "principles_li1": "<1>פרטיות כברירת מחדל:</1> הכלים שלנו פועלים בצד הלקוח, כך שהנתונים שאתם מזינים מעובדים בדפדפן שלכם ואינם נשלחים לשרתים שלנו.",
+    "principles_li2": "<1>איסוף נתונים מינימלי:</1> אנו אוספים רק נתוני אנליטיקה אנונימיים כדי להבין כיצד האתר שלנו משמש וכדי לשפר את השירותים.",
+    "data_tools_title": "נתונים שאתם מזינים בכלים",
+    "data_tools_p1": "איננו <1>אוספים</1>, שומרים או משתפים שום מידע שאתם מזינים או מעלים בכלים שלנו. כל הפעולות, כגון עיצוב JSON או המרת תמונות, מבוצעות מקומית במחשב שלכם.",
+    "analytics_title": "אנליטיקה של האתר",
+    "analytics_p1": "אנו משתמשים ב-Google Analytics כדי לאסוף מידע סטנדרטי שאינו מזהה אישית לצורך ניתוח מגמות וניהול האתר. מידע זה עשוי לכלול את כתובת ה-IP שלכם, סוג הדפדפן והעמודים שבהם ביקרתם ומשמש במצטבר לשיפור חוויית המשתמש.",
+    "cookies_title": "עוגיות ופרסום",
+    "cookies_p1": "ייתכן ונשתמש בחברות פרסום צד שלישי כמו Google AdSense להצגת מודעות בעת ביקורכם באתר. חברות אלו עשויות להשתמש במידע על הביקורים שלכם באתר זה ובאתרים אחרים (שאינו כולל שם, כתובת, דוא\"ל או טלפון) לצורך הצגת מודעות למוצרים ושירותים שעשויים לעניין אתכם.",
+    "cookies_p2": "ניתן לבטל פרסום מותאם אישית על ידי ביקור ב<1>הגדרות המודעות של Google</1>.",
+    "changes_title": "שינויים במדיניות",
+    "changes_p1": "למרות שרוב השינויים יהיו מינוריים, {{siteName}} עשויה לעדכן את מדיניות הפרטיות מעת לעת. אנו ממליצים לבקר בדף זה לעתים קרובות. המשך השימוש באתר לאחר שינוי כלשהו במדיניות מעיד על הסכמתכם לשינוי.",
+    "contact_title": "יצירת קשר",
+    "contact_p1": "אם יש לכם שאלות לגבי מדיניות פרטיות זו, <1>צרו איתנו קשר</1>."
+  },
+  "audio_tools_page": {
+    "back_to_home": "חזרה לעמוד הראשי",
+    "title": "כלי אודיו",
+    "subtitle": "כלים מקצועיים לעריכת ועיבוד אודיו",
+    "search_placeholder": "חיפוש כלי אודיו...",
+    "use_tool_button": "השתמש בכלי",
+    "no_results_title": "לא נמצאו כלים",
+    "no_results_subtitle": "נסה לשנות את מונח החיפוש",
+    "tools": {
+      "audioEditor": { "name": "עורך אודיו", "description": "עריכה מקצועית עם תצוגת גל והשפעות" },
+      "audioConverter": { "name": "ממיר אודיו", "description": "המרת קבצי אודיו בין פורמטים" },
+      "audioCompressor": { "name": "דוחס אודיו", "description": "דחיסת קבצי אודיו ללא פגיעה באיכות" },
+      "audioMerger": { "name": "ממזג אודיו", "description": "איחוד מספר קבצי אודיו למסלול אחד" },
+      "noiseReducer": { "name": "מסיר רעשי רקע", "description": "הסרת רעשים ושיפור איכות האודיו" },
+      "audioSplitter": { "name": "מפצל אודיו", "description": "פיצול קבצי אודיו לקטעים" }
+    }
+  },
+  "calculators_page": {
+    "back_to_home": "חזרה לעמוד הראשי",
+    "title": "מחשבונים",
+    "subtitle": "מחשבונים חזקים לכל צורך",
+    "search_placeholder": "חיפוש מחשבונים...",
+    "use_tool_button": "השתמש בכלי",
+    "tools": {
+        "unitConverter": { "name": "ממיר יחידות", "description": "המרה בין יחידות שונות" },
+        "percentageCalc": { "name": "מחשבון אחוזים", "description": "חישוב אחוזים בקלות" },
+        "bmiCalculator": { "name": "מחשבון BMI", "description": "חישוב מדד מסת גוף" },
+        "tipCalculator": { "name": "מחשבון טיפים", "description": "חישוב טיפ וחלוקת חשבון" },
+        "loanCalculator": { "name": "מחשבון הלוואות", "description": "חישוב תשלומי הלוואה" },
+        "ageCalculator": { "name": "מחשבון גיל", "description": "חישוב גיל מדויק" },
+        "mathCalculator": { "name": "מחשבון מתמטי", "description": "מחשבון בסיסי ומדעי" },
+        "currencyConverter": { "name": "ממיר מטבע", "description": "המרה בין מטבעות" }
+    }
+  },
+  "developer_tools_page": {
+    "back_to_home": "חזרה לעמוד הראשי",
+    "title": "כלי מפתחים",
+    "subtitle": "כלי עזר חיוניים למפתחים",
+    "search_placeholder": "חיפוש כלי מפתחים...",
+    "use_tool_button": "השתמש בכלי",
+    "tools": {
+      "jsonFormatter": { "name": "מעצב JSON", "description": "עיצוב ואימות JSON" },
+      "base64Encoder": { "name": "מקודד Base64", "description": "קידוד או פענוח Base64" },
+      "urlEncoder": { "name": "מקודד URL", "description": "קידוד או פענוח כתובות" },
+      "colorPicker": { "name": "בורר צבעים", "description": "בחרו והמירו צבעים" },
+      "cssMinifier": { "name": "דוחס CSS", "description": "דחיסת קוד CSS" },
+      "jsMinifier": { "name": "דוחס JavaScript", "description": "דחיסת קוד JavaScript" },
+      "htmlFormatter": { "name": "מעצב HTML", "description": "עיצוב וטיוב HTML" },
+      "sqlFormatter": { "name": "מעצב SQL", "description": "עיצוב שאילתות SQL" },
+      "xmlFormatter": { "name": "מעצב XML", "description": "עיצוב ואימות XML" },
+      "regexTester": { "name": "בודק Regex", "description": "בדיקת ביטויים רגולריים" },
+      "jwtDecoder": { "name": "מפענח JWT", "description": "פענוח אסימוני JWT" },
+    "markdownConverter": { "name": "Markdown ל-HTML", "description": "המרת Markdown ל-HTML" }
+    }
+  },
+  "image_tools_page": {
+    "back_to_home": "חזרה לעמוד הראשי",
+    "title": "כלי תמונה",
+    "subtitle": "ערכו וייעלו את התמונות שלכם",
+    "search_placeholder": "חיפוש כלי תמונה...",
+    "use_tool_button": "השתמש בכלי",
+    "tools": {
+      "imageResizer": { "name": "מקטין תמונות", "description": "שינוי גודל תמונות לכל מידה" },
+      "qrGenerator": { "name": "מחולל קוד QR", "description": "יצירת קודי QR" },
+      "imageCompressor": { "name": "דוחס תמונות", "description": "דחיסת תמונות ללא פגיעה באיכות" },
+      "imageConverter": { "name": "ממיר פורמטי תמונה", "description": "המרה בין פורמטי תמונה" },
+      "imageCropper": { "name": "חיתוך תמונה", "description": "חיתוך תמונות למידות מדויקות" },
+      "imageFilter": { "name": "מסנן תמונה", "description": "הוספת פילטרים לתמונות" },
+      "barcodeGenerator": { "name": "מחולל ברקוד", "description": "יצירת ברקודים שונים" },
+      "imageMetadata": { "name": "מציג נתוני EXIF", "description": "הצגת נתוני EXIF של תמונה" }
+    }
+  },
+  "text_tools_page": {
+    "back_to_home": "חזרה לעמוד הראשי",
+    "title": "כלי טקסט",
+    "subtitle": "עיבוד וניהול טקסט בקלות",
+    "search_placeholder": "חיפוש כלי טקסט...",
+    "use_tool_button": "השתמש בכלי",
+    "tools": {
+      "wordCounter": { "name": "סופר מילים", "description": "ספירת מילים, תווים ופסקאות" },
+      "caseConverter": { "name": "ממיר אותיות (Case)", "description": "המרת טקסט לסוגי אותיות שונים" },
+      "loremGenerator": { "name": "מחולל לורם איפסום", "description": "יצירת טקסט דמה" },
+      "textReverser": { "name": "הופך טקסט", "description": "היפוך סדר התווים" },
+      "textFormatter": { "name": "מעצב טקסט", "description": "עיצוב וניקוי טקסט" },
+      "lineSorter": { "name": "ממיין שורות", "description": "מיון שורות בסדר אלפביתי" },
+      "textDiff": { "name": "השוואת טקסטים", "description": "השוואה בין שני טקסטים" },
+      "charFrequency": { "name": "תדירות תווים", "description": "ספירת שכיחות תווים" }
+    }
+  },
+  "video_tools_page": {
+    "back_to_home": "חזרה לעמוד הראשי",
+    "title": "כלי וידאו",
+    "subtitle": "כלים מקצועיים לעריכת וידאו ועיבודו",
+    "search_placeholder": "חיפוש כלי וידאו...",
+    "use_tool_button": "השתמש בכלי",
+    "no_results_title": "לא נמצאו כלים",
+    "no_results_subtitle": "נסה לשנות את מונח החיפוש",
+    "tools": {
+      "videoEditor": { "name": "עורך וידאו", "description": "עריכת וידאו מקצועית עם ציר זמן ואפקטים" },
+      "videoCompressor": { "name": "דוחס וידאו", "description": "דחיסת וידאו תוך שמירה על איכות" },
+      "videoConverter": { "name": "ממיר וידאו", "description": "המרת וידאו בין פורמטים" },
+      "videoTrimmer": { "name": "גוזר וידאו", "description": "גזירת קטעי וידאו" },
+      "gifMaker": { "name": "יוצר GIF", "description": "יצירת קובצי GIF מוידאו" },
+      "videoMerger": { "name": "ממזג וידאו", "description": "מיזוג מספר קטעי וידאו" }
+    }
+  },
+  "generators_page": {
+    "back_to_home": "חזרה לעמוד הראשי",
+    "title": "מחוללים",
+    "subtitle": "יצירת סיסמאות, מזהים ועוד",
+    "search_placeholder": "חיפוש מחוללים...",
+    "use_tool_button": "השתמש בכלי",
+    "tools": {
+      "passwordGenerator": { "name": "מחולל סיסמאות", "description": "יצירת סיסמאות מאובטחות" },
+      "hashGenerator": { "name": "מחולל Hash", "description": "יצירת ערכי Hash" },
+      "uuidGenerator": { "name": "מחולל UUID", "description": "יצירת מזהים ייחודיים" },
+      "randomNumber": { "name": "מחולל מספרים", "description": "יצירת מספרים אקראיים" },
+      "loremGenerator": { "name": "מחולל לורם איפסום", "description": "יצירת טקסט לדוגמה" },
+      "mockData": { "name": "מחולל נתוני דמה", "description": "יצירת נתונים מזויפים לבדיקות" },
+      "apiKeyGenerator": { "name": "מחולל מפתחות API", "description": "יצירת מפתחות API" },
+      "creditCardGenerator": { "name": "מחולל כרטיסי אשראי", "description": "יצירת מספרי כרטיס בדיקה" },
+      "nameGenerator": { "name": "מחולל שמות", "description": "יצירת שמות אקראיים" },
+    "emailGenerator": { "name": "מחולל אימיילים", "description": "יצירת כתובות אימייל אקראיות" }
+    }
+  },
+  "pdf_tools_page": {
+    "back_to_home": "חזרה לעמוד הראשי",
+    "title": "כלי PDF",
+    "subtitle": "כלים מקצועיים לעיבוד ועריכת PDF",
+    "search_placeholder": "חיפוש כלי PDF...",
+    "use_tool_button": "השתמש בכלי",
+    "no_results_text": "לא נמצאו כלים התואמים לחיפוש שלך",
+    "info_title": "על כלי PDF",
+    "info_basic_title": "כלים בסיסיים",
+    "info_basic_list": [
+      "המרת PDF לפורמטים שונים",
+      "מיזוג וחלוקת קבצים",
+      "דחיסה ואופטימיזציה"
+    ],
+    "info_advanced_title": "כלים מתקדמים",
+    "info_advanced_list": [
+      "הגנה בסיסמה",
+      "חילוץ תוכן",
+      "חתימה דיגיטלית"
+    ],
+    "categories": {
+      "conversion": "המרה",
+      "processing": "עיבוד",
+      "optimization": "אופטימיזציה",
+      "security": "אבטחה",
+      "content": "תוכן"
+    },
+    "tools": {
+      "pdfConverter": { "name": "ממיר PDF", "description": "המרת PDF לWord, Excel, PowerPoint ולהפך" },
+      "pdfMerger": { "name": "מיזוג PDF", "description": "איחוד מספר קבצי PDF לקובץ אחד" },
+      "pdfSplitter": { "name": "פיצול PDF", "description": "חלוקת PDF לעמודים נפרדים או קבצים קטנים" },
+      "pdfCompressor": { "name": "דחיסת PDF", "description": "הקטנת גודל הקובץ תוך שמירה על איכות" },
+      "pdfPassword": { "name": "מנהל סיסמאות PDF", "description": "הוספה והסרה של סיסמאות מקבצי PDF" },
+      "pdfRotator": { "name": "סיבוב PDF", "description": "תיקון כיוון עמודים שסובבו" },
+      "pdfTextExtractor": { "name": "מחלץ טקסט מ-PDF", "description": "הוצאת טקסט מPDF לעריכה או העתקה" },
+      "pdfSignature": { "name": "חתימה דיגיטלית", "description": "הוספת חתימה אלקטרונית למסמכי PDF" }
+    }
+  },
+  "age_calculator_page": {
+    "title": "מחשב גיל",
+    "subtitle": "חשב את גילך המדויק וסטטיסטיקות זמן",
+    "back": "חזרה למחשבונים",
+    "date_info": {
+      "title": "פרטי תאריך",
+      "description": "הזן את תאריך הלידה ותאריך היעד",
+      "birth_label": "תאריך לידה",
+      "as_of_label": "חשב גיל נכון ל",
+      "button": "חשב גיל"
+    },
+    "results": {
+      "title": "תוצאות גיל",
+      "description": "מידע גיל מפורט",
+      "exact_age": "גיל מדויק",
+      "total_days": "סה\"כ ימים",
+      "total_weeks": "סה\"כ שבועות",
+      "total_months": "סה\"כ חודשים",
+      "next_birthday": "יום הולדת הבא"
+    },
+    "labels": {
+      "years": "שנים",
+      "months": "חודשים",
+      "days": "ימים"
+    },
+    "days_template": "{{count}} ימים",
+    "fun_facts_title": "עובדות מעניינות",
+    "fun_facts_lines": [
+      "חיית בערך {{hours}} שעות",
+      "זה בערך {{minutes}} דקות",
+      "או בערך {{seconds}} שניות"
+    ],
+    "no_data": "לחץ על \"חשב גיל\" כדי להתחיל"
+  },
+  "api_key_generator_page": {
+    "title": "מחולל מפתחות API",
+    "subtitle": "צור מפתחות API מאובטחים לשירותים שלך",
+    "back": "חזרה לגנרטורים",
+    "settings": "הגדרות מפתח",
+    "settings_desc": "קבע את הפרמטרים למפתח ה-API",
+    "prefix": "קידומת (אופציונלי)",
+    "format": "פורמט מפתח",
+    "length": "אורך מפתח",
+    "include_timestamp": "כלול חותמת זמן",
+    "generate_button": "צור מפתח API",
+    "generated_keys_title": "מפתחות שנוצרו",
+    "generated_keys_desc": "המפתחות האחרונים שנוצרו",
+    "copy_all": "העתק הכל",
+    "generate_more": "צור עוד",
+    "empty_placeholder": "לחץ על \"צור מפתח API\" כדי להתחיל",
+    "security_tips": "טיפים לאבטחה",
+    "tips_list": [
+      "השתמש במפתחות ארוכים (לפחות 32 תווים) לאבטחה מקסימלית",
+      "אל תשתף מפתחות API בקוד או במאגרי גיט",
+      "החלף מפתחות באופן קבוע",
+      "השתמש בהרשאות מוגבלות לכל מפתח",
+      "עקוב אחר השימוש במפתחות ודווח על אירועים חשודים"
+    ],
+    "copied_single": "המפתח הועתק ללוח!",
+    "copied_all": "כל המפתחות הועתקו ללוח!",
+    "generated": "מפתח API נוצר בהצלחה!"
+  },
+  "word_counter_page": {
+    "title": "מונה מילים",
+    "subtitle": "ספר מילים, תווים, משפטים ועוד",
+    "back": "חזרה לכלי טקסט",
+    "input_title": "קלט טקסט",
+    "input_desc": "הקלד או הדבק טקסט לניתוח",
+    "placeholder": "התחל להקליד או הדבק את הטקסט כאן...",
+    "stats_title": "סטטיסטיקה",
+    "words": "מילים",
+    "characters": "תווים",
+    "characters_no_spaces": "תווים (ללא רווחים)",
+    "sentences": "משפטים",
+    "paragraphs": "פסקאות",
+    "reading_title": "זמן קריאה",
+    "reading_desc": "מהירות קריאה ממוצעת (200 מילים לדקה)",
+    "minutes_template": "{{count}} דק'"
+  },
+  "html_formatter_page": {
+    "title": "מעצב HTML",
+    "subtitle": "עצב ונקה קוד HTML בצורה אוטומטית",
+    "placeholder": "הדבק כאן קוד HTML..."
+  },
+  "json_formatter_page": {
+    "title": "מעצב JSON",
+    "subtitle": "עצב ואמת נתוני JSON",
+    "placeholder": "הדבק כאן נתוני JSON..."
+  },
+  "video_trimmer_page": {
+    "back": "חזרה לכלי וידאו",
+    "title": "חיתוך וידאו",
+    "subtitle": "חתוך קטעים מסרטוני וידאו בקלות ובמהירות",
+    "loading": "טוען את מנוע הווידאו...",
+    "upload_label": "1. העלה קובץ וידאו",
+    "start_label": "זמן התחלה",
+    "end_label": "זמן סיום",
+    "trim_button": "חתוך וידאו",
+    "processing": "מעבד... {{percent}}",
+    "processing_start": "מתחיל חיתוך...",
+    "processing_note": "התהליך עלול לקחת זמן.",
+    "trimmed_title": "הסרטון החתוך:",
+    "download_label": "הורד סרטון חתוך",
+    "success_title": "החיתוך הסתיים בהצלחה!",
+    "error_title": "שגיאה בחיתוך",
+    "error_desc": "ייתכן שפורמט הזמן שגוי או שהקובץ פגום."
+  },
+  "bmi_calculator_page": {
+    "back": "חזרה למחשבון", 
+    "title": "מחשבון BMI", 
+    "subtitle": "חשב את מדד מסת הגוף שלך", 
+    "card_title": "מחשבון BMI", 
+    "card_desc": "הזן גובה ומשקל לחישוב BMI", 
+    "metric": "מטרי (ס\"מ, ק\"ג)",
+    "imperial": "אימפריאלי (אינץ', ליברות)", 
+    "height_label": "גובה ({{unit}})", 
+    "height_ph": "הכנס גובה ב{{unit_name}}", 
+    "weight_label": "משקל ({{unit}})", 
+    "weight_ph": "הכנס משקל ב{{unit_name}}", 
+    "button": "חשב BMI", 
+    "result_title": "תוצאת BMI", 
+    "categories": { 
+      "under": "תת משקל", 
+      "normal": "משקל תקין", 
+      "over": "עודף משקל", 
+      "obese": "השמנת יתר" 
+    } 
+  },
+  "barcode_generator_page": {
+    "back": "חזרה לכלי תמונות",
+    "title": "מחולל ברקוד",
+    "subtitle": "צור ברקודים מטקסט או מספרים",
+    "input_title": "קלט והגדרות",
+    "input_desc": "הזן טקסט ובחר סוג ברקוד",
+    "text_label": "טקסט או מספרים",
+    "text_ph": "הכנס טקסט או מספרים...",
+    "type_label": "סוג ברקוד",
+    "type_ph": "בחר סוג ברקוד",
+    "generate_button": "צור ברקוד",
+    "output_title": "ברקוד שנוצר",
+    "output_desc": "הברקוד יופיע כאן",
+    "download_button": "הורד ברקוד",
+    "placeholder": "הברקוד יופיע כאן",
+    "toasts": {
+      "success_title": "הצלחה!",
+      "success_desc": "הברקוד נוצר בהצלחה",
+      "error_title": "שגיאה",
+      "error_desc": "אנא הזן טקסט ליצירת ברקוד",
+      "fail_desc": "נכשל ביצירת ברקוד. בדוק את הקלט"
+    }
+  },
+  "background_remover_page": {
+    "back": "חזרה לכלי תמונות",
+    "title": "מסיר רקע",
+    "subtitle": "הסר רקע מתמונות ישירות בדפדפן",
+    "upload_card": {
+      "title": "1. העלאת תמונה",
+      "desc": "בחר תמונה להסרת הרקע",
+      "label": "בחר קובץ תמונה",
+      "preview_label": "תצוגה מקדימה:",
+      "button": "הסר רקע",
+      "processing": "מעבד..."
+    },
+    "result_card": {
+      "title": "2. תוצאה",
+      "desc": "התמונה לאחר הסרת הרקע",
+      "placeholder": "התמונה המעובדת תופיע כאן",
+      "download": "הורד תמונה"
+    },
+    "alert": {
+      "title": "איך זה עובד?",
+      "desc": "הכלי משתמש בספריית קוד פתוח שמריצה מודל AI בדפדפן שלך. התמונה לא נשלחת לשרת."
+    },
+    "toasts": {
+      "invalid_title": "קובץ לא תקין",
+      "invalid_desc": "אנא בחר קובץ תמונה נתמך (PNG, JPG).",
+      "no_image_title": "לא נבחרה תמונה",
+      "no_image_desc": "יש לבחור תמונה לפני הסרת הרקע.",
+      "processing_title": "מעבד תמונה...",
+      "processing_desc": "הסרת הרקע עשויה לקחת מספר רגעים. אנא המתן.",
+      "success_title": "הצלחה!",
+      "success_desc": "הרקע הוסר בהצלחה.",
+      "error_title": "שגיאה בעיבוד",
+      "error_desc": "לא ניתן להסיר את הרקע. נסה תמונה אחרת."
+    }
+  },
+  "uuid_generator_page": {
+    "title": "מחולל UUID",
+    "subtitle": "צור מזהים ייחודיים (UUID v4)",
+    "generate_title": "צור UUIDs",
+    "generate_desc": "קבע כמה מזהים ליצור",
+    "count_label": "מספר UUIDs",
+    "generate_button": "צור UUIDs",
+    "generated_title": "UUIDs שנוצרו",
+    "generated_desc": "נוצרו {{count}} מזהים",
+    "copy_all": "העתק הכל",
+    "copy_toast": "UUID הועתק ללוח",
+    "copy_all_toast": "כל ה-UUIDs הועתקו ללוח"
+  },
+  "advanced_image_editor_page": {
+    "title": "עורך תמונות מתקדם",
+    "subtitle": "ערוך תמונות עם פילטרים ואפקטים מתקדמים",
+    "back": "חזרה לכלי תמונות",
+    "toasts": {
+      "error_title": "שגיאה",
+      "error_desc": "אנא בחר קובץ תמונה תקין",
+      "success_title": "הצלחה!",
+      "success_desc": "התמונה הערוכה הורדה בהצלחה"
+    }
+  },
+  "base_formatter_page": {
+    "back": "חזרה לכלי מפתחים",
+    "unformatted_title": "קוד {{tool}} לא מעוצב",
+    "unformatted_desc": "הדבק כאן קוד {{tool}}",
+    "formatted_title": "קוד {{tool}} מעוצב",
+    "formatted_desc": "הקוד המעוצב יופיע כאן",
+    "format_button": "עצב {{tool}}",
+    "copy_button": "העתק",
+    "download_button": "הורד",
+    "toasts": {
+      "error_title": "שגיאה",
+      "error_desc": "אנא הכנס קוד {{tool}}",
+      "success_title": "הצלחה!",
+      "format_success": "קוד {{tool}} עוצב בהצלחה",
+      "format_error": "שגיאה בעיצוב {{tool}}",
+      "copied": "הקוד הועתק ללוח",
+      "downloaded": "קובץ {{tool}} הורד"
+    }
+  },
+  "base_minifier_page": {
+    "back": "חזרה לכלי מפתחים",
+    "original_title": "קוד {{tool}} מקורי",
+    "original_desc": "הדבק כאן קוד {{tool}}",
+    "minified_title": "{{tool}} מוקטן",
+    "minified_desc": "הקוד המוקטן יופיע כאן",
+    "minify_button": "הקטן {{tool}}",
+    "copy_button": "העתק",
+    "download_button": "הורד",
+    "toasts": {
+      "error_title": "שגיאה",
+      "error_desc": "אנא הכנס קוד {{tool}}",
+      "success_title": "הושלם!",
+      "minify_success": "{{tool}} הוקטן ב-{{percent}}%",
+      "minify_error": "שגיאה בהקטנת {{tool}}",
+      "copied": "הקוד המוקטן הועתק ללוח",
+      "downloaded": "הקובץ נשמר"
+    }
+  },
+  "audio_compressor_page": {
+    "back": "חזרה לכלי אודיו",
+    "title": "דוחס אודיו",
+    "subtitle": "דחוס קבצי אודיו להקטנת הגודל",
+    "upload_title": "העלה קובץ אודיו",
+    "upload_desc": "בחר קובץ אודיו לדחיסה",
+    "level_label": "רמת דחיסה",
+    "quality": {
+      "high": "איכות גבוהה",
+      "medium": "איכות בינונית",
+      "max": "דחיסה מקסימלית"
+    },
+    "compress_button": "התחל דחיסה",
+    "compressing": "דוחס...",
+    "results_title": "תוצאות דחיסה",
+    "results_desc": "מידע על הקובץ הדחוס",
+    "original_size": "גודל מקורי",
+    "compressed_size": "גודל דחוס",
+    "ratio": "שיעור דחיסה",
+    "download_button": "הורד קובץ דחוס",
+    "placeholder": "תוצאות הדחיסה יופיעו כאן",
+    "guide_title": "מדריך דחיסה",
+    "guide_items": [
+      "איכות גבוהה (10-30%): דחיסה מינימלית, איכות מעולה",
+      "איכות בינונית (30-70%): איזון בין איכות לגודל",
+      "דחיסה מקסימלית (70-90%): גודל מזערי, איכות נמוכה יותר"
+    ],
+    "toasts": {
+      "error_title": "שגיאה",
+      "invalid_file": "אנא בחר קובץ אודיו תקין",
+      "no_file": "אנא בחר קובץ אודיו קודם",
+      "processing_title": "דוחס...",
+      "processing_desc": "דוחס את קובץ האודיו",
+      "success_title": "הושלם!",
+      "success_desc": "הקובץ נדחס ב-{{percent}}%",
+      "downloaded": "הקובץ הדחוס נשמר",
+      "compress_error": "שגיאה בדחיסת הקובץ"
+    }
+  },
+  "audio_converter_page": {
+    "back": "חזרה לכלי אודיו",
+    "title": "ממיר אודיו",
+    "subtitle": "המר בין פורמטים שונים של קבצי אודיו",
+    "source_title": "קובץ מקור",
+    "source_desc": "העלה קובץ אודיו להמרה",
+    "format_label": "פורמט יעד",
+    "convert_button": "התחל המרה",
+    "converting": "ממיר...",
+    "converted_title": "קובץ מומר",
+    "converted_desc": "הורד את הקובץ המומר",
+    "formats_title": "פורמטים נתמכים",
+    "placeholder": "הקובץ המומר יופיע כאן",
+    "toasts": {
+      "error_title": "שגיאה",
+      "invalid_file": "אנא בחר קובץ אודיו תקין",
+      "no_file": "אנא בחר קובץ אודיו קודם",
+      "processing_title": "ממיר...",
+      "success_title": "הושלם!",
+      "success_desc": "הקובץ הומר בהצלחה",
+      "downloaded": "הקובץ המומר נשמר",
+      "convert_error": "שגיאה בהמרת הקובץ"
+    },
+    "formats": {
+      "mp3": { "label": "MP3", "desc": "פורמט דחוס פופולרי" },
+      "wav": { "label": "WAV", "desc": "איכות גבוהה, לא דחוס" },
+      "flac": { "label": "FLAC", "desc": "דחיסה ללא איבוד איכות" },
+      "aac": { "label": "AAC", "desc": "איכות גבוהה עם דחיסה יעילה" },
+      "ogg": { "label": "OGG", "desc": "פורמט קוד פתוח" },
+      "m4a": { "label": "M4A", "desc": "פורמט Apple" }
+    }
+  },
+  "audio_editor_page": {
+    "back": "חזרה לכלי אודיו",
+    "title": "עורך אודיו",
+    "subtitle": "ערוך קבצי אודיו עם אפקטים מתקדמים",
+    "upload_title": "העלה קובץ אודיו",
+    "upload_desc": "בחר קובץ אודיו לעריכה",
+    "play": "נגן",
+    "pause": "עצור",
+    "volume": "עוצמת קול: {{value}}%",
+    "speed": "מהירות נגינה: {{value}}x",
+    "effects_title": "אפקטים",
+    "effects_desc": "החל אפקטים על הקובץ",
+    "reverb": "הדהוד",
+    "bass": "חיזוק בס",
+    "treble": "חיזוק טרבל",
+    "normalize": "נורמליזציה",
+    "tools_title": "כלי עריכה",
+    "cut": "חתוך",
+    "undo": "בטל",
+    "redo": "חזור",
+    "download_button": "הורד קובץ ערוך",
+    "toasts": {
+      "error_title": "שגיאה",
+      "invalid_file": "אנא בחר קובץ אודיו תקין",
+      "processing_title": "מעבד...",
+      "processing_desc": "מחיל אפקט {{effect}}",
+      "success_title": "הושלם!",
+      "success_desc": "אפקט {{effect}} הוחל בהצלחה",
+      "downloaded": "הקובץ הערוך נשמר"
+    }
+  },
+  "audio_merger_page": {
+    "back": "חזרה לכלי אודיו",
+    "title": "מאחד אודיו",
+    "subtitle": "אחד מספר קבצי אודיו לקובץ אחד",
+    "files_title": "קבצי אודיו",
+    "files_desc": "העלה קבצי אודיו לאיחוד",
+    "selected_files": "קבצים נבחרים ({{count}})",
+    "total": "סך הכל: {{count}} קבצים | משך כולל משוער: {{minutes}} דקות",
+    "merge_button": "אחד קבצים",
+    "merging": "מאחד...",
+    "merged_title": "קובץ מאוחד",
+    "merged_desc": "הורד את הקובץ המאוחד",
+    "instructions_title": "הוראות שימוש",
+    "instructions": [
+      "1. העלה קבצים",
+      "2. סדר מחדש",
+      "3. אחד",
+      "4. הורד"
+    ],
+    "placeholder": "הקובץ המאוחד יופיע כאן",
+    "toasts": {
+      "warning_title": "אזהרה",
+      "non_audio": "חלק מהקבצים אינם קבצי אודיו ולא נוספו",
+      "error_title": "שגיאה",
+      "need_two": "נדרשים לפחות 2 קבצי אודיו למיזוג",
+      "processing_title": "מעבד...",
+      "success_title": "הושלם!",
+      "success_desc": "{{count}} קבצי אודיו אוחדו בהצלחה",
+      "merge_error": "שגיאה במיזוג הקבצים",
+      "downloaded": "הקובץ המאוחד נשמר"
+    }
+  },
+  "audio_splitter_page": {
+    "back": "חזרה לכלי אודיו",
+    "title": "מחלק אודיו",
+    "subtitle": "חלק קובץ אודיו למספר חלקים",
+    "file_title": "קובץ אודיו",
+    "file_desc": "העלה קובץ אודיו לחלוקה",
+    "add_point": "הוסף נקודת חיתוך ב-{{time}}",
+    "points_label": "נקודות חיתוך",
+    "split_button": "חתוך ל-{{count}} חלקים",
+    "splitting": "חותך...",
+    "parts_title": "חלקים",
+    "parts_desc": "הורד את החלקים שנוצרו",
+    "download_all": "הורד את כל החלקים",
+    "placeholder": "חלקי הקובץ יופיעו כאן",
+    "instructions_title": "הוראות שימוש",
+    "instructions": [
+      "1. העלה קובץ",
+      "2. נגן והאזן",
+      "3. הוסף נקודות",
+      "4. חתוך והורד"
+    ],
+    "toasts": {
+      "error_title": "שגיאה",
+      "invalid_file": "אנא בחר קובץ אודיו תקין",
+      "no_file": "אנא בחר קובץ אודיו קודם",
+      "no_points": "אנא הוסף לפחות נקודת חיתוך אחת",
+      "processing_title": "מעבד...",
+      "success_title": "הושלם!",
+      "success_desc": "הקובץ חולק ל-{{count}} חלקים",
+      "split_error": "שגיאה בחיתוך הקובץ",
+      "downloaded": "חלק {{index}} נשמר",
+      "all_downloaded": "כל החלקים נשמרו"
+    }
+  },
   "footer": {
     "categories": "קטגוריות",
     "popular": "פופולריים",

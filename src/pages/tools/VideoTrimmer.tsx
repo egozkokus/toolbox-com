@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader2, Scissors, Download, ArrowLeft } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
 import { Progress } from "@/components/ui/progress";
@@ -23,6 +24,7 @@ const VideoTrimmer = () => {
     const originalVideoRef = useRef<HTMLVideoElement>(null);
     const { toast } = useToast();
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const loadFfmpeg = useCallback(async () => {
         const ffmpeg = ffmpegRef.current;
@@ -70,7 +72,7 @@ const VideoTrimmer = () => {
 
         setIsProcessing(true);
         setProgress(0);
-        toast({ title: "מתחיל חיתוך...", description: "התהליך עלול לקחת זמן." });
+        toast({ title: t('video_trimmer_page.processing_start'), description: t('video_trimmer_page.processing_note') });
 
         const ffmpeg = ffmpegRef.current;
         const inputFileName = "input." + originalFile.name.split('.').pop();
@@ -93,10 +95,10 @@ const VideoTrimmer = () => {
             const data = await ffmpeg.readFile(outputFileName);
             const url = URL.createObjectURL(new Blob([(data as Uint8Array).buffer], { type: 'video/mp4' }));
             setTrimmedUrl(url);
-            toast({ title: "החיתוך הסתיים בהצלחה!" });
+            toast({ title: t('video_trimmer_page.success_title') });
         } catch (error) {
             console.error(error);
-            toast({ title: "שגיאה בחיתוך", description: "ייתכן שפורמט הזמן שגוי או שהקובץ פגום.", variant: "destructive" });
+            toast({ title: t('video_trimmer_page.error_title'), description: t('video_trimmer_page.error_desc'), variant: 'destructive' });
         } finally {
             setIsProcessing(false);
         }
@@ -106,24 +108,24 @@ const VideoTrimmer = () => {
         <div className="container mx-auto max-w-4xl p-4">
             <Button onClick={() => navigate("/categories/video-tools")} variant="outline" className="mb-4">
                 <ArrowLeft className="h-4 w-4 mr-2" />
-                חזרה לכלי וידאו
+                {t('video_trimmer_page.back')}
             </Button>
 
             <Card>
                 <CardHeader>
-                    <CardTitle>חיתוך וידאו</CardTitle>
-                    <CardDescription>חתוך קטעים מסרטוני וידאו בקלות ובמהירות.</CardDescription>
+                    <CardTitle>{t('video_trimmer_page.title')}</CardTitle>
+                    <CardDescription>{t('video_trimmer_page.subtitle')}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                     {!isFfmpegLoaded ? (
                         <div className="flex flex-col items-center justify-center p-8">
                             <Loader2 className="h-12 w-12 animate-spin text-purple-600 mb-4" />
-                            <p className="text-gray-600">טוען את מנוע הווידאו...</p>
+                            <p className="text-gray-600">{t('video_trimmer_page.loading')}</p>
                         </div>
                     ) : (
                         <>
                             <div className="space-y-4">
-                                <Label htmlFor="video-upload">1. העלה קובץ וידאו</Label>
+                                <Label htmlFor="video-upload">{t('video_trimmer_page.upload_label')}</Label>
                                 <Input id="video-upload" type="file" accept="video/*" onChange={handleFileChange} />
                             </div>
 
@@ -132,11 +134,11 @@ const VideoTrimmer = () => {
                                     <video ref={originalVideoRef} src={URL.createObjectURL(originalFile)} controls className="w-full rounded-lg" />
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div className="space-y-2">
-                                            <Label htmlFor="start-time">זמן התחלה</Label>
+                                            <Label htmlFor="start-time">{t('video_trimmer_page.start_label')}</Label>
                                             <Input id="start-time" type="text" value={startTime} onChange={e => setStartTime(e.target.value)} placeholder="HH:MM:SS" />
                                         </div>
                                         <div className="space-y-2">
-                                            <Label htmlFor="end-time">זמן סיום</Label>
+                                            <Label htmlFor="end-time">{t('video_trimmer_page.end_label')}</Label>
                                             <Input id="end-time" type="text" value={endTime} onChange={e => setEndTime(e.target.value)} placeholder="HH:MM:SS" />
                                         </div>
                                     </div>
@@ -145,17 +147,17 @@ const VideoTrimmer = () => {
                             
                             <Button onClick={trimVideo} disabled={!originalFile || isProcessing} className="w-full">
                                 {isProcessing ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : <Scissors className="h-4 w-4 mr-2" />}
-                                {isProcessing ? `מעבד... ${progress > 0 ? progress + '%' : ''}` : "חתוך וידאו"}
+                                {isProcessing ? t('video_trimmer_page.processing', { percent: progress > 0 ? progress + '%' : '' }) : t('video_trimmer_page.trim_button')}
                             </Button>
                             
                             {isProcessing && progress > 0 && <Progress value={progress} className="w-full" />}
                             
                             {trimmedUrl && (
                                 <div className="space-y-4">
-                                    <h3 className="text-lg font-semibold">הסרטון החתוך:</h3>
+                                    <h3 className="text-lg font-semibold">{t('video_trimmer_page.trimmed_title')}</h3>
                                     <video src={trimmedUrl} controls className="w-full rounded-lg" />
                                     <a href={trimmedUrl} download={`trimmed-${originalFile?.name}`}>
-                                        <Button className="w-full"><Download className="h-4 w-4 mr-2"/> הורד סרטון חתוך</Button>
+                                        <Button className="w-full"><Download className="h-4 w-4 mr-2"/> {t('video_trimmer_page.download_label')}</Button>
                                     </a>
                                 </div>
                             )}

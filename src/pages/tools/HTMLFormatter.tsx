@@ -1,6 +1,7 @@
 // src/pages/tools/HTMLFormatter.tsx
 
 import BaseFormatter from "@/components/tools/BaseFormatter";
+import { useTranslation } from "react-i18next";
 
 const HTMLFormatter = () => {
   const formatHTML = (input: string): { formatted: string; error?: string } => {
@@ -39,13 +40,15 @@ const HTMLFormatter = () => {
     }
   };
 
+  const { t } = useTranslation();
+
   return (
     <BaseFormatter
-      title="מעצב HTML"
-      subtitle="עצב וניקה קוד HTML בצורה אוטומטית"
+      title={t('html_formatter_page.title')}
+      subtitle={t('html_formatter_page.subtitle')}
       toolType="html"
       backPath="/categories/developer-tools"
-      placeholder="הדבק כאן קוד HTML..."
+      placeholder={t('html_formatter_page.placeholder')}
       defaultValue='<html><head><title>Example</title></head><body><div class="container"><h1>Welcome</h1><p>This is a paragraph.</p><ul><li>Item 1</li><li>Item 2</li></ul></div></body></html>'
       formatFunction={formatHTML}
       fileExtension="html"

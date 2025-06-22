@@ -1,83 +1,52 @@
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FileText, Search, ArrowLeft, Home } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSelector from "@/components/LanguageSelector";
 
 const PDFTools = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t } = useTranslation();
 
-  const pdfTools = [
-    {
-      title: "ממיר PDF",
-      description: "המרת PDF לWord, Excel, PowerPoint ולהפך",
-      icon: "🔄",
-      route: "/tools/pdf-converter",
-      category: "המרה"
-    },
-    {
-      title: "מיזוג PDF",
-      description: "איחוד מספר קבצי PDF לקובץ אחד",
-      icon: "📎",
-      route: "/tools/pdf-merger",
-      category: "עיבוד"
-    },
-    {
-      title: "פיצול PDF",
-      description: "חלוקת PDF לעמודים נפרדים או קבצים קטנים",
-      icon: "✂️",
-      route: "/tools/pdf-splitter",
-      category: "עיבוד"
-    },
-    {
-      title: "דחיסת PDF",
-      description: "הקטנת גודל הקובץ תוך שמירה על איכות",
-      icon: "🗜️",
-      route: "/tools/pdf-compressor",
-      category: "אופטימיזציה"
-    },
-    {
-      title: "מנהל סיסמאות PDF",
-      description: "הוספה והסרה של סיסמאות מקבצי PDF",
-      icon: "🔐",
-      route: "/tools/pdf-password",
-      category: "אבטחה"
-    },
-    {
-      title: "סיבוב PDF",
-      description: "תיקון כיוון עמודים שסובבו",
-      icon: "🔄",
-      route: "/tools/pdf-rotator",
-      category: "עיבוד"
-    },
-    {
-      title: "מחלץ טקסט מ-PDF",
-      description: "הוצאת טקסט מPDF לעריכה או העתקה",
-      icon: "📝",
-      route: "/tools/pdf-text-extractor",
-      category: "תוכן"
-    },
-    {
-      title: "חתימה דיגיטלית",
-      description: "הוספת חתימה אלקטרונית למסמכי PDF",
-      icon: "✍️",
-      route: "/tools/pdf-signature",
-      category: "אבטחה"
-    }
-  ];
+  const pdfToolsConfig = useMemo(
+    () => [
+      { key: "pdfConverter", icon: "🔄", route: "/tools/pdf-converter", category: "conversion" },
+      { key: "pdfMerger", icon: "📎", route: "/tools/pdf-merger", category: "processing" },
+      { key: "pdfSplitter", icon: "✂️", route: "/tools/pdf-splitter", category: "processing" },
+      { key: "pdfCompressor", icon: "🗜️", route: "/tools/pdf-compressor", category: "optimization" },
+      { key: "pdfPassword", icon: "🔐", route: "/tools/pdf-password", category: "security" },
+      { key: "pdfRotator", icon: "🔄", route: "/tools/pdf-rotator", category: "processing" },
+      { key: "pdfTextExtractor", icon: "📝", route: "/tools/pdf-text-extractor", category: "content" },
+      { key: "pdfSignature", icon: "✍️", route: "/tools/pdf-signature", category: "security" }
+    ],
+    []
+  );
 
-  const filteredTools = pdfTools.filter(tool =>
+  const pdfTools = useMemo(
+    () =>
+      pdfToolsConfig.map((tool) => ({
+        ...tool,
+        title: t(`pdf_tools_page.tools.${tool.key}.name`),
+        description: t(`pdf_tools_page.tools.${tool.key}.description`),
+        category: t(`pdf_tools_page.categories.${tool.category}`)
+      })),
+    [t, pdfToolsConfig]
+  );
+
+  const filteredTools = pdfTools.filter((tool) =>
     tool.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     tool.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const categories = [...new Set(pdfTools.map(tool => tool.category))];
+  const categories = [...new Set(pdfTools.map((tool) => tool.category))];
+
+  const basicList = t('pdf_tools_page.info_basic_list', { returnObjects: true }) as string[];
+  const advancedList = t('pdf_tools_page.info_advanced_list', { returnObjects: true }) as string[];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
@@ -91,7 +60,7 @@ const PDFTools = () => {
                 size="sm"
               >
                 <ArrowLeft className="h-4 w-4 mr-2" />
-                חזרה לעמוד הראשי
+                  {t('pdf_tools_page.back_to_home')}
               </Button>
               <Button 
                 onClick={() => navigate("/")} 
@@ -99,7 +68,7 @@ const PDFTools = () => {
                 size="sm"
               >
                 <Home className="h-4 w-4 mr-2" />
-                בית
+                  {t('nav.home', { defaultValue: 'Home' })}
               </Button>
             </div>
             <LanguageSelector />
@@ -109,8 +78,8 @@ const PDFTools = () => {
             <div className="mb-4">
               <FileText className="h-16 w-16 mx-auto text-red-600" />
             </div>
-            <h1 className="text-4xl font-bold mb-2">כלי PDF</h1>
-            <p className="text-gray-600">כלים מקצועיים לעיבוד, המרה ועריכת קבצי PDF</p>
+            <h1 className="text-4xl font-bold mb-2">{t('pdf_tools_page.title')}</h1>
+              <p className="text-gray-600">{t('pdf_tools_page.subtitle')}</p>
           </div>
         </div>
 
@@ -120,7 +89,7 @@ const PDFTools = () => {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <Input
               type="text"
-              placeholder="חיפוש כלי PDF..."
+              placeholder={t('pdf_tools_page.search_placeholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 py-3 text-lg border-2 border-gray-200 focus:border-red-500 rounded-xl"
@@ -170,7 +139,7 @@ const PDFTools = () => {
                     navigate(tool.route);
                   }}
                 >
-                  השתמש בכלי
+                  {t('pdf_tools_page.use_tool_button')}
                 </Button>
               </CardContent>
             </Card>
@@ -179,28 +148,28 @@ const PDFTools = () => {
 
         {filteredTools.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">לא נמצאו כלים התואמים לחיפוש שלך</p>
+            <p className="text-gray-500 text-lg">{t('pdf_tools_page.no_results_text')}</p>
           </div>
         )}
 
         {/* Info Section */}
         <div className="mt-12 bg-white rounded-lg p-6 shadow-sm">
-          <h2 className="text-2xl font-bold mb-4 text-center">על כלי PDF</h2>
+          <h2 className="text-2xl font-bold mb-4 text-center">{t('pdf_tools_page.info_title')}</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="font-semibold mb-2">כלים בסיסיים</h3>
+              <h3 className="font-semibold mb-2">{t('pdf_tools_page.info_basic_title')}</h3>
               <ul className="text-sm text-gray-600 space-y-1">
-                <li>• המרת PDF לפורמטים שונים</li>
-                <li>• מיזוג וחלוקת קבצים</li>
-                <li>• דחיסה ואופטימיזציה</li>
+                {basicList.map((item, i) => (
+                  <li key={i}>• {item}</li>
+                ))}
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">כלים מתקדמים</h3>
+              <h3 className="font-semibold mb-2">{t('pdf_tools_page.info_advanced_title')}</h3>
               <ul className="text-sm text-gray-600 space-y-1">
-                <li>• הגנה בסיסמה</li>
-                <li>• חילוץ תוכן</li>
-                <li>• חתימה דיגיטלית</li>
+                {advancedList.map((item, i) => (
+                  <li key={i}>• {item}</li>
+                ))}
               </ul>
             </div>
           </div>

@@ -141,6 +141,551 @@
         "currencyConverter": { "name": "Currency Converter", "description": "Convert between currencies" }
     }
   },
+  "developer_tools_page": {
+    "back_to_home": "Back to Home",
+    "title": "Developer Tools",
+    "subtitle": "Essential tools for developers",
+    "search_placeholder": "Search developer tools...",
+    "use_tool_button": "Use Tool",
+    "tools": {
+      "jsonFormatter": { "name": "JSON Formatter", "description": "Format and validate JSON" },
+      "base64Encoder": { "name": "Base64 Encoder", "description": "Encode or decode Base64" },
+      "urlEncoder": { "name": "URL Encoder", "description": "Encode or decode URLs" },
+      "colorPicker": { "name": "Color Picker", "description": "Pick and convert colors" },
+      "cssMinifier": { "name": "CSS Minifier", "description": "Minify CSS code" },
+      "jsMinifier": { "name": "JavaScript Minifier", "description": "Minify JavaScript code" },
+      "htmlFormatter": { "name": "HTML Formatter", "description": "Format and beautify HTML" },
+      "sqlFormatter": { "name": "SQL Formatter", "description": "Format SQL queries" },
+      "xmlFormatter": { "name": "XML Formatter", "description": "Format and validate XML" },
+      "regexTester": { "name": "Regex Tester", "description": "Test regular expressions" },
+      "jwtDecoder": { "name": "JWT Decoder", "description": "Decode JWT tokens" },
+    "markdownConverter": { "name": "Markdown to HTML", "description": "Convert Markdown to HTML" }
+    }
+  },
+  "image_tools_page": {
+    "back_to_home": "Back to Home",
+    "title": "Image Tools",
+    "subtitle": "Edit and optimize your images",
+    "search_placeholder": "Search image tools...",
+    "use_tool_button": "Use Tool",
+    "tools": {
+      "imageResizer": { "name": "Image Resizer", "description": "Resize images to any dimension" },
+      "qrGenerator": { "name": "QR Generator", "description": "Generate QR codes" },
+      "imageCompressor": { "name": "Image Compressor", "description": "Compress images without quality loss" },
+      "imageConverter": { "name": "Image Format Converter", "description": "Convert between image formats" },
+      "imageCropper": { "name": "Image Cropper", "description": "Crop images to specific dimensions" },
+      "imageFilter": { "name": "Image Filter", "description": "Apply filters to images" },
+      "barcodeGenerator": { "name": "Barcode Generator", "description": "Generate various barcodes" },
+      "imageMetadata": { "name": "Image Metadata Viewer", "description": "View image EXIF data" }
+    }
+  },
+  "text_tools_page": {
+    "back_to_home": "Back to Home",
+    "title": "Text Tools",
+    "subtitle": "Transform and manipulate text with ease",
+    "search_placeholder": "Search text tools...",
+    "use_tool_button": "Use Tool",
+    "tools": {
+      "wordCounter": { "name": "Word Counter", "description": "Count words, characters, and paragraphs" },
+      "caseConverter": { "name": "Case Converter", "description": "Convert text to different cases" },
+      "loremGenerator": { "name": "Lorem Generator", "description": "Generate Lorem Ipsum text" },
+      "textReverser": { "name": "Text Reverser", "description": "Reverse text characters" },
+      "textFormatter": { "name": "Text Formatter", "description": "Format and clean text" },
+      "lineSorter": { "name": "Line Sorter", "description": "Sort lines alphabetically" },
+      "textDiff": { "name": "Text Diff", "description": "Compare two texts" },
+      "charFrequency": { "name": "Character Frequency", "description": "Count character frequency" }
+    }
+  },
+  "video_tools_page": {
+    "back_to_home": "Back to Home",
+    "title": "Video Tools",
+    "subtitle": "Professional video editing and processing tools",
+    "search_placeholder": "Search video tools...",
+    "use_tool_button": "Use Tool",
+    "no_results_title": "No tools found",
+    "no_results_subtitle": "Try adjusting your search term",
+    "tools": {
+      "videoEditor": { "name": "Video Editor", "description": "Professional video editing with timeline, effects, and transitions" },
+      "videoCompressor": { "name": "Video Compressor", "description": "Compress video files to reduce size while maintaining quality" },
+      "videoConverter": { "name": "Video Converter", "description": "Convert videos between different formats (MP4, AVI, MOV, etc.)" },
+      "videoTrimmer": { "name": "Video Trimmer", "description": "Cut and trim video clips to specific durations" },
+      "gifMaker": { "name": "GIF Maker", "description": "Create animated GIFs from video files" },
+      "videoMerger": { "name": "Video Merger", "description": "Combine multiple video files into one" }
+    }
+  },
+  "generators_page": {
+    "back_to_home": "Back to Home",
+    "title": "Generators",
+    "subtitle": "Generate passwords, hashes and more",
+    "search_placeholder": "Search generators...",
+    "use_tool_button": "Use Tool",
+    "tools": {
+      "passwordGenerator": { "name": "Password Generator", "description": "Generate secure passwords" },
+      "hashGenerator": { "name": "Hash Generator", "description": "Generate cryptographic hashes" },
+      "uuidGenerator": { "name": "UUID Generator", "description": "Generate unique identifiers" },
+      "randomNumber": { "name": "Random Number Generator", "description": "Generate random numbers" },
+      "loremGenerator": { "name": "Lorem Ipsum Generator", "description": "Generate placeholder text" },
+      "mockData": { "name": "Mock Data Generator", "description": "Generate fake data for testing" },
+      "apiKeyGenerator": { "name": "API Key Generator", "description": "Generate API keys" },
+      "creditCardGenerator": { "name": "Credit Card Generator", "description": "Generate test credit card numbers" },
+      "nameGenerator": { "name": "Name Generator", "description": "Generate random names" },
+    "emailGenerator": { "name": "Email Generator", "description": "Generate random email addresses" }
+    }
+  },
+  "pdf_tools_page": {
+    "back_to_home": "Back to Home",
+    "title": "PDF Tools",
+    "subtitle": "Process and edit PDF files",
+    "search_placeholder": "Search PDF tools...",
+    "use_tool_button": "Use Tool",
+    "no_results_text": "No tools found matching your search",
+    "info_title": "About PDF Tools",
+    "info_basic_title": "Basic Tools",
+    "info_basic_list": [
+      "Convert PDFs to various formats",
+      "Merge and split files",
+      "Compress and optimize"
+    ],
+    "info_advanced_title": "Advanced Tools",
+    "info_advanced_list": [
+      "Password protection",
+      "Extract content",
+      "Digital signatures"
+    ],
+    "categories": {
+      "conversion": "Conversion",
+      "processing": "Processing",
+      "optimization": "Optimization",
+      "security": "Security",
+      "content": "Content"
+    },
+    "tools": {
+      "pdfConverter": { "name": "PDF Converter", "description": "Convert PDFs to and from Word, Excel or PowerPoint" },
+      "pdfMerger": { "name": "PDF Merger", "description": "Combine multiple PDF files into one" },
+      "pdfSplitter": { "name": "PDF Splitter", "description": "Split PDFs into separate pages" },
+      "pdfCompressor": { "name": "PDF Compressor", "description": "Reduce PDF file size while keeping quality" },
+      "pdfPassword": { "name": "PDF Password Manager", "description": "Add or remove passwords from PDFs" },
+      "pdfRotator": { "name": "PDF Rotator", "description": "Correct the orientation of pages" },
+      "pdfTextExtractor": { "name": "PDF Text Extractor", "description": "Extract text from PDFs" },
+      "pdfSignature": { "name": "Digital Signature", "description": "Add electronic signatures to PDFs" }
+    }
+  },
+  "age_calculator_page": {
+    "title": "Age Calculator",
+    "subtitle": "Calculate your exact age and time statistics",
+    "back": "Back to Calculators",
+    "date_info": {
+      "title": "Date Information",
+      "description": "Enter your birth date and target date",
+      "birth_label": "Birth Date",
+      "as_of_label": "Calculate Age As Of",
+      "button": "Calculate Age"
+    },
+    "results": {
+      "title": "Age Results",
+      "description": "Your detailed age information",
+      "exact_age": "Exact Age",
+      "total_days": "Total Days",
+      "total_weeks": "Total Weeks",
+      "total_months": "Total Months",
+      "next_birthday": "Next Birthday"
+    },
+    "labels": {
+      "years": "years",
+      "months": "months",
+      "days": "days"
+    },
+    "days_template": "{{count}} days",
+    "fun_facts_title": "Fun Facts",
+    "fun_facts_lines": [
+      "You've lived approximately {{hours}} hours",
+      "That's about {{minutes}} minutes",
+      "Or roughly {{seconds}} seconds"
+    ],
+    "no_data": "Click 'Calculate Age' to get started"
+  },
+  "api_key_generator_page": {
+    "title": "API Key Generator",
+    "subtitle": "Create secure API keys for your services",
+    "back": "Back to Generators",
+    "settings": "Key Settings",
+    "settings_desc": "Configure parameters for the API key",
+    "prefix": "Prefix (optional)",
+    "format": "Key Format",
+    "length": "Key Length",
+    "include_timestamp": "Include timestamp",
+    "generate_button": "Generate API Key",
+    "generated_keys_title": "Generated Keys",
+    "generated_keys_desc": "Most recently generated keys",
+    "copy_all": "Copy All",
+    "generate_more": "Generate More",
+    "empty_placeholder": "Click 'Generate API Key' to begin",
+    "security_tips": "Security Tips",
+    "tips_list": [
+      "Use long keys (at least 32 characters) for maximum security",
+      "Never share API keys in code or repos",
+      "Rotate keys regularly",
+      "Use limited permissions per key",
+      "Monitor key usage and report suspicious events"
+    ],
+    "copied_single": "Key copied to clipboard!",
+    "copied_all": "All keys copied to clipboard!",
+    "generated": "API key generated successfully!"
+  },
+  "word_counter_page": {
+    "title": "Word Counter",
+    "subtitle": "Count words, characters, sentences and more",
+    "back": "Back to Text Tools",
+    "input_title": "Text Input",
+    "input_desc": "Type or paste your text here to analyze",
+    "placeholder": "Start typing or paste your text here...",
+    "stats_title": "Statistics",
+    "words": "Words",
+    "characters": "Characters",
+    "characters_no_spaces": "Characters (no spaces)",
+    "sentences": "Sentences",
+    "paragraphs": "Paragraphs",
+    "reading_title": "Reading Time",
+    "reading_desc": "Average reading speed (200 wpm)",
+    "minutes_template": "{{count}} min"
+  },
+  "html_formatter_page": {
+    "title": "HTML Formatter",
+    "subtitle": "Format and clean up HTML code automatically",
+    "placeholder": "Paste HTML code here..."
+  },
+  "json_formatter_page": {
+    "title": "JSON Formatter",
+    "subtitle": "Format and validate JSON data",
+    "placeholder": "Paste JSON data here..."
+  },
+  "video_trimmer_page": {
+    "back": "Back to Video Tools",
+    "title": "Video Trimmer",
+    "subtitle": "Trim video clips easily and quickly",
+    "loading": "Loading video engine...",
+    "upload_label": "1. Upload Video File",
+    "start_label": "Start Time",
+    "end_label": "End Time",
+    "trim_button": "Trim Video",
+    "processing": "Processing... {{percent}}",
+    "processing_start": "Starting trim...",
+    "processing_note": "This may take a while.",
+    "trimmed_title": "Trimmed Video:",
+    "download_label": "Download Trimmed Video",
+    "success_title": "Trimming completed successfully!",
+    "error_title": "Trimming Error",
+    "error_desc": "Invalid time format or corrupted file."
+  },
+  "bmi_calculator_page": {
+    "back": "Back to Calculators",
+    "title": "BMI Calculator",
+    "subtitle": "Calculate your Body Mass Index",
+    "card_title": "BMI Calculator",
+    "card_desc": "Enter your height and weight to calculate BMI",
+    "metric": "Metric (cm, kg)",
+    "imperial": "Imperial (in, lbs)",
+    "height_label": "Height ({{unit}})",
+    "height_ph": "Enter height in {{unit_name}}",
+    "weight_label": "Weight ({{unit}})",
+    "weight_ph": "Enter weight in {{unit_name}}",
+    "button": "Calculate BMI",
+    "result_title": "Your BMI",
+    "categories": {
+      "under": "Underweight",
+      "normal": "Normal weight",
+      "over": "Overweight",
+      "obese": "Obese"
+    }
+  },
+  "barcode_generator_page": {
+    "back": "Back to Image Tools",
+    "title": "Barcode Generator",
+    "subtitle": "Generate barcodes from text or numbers",
+    "input_title": "Input & Settings",
+    "input_desc": "Enter text and select barcode type",
+    "text_label": "Text or Numbers",
+    "text_ph": "Enter text or numbers...",
+    "type_label": "Barcode Type",
+    "type_ph": "Select barcode type",
+    "generate_button": "Generate Barcode",
+    "output_title": "Generated Barcode",
+    "output_desc": "Your barcode will appear here",
+    "download_button": "Download Barcode",
+    "placeholder": "Barcode will appear here",
+    "toasts": {
+      "success_title": "Success!",
+      "success_desc": "Barcode generated successfully",
+      "error_title": "Error",
+      "error_desc": "Please enter text to generate barcode",
+      "fail_desc": "Failed to generate barcode. Check your input."
+    }
+  },
+  "background_remover_page": {
+    "back": "Back to Image Tools",
+    "title": "Background Remover",
+    "subtitle": "Remove image backgrounds right in your browser",
+    "upload_card": {
+      "title": "1. Upload Image",
+      "desc": "Choose an image to remove the background",
+      "label": "Select image file",
+      "preview_label": "Preview:",
+      "button": "Remove Background",
+      "processing": "Processing..."
+    },
+    "result_card": {
+      "title": "2. Result",
+      "desc": "Image after background removal",
+      "placeholder": "Processed image will appear here",
+      "download": "Download Image"
+    },
+    "alert": {
+      "title": "How does it work?",
+      "desc": "This tool uses an open-source library running an AI model directly in your browser. Your image never leaves your device."
+    },
+    "toasts": {
+      "invalid_title": "Invalid File",
+      "invalid_desc": "Please choose a supported image file (PNG, JPG).",
+      "no_image_title": "No Image Selected",
+      "no_image_desc": "Please select an image before removing the background.",
+      "processing_title": "Processing Image...",
+      "processing_desc": "Background removal may take a few moments. Please wait.",
+      "success_title": "Success!",
+      "success_desc": "Background removed successfully.",
+      "error_title": "Processing Error",
+      "error_desc": "Unable to remove background. Try another image."
+    }
+  },
+  "uuid_generator_page": {
+    "title": "UUID Generator",
+    "subtitle": "Generate unique identifiers (UUID v4)",
+    "generate_title": "Generate UUIDs",
+    "generate_desc": "Specify how many UUIDs to generate",
+    "count_label": "Number of UUIDs",
+    "generate_button": "Generate UUIDs",
+    "generated_title": "Generated UUIDs",
+    "generated_desc": "{{count}} UUIDs generated",
+    "copy_all": "Copy All",
+    "copy_toast": "UUID copied to clipboard",
+    "copy_all_toast": "All UUIDs copied to clipboard"
+  },
+  "advanced_image_editor_page": {
+    "title": "Advanced Image Editor",
+    "subtitle": "Edit images with advanced filters and effects",
+    "back": "Back to Image Tools",
+    "toasts": {
+      "error_title": "Error",
+      "error_desc": "Please select a valid image file",
+      "success_title": "Success!",
+      "success_desc": "Edited image downloaded successfully"
+    }
+  },
+  "base_formatter_page": {
+    "back": "Back to Developer Tools",
+    "unformatted_title": "Unformatted {{tool}}",
+    "unformatted_desc": "Paste your {{tool}} code here",
+    "formatted_title": "Formatted {{tool}}",
+    "formatted_desc": "Formatted code will appear here",
+    "format_button": "Format {{tool}}",
+    "copy_button": "Copy",
+    "download_button": "Download",
+    "toasts": {
+      "error_title": "Error",
+      "error_desc": "Please enter {{tool}} code",
+      "success_title": "Success!",
+      "format_success": "{{tool}} formatted successfully",
+      "format_error": "Error formatting {{tool}}",
+      "copied": "Code copied to clipboard",
+      "downloaded": "{{tool}} file downloaded"
+    }
+  },
+  "base_minifier_page": {
+    "back": "Back to Developer Tools",
+    "original_title": "Original {{tool}}",
+    "original_desc": "Paste your {{tool}} code here",
+    "minified_title": "Minified {{tool}}",
+    "minified_desc": "Minified code will appear here",
+    "minify_button": "Minify {{tool}}",
+    "copy_button": "Copy",
+    "download_button": "Download",
+    "toasts": {
+      "error_title": "Error",
+      "error_desc": "Please enter {{tool}} code",
+      "success_title": "Done!",
+      "minify_success": "{{tool}} minified by {{percent}}%",
+      "minify_error": "Error minifying {{tool}}",
+      "copied": "Minified code copied to clipboard",
+      "downloaded": "File saved"
+    }
+  },
+  "audio_compressor_page": {
+    "back": "Back to Audio Tools",
+    "title": "Audio Compressor",
+    "subtitle": "Compress audio files to reduce size",
+    "upload_title": "Upload Audio File",
+    "upload_desc": "Choose an audio file to compress",
+    "level_label": "Compression Level",
+    "quality": {
+      "high": "High Quality",
+      "medium": "Medium Quality",
+      "max": "Maximum Compression"
+    },
+    "compress_button": "Start Compression",
+    "compressing": "Compressing...",
+    "results_title": "Compression Results",
+    "results_desc": "Information about the compressed file",
+    "original_size": "Original Size",
+    "compressed_size": "Compressed Size",
+    "ratio": "Compression Ratio",
+    "download_button": "Download Compressed File",
+    "placeholder": "Compression results will appear here",
+    "guide_title": "Compression Guide",
+    "guide_items": [
+      "High quality (10-30%): minimal compression, best quality",
+      "Medium quality (30-70%): balance of quality and size",
+      "Maximum compression (70-90%): smallest size, lower quality"
+    ],
+    "toasts": {
+      "error_title": "Error",
+      "invalid_file": "Please select a valid audio file",
+      "no_file": "Please choose an audio file first",
+      "processing_title": "Compressing...",
+      "processing_desc": "Compressing the audio file",
+      "success_title": "Done!",
+      "success_desc": "File compressed by {{percent}}%",
+      "downloaded": "Compressed file saved",
+      "compress_error": "Error compressing file"
+    }
+  },
+  "audio_converter_page": {
+    "back": "Back to Audio Tools",
+    "title": "Audio Converter",
+    "subtitle": "Convert audio files between formats",
+    "source_title": "Source File",
+    "source_desc": "Upload an audio file to convert",
+    "format_label": "Target Format",
+    "convert_button": "Start Conversion",
+    "converting": "Converting...",
+    "converted_title": "Converted File",
+    "converted_desc": "Download the converted file",
+    "formats_title": "Supported Formats",
+    "placeholder": "Converted file will appear here",
+    "toasts": {
+      "error_title": "Error",
+      "invalid_file": "Please select a valid audio file",
+      "no_file": "Please choose an audio file first",
+      "processing_title": "Converting...",
+      "success_title": "Done!",
+      "success_desc": "File converted successfully",
+      "downloaded": "Converted file saved",
+      "convert_error": "Error converting file"
+    },
+    "formats": {
+      "mp3": { "label": "MP3", "desc": "Popular compressed format" },
+      "wav": { "label": "WAV", "desc": "High quality, uncompressed" },
+      "flac": { "label": "FLAC", "desc": "Lossless compression" },
+      "aac": { "label": "AAC", "desc": "Efficient compression" },
+      "ogg": { "label": "OGG", "desc": "Open source format" },
+      "m4a": { "label": "M4A", "desc": "Apple format" }
+    }
+  },
+  "audio_editor_page": {
+    "back": "Back to Audio Tools",
+    "title": "Audio Editor",
+    "subtitle": "Edit audio files with advanced effects",
+    "upload_title": "Upload Audio File",
+    "upload_desc": "Choose an audio file to edit",
+    "play": "Play",
+    "pause": "Stop",
+    "volume": "Volume: {{value}}%",
+    "speed": "Playback Speed: {{value}}x",
+    "effects_title": "Effects",
+    "effects_desc": "Apply effects to the file",
+    "reverb": "Reverb",
+    "bass": "Bass Boost",
+    "treble": "Treble Boost",
+    "normalize": "Normalize",
+    "tools_title": "Editing Tools",
+    "cut": "Cut",
+    "undo": "Undo",
+    "redo": "Redo",
+    "download_button": "Download Edited File",
+    "toasts": {
+      "error_title": "Error",
+      "invalid_file": "Please select a valid audio file",
+      "processing_title": "Processing...",
+      "processing_desc": "Applying effect {{effect}}",
+      "success_title": "Done!",
+      "success_desc": "Effect {{effect}} applied successfully",
+      "downloaded": "Edited file saved"
+    }
+  },
+  "audio_merger_page": {
+    "back": "Back to Audio Tools",
+    "title": "Audio Merger",
+    "subtitle": "Merge multiple audio files into one",
+    "files_title": "Audio Files",
+    "files_desc": "Upload audio files to merge",
+    "selected_files": "Selected files ({{count}})",
+    "total": "Total: {{count}} files | Estimated duration: {{minutes}} minutes",
+    "merge_button": "Merge Files",
+    "merging": "Merging...",
+    "merged_title": "Merged File",
+    "merged_desc": "Download the merged file",
+    "instructions_title": "Usage Instructions",
+    "instructions": [
+      "1. Upload files",
+      "2. Reorder",
+      "3. Merge",
+      "4. Download"
+    ],
+    "placeholder": "Merged file will appear here",
+    "toasts": {
+      "warning_title": "Warning",
+      "non_audio": "Some files were not audio and were ignored",
+      "error_title": "Error",
+      "need_two": "At least two audio files are required",
+      "processing_title": "Processing...",
+      "success_title": "Done!",
+      "success_desc": "{{count}} audio files merged successfully",
+      "merge_error": "Error merging files",
+      "downloaded": "Merged file saved"
+    }
+  },
+  "audio_splitter_page": {
+    "back": "Back to Audio Tools",
+    "title": "Audio Splitter",
+    "subtitle": "Split an audio file into multiple parts",
+    "file_title": "Audio File",
+    "file_desc": "Upload an audio file to split",
+    "add_point": "Add split point at {{time}}",
+    "points_label": "Split Points",
+    "split_button": "Split into {{count}} parts",
+    "splitting": "Splitting...",
+    "parts_title": "Parts",
+    "parts_desc": "Download the generated parts",
+    "download_all": "Download All Parts",
+    "placeholder": "File parts will appear here",
+    "instructions_title": "Usage Instructions",
+    "instructions": [
+      "1. Upload file",
+      "2. Play and listen",
+      "3. Add points",
+      "4. Split and download"
+    ],
+    "toasts": {
+      "error_title": "Error",
+      "invalid_file": "Please select a valid audio file",
+      "no_file": "Please choose an audio file first",
+      "no_points": "Please add at least one split point",
+      "processing_title": "Processing...",
+      "success_title": "Done!",
+      "success_desc": "File split into {{count}} parts",
+      "split_error": "Error splitting file",
+      "downloaded": "Part {{index}} saved",
+      "all_downloaded": "All parts saved"
+    }
+  },
   "footer": {
     "categories": "Categories",
     "popular": "Popular",
