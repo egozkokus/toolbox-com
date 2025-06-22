@@ -737,6 +737,7 @@
     "converting": "ממיר...",
     "converted_title": "קובץ מומר",
     "converted_desc": "הורד את הקובץ המומר",
+    "download_button": "הורד את הקובץ שהומר",
     "formats_title": "פורמטים נתמכים",
     "placeholder": "הקובץ המומר יופיע כאן",
     "toasts": {
@@ -801,6 +802,7 @@
     "merging": "מאחד...",
     "merged_title": "קובץ מאוחד",
     "merged_desc": "הורד את הקובץ המאוחד",
+    "download_button": "הורד קובץ מאוחד",
     "instructions_title": "הוראות שימוש",
     "instructions": [
       "1. העלה קבצים",
@@ -852,8 +854,12 @@
       "success_desc": "הקובץ חולק ל-{{count}} חלקים",
       "split_error": "שגיאה בחיתוך הקובץ",
       "downloaded": "חלק {{index}} נשמר",
-      "all_downloaded": "כל החלקים נשמרו"
-    }
+      "all_downloaded": "כל החלקים נשמרו",
+      "add_point": "נקודת חיתוך נוספה",
+      "processing_desc": "מפצל את הקובץ, אנא המתן"
+    },
+    "play": "נגן",
+    "pause": "הפסק"
   },
   "footer": {
     "categories": "קטגוריות",
