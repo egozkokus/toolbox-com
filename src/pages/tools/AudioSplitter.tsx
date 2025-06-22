@@ -52,8 +52,10 @@ const AudioSplitter = () => {
     if (currentTime > 0 && currentTime < duration) {
       setSplitPoints(prev => [...prev, currentTime].sort((a, b) => a - b));
       toast({
-        title: "t("audio_splitter_page.toasts.add_point")",
-        description: t("audio_splitter_page.toasts.point_added", { time: formatTime(currentTime) })
+        title: t("audio_splitter_page.toasts.add_point"),
+        description: t("audio_splitter_page.toasts.point_added", {
+          time: formatTime(currentTime),
+        }),
       });
     }
   };
