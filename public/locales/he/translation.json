@@ -875,6 +875,25 @@
       "convert_error": "שגיאה בהמרת המטבע"
     }
   },
+  "line_sorter_page": {
+    "back": "חזרה לכלי טקסט",
+    "title": "ממיין שורות",
+    "subtitle": "מיין שורות טקסט בסדר אלפביתי",
+    "input_title": "טקסט קלט",
+    "input_desc": "הזן שורות טקסט למיון",
+    "placeholder": "הכנס כאן שורות טקסט...",
+    "az_button": "א-ת",
+    "za_button": "ת-א",
+    "sort_button": "מיין שורות",
+    "sorted_title": "שורות ממויינות",
+    "sorted_desc": "השורות שלך ממויינות בסדר אלפביתי",
+    "sorted_placeholder": "השורות הממויינות יופיעו כאן...",
+    "copy_button": "העתק תוצאה",
+    "toasts": {
+      "copied_title": "הועתק!",
+      "copied_desc": "השורות הממויינות הועתקו ללוח"
+    }
+  },
   "footer": {
     "categories": "קטגוריות",
     "popular": "פופולריים",
