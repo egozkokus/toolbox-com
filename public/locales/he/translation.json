@@ -520,6 +520,29 @@
       "obese": "השמנת יתר" 
     } 
   },
+  "loan_calculator_page": {
+    "back": "חזרה למחשבונים",
+    "title": "מחשבון הלוואות",
+    "subtitle": "חשב תשלומים חודשיים וסך עלות ההלוואה",
+    "details_title": "פרטי הלוואה",
+    "details_desc": "הזן את פרטי ההלוואה שלך",
+    "amount_label": "סכום הלוואה ($)",
+    "interest_label": "ריבית שנתית (%)",
+    "term_label": "משך ההלוואה (שנים)",
+    "button": "חשב תשלום",
+    "summary_title": "סיכום תשלומים",
+    "summary_desc": "פירוט תשלומי ההלוואה",
+    "monthly_label": "תשלום חודשי",
+    "total_payment_label": "סך הכל לתשלום",
+    "total_interest_label": "סה\"כ ריבית",
+    "breakdown_title": "פירוט תשלום",
+    "principal_label": "קרן",
+    "interest_rate_label": "ריבית",
+    "loan_term_label": "משך ההלוואה",
+    "annually_suffix": "בשנה",
+    "years_unit": "שנים",
+    "payments_unit": "תשלומים"
+  },
   "barcode_generator_page": {
     "back": "חזרה לכלי תמונות",
     "title": "מחולל ברקוד",

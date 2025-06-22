@@ -520,6 +520,29 @@
       "obese": "Obese"
     }
   },
+  "loan_calculator_page": {
+    "back": "Back to Calculators",
+    "title": "Loan Calculator",
+    "subtitle": "Calculate monthly loan payments and total costs",
+    "details_title": "Loan Details",
+    "details_desc": "Enter your loan information",
+    "amount_label": "Loan Amount ($)",
+    "interest_label": "Annual Interest Rate (%)",
+    "term_label": "Loan Term (Years)",
+    "button": "Calculate Payment",
+    "summary_title": "Payment Summary",
+    "summary_desc": "Your loan payment breakdown",
+    "monthly_label": "Monthly Payment",
+    "total_payment_label": "Total Payment",
+    "total_interest_label": "Total Interest",
+    "breakdown_title": "Payment Breakdown",
+    "principal_label": "Principal",
+    "interest_rate_label": "Interest Rate",
+    "loan_term_label": "Loan Term",
+    "annually_suffix": "annually",
+    "years_unit": "years",
+    "payments_unit": "payments"
+  },
   "barcode_generator_page": {
     "back": "Back to Image Tools",
     "title": "Barcode Generator",
