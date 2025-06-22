@@ -968,6 +968,55 @@
       "copied": "המספרים הועתקו ללוח!"
     }
   },
+       jvjkaz-codex/add-usetranslation-to-tools-pages
+  "url_encoder_page": {
+    "title": "מקודד/מפענח URL",
+    "subtitle": "קידוד ופענוח כתובות URL",
+    "input_title": "קלט",
+    "input_desc_encode": "הזן כתובת URL לקידוד",
+    "input_desc_decode": "הזן כתובת URL מקודדת לפענוח",
+    "switch_to_encode": "החלף לקידוד",
+    "switch_to_decode": "החלף לפענוח",
+    "placeholders": {
+      "encode": "הזן כתובת לקידוד...",
+      "decode": "הזן כתובת מקודדת לפענוח...",
+      "output": "התוצאה תופיע כאן..."
+    },
+    "buttons": {
+      "encode": "קודד URL",
+      "decode": "פענח URL",
+      "copy": "העתק תוצאה"
+    },
+    "output_title": "פלט",
+    "output_desc_encode": "URL מקודד",
+    "output_desc_decode": "URL מפוענח",
+    "toasts": {
+      "error_title": "שגיאה",
+      "error_desc": "פורמט URL לא תקין",
+      "copied_title": "הועתק!",
+      "copied_desc": "התוצאה הועתקה ללוח"
+    }
+  },
+  "password_generator_page": {
+    "title": "מחולל סיסמאות",
+    "subtitle": "צור סיסמאות מאובטחות עם אפשרויות מותאמות",
+    "generate_title": "צור סיסמה",
+    "generate_desc": "התאם את ההגדרות וייצר סיסמה מאובטחת",
+    "length_label": "אורך הסיסמה: {{length}}",
+    "uppercase": "אותיות גדולות (A-Z)",
+    "lowercase": "אותיות קטנות (a-z)",
+    "numbers": "מספרים (0-9)",
+    "symbols": "סמלים (!@#$...)",
+    "generate_button": "צור סיסמה",
+    "result_label": "סיסמה שנוצרה",
+    "toasts": {
+      "error_title": "שגיאה",
+      "charset_error": "בחר לפחות סוג תווים אחד",
+      "copied_title": "הועתק!",
+      "copied_desc": "הסיסמה הועתקה ללוח"
+    }
+  },
+       main
   "footer": {
     "categories": "קטגוריות",
     "popular": "פופולריים",

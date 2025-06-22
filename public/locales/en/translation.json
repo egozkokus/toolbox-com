@@ -968,6 +968,55 @@
       "copied": "Numbers copied to clipboard!"
     }
   },
+       jvjkaz-codex/add-usetranslation-to-tools-pages
+  "url_encoder_page": {
+    "title": "URL Encoder/Decoder",
+    "subtitle": "Encode and decode URL strings",
+    "input_title": "Input",
+    "input_desc_encode": "Enter URL to encode",
+    "input_desc_decode": "Enter encoded URL to decode",
+    "switch_to_encode": "Switch to Encode",
+    "switch_to_decode": "Switch to Decode",
+    "placeholders": {
+      "encode": "Enter URL to encode...",
+      "decode": "Enter encoded URL to decode...",
+      "output": "Result will appear here..."
+    },
+    "buttons": {
+      "encode": "Encode URL",
+      "decode": "Decode URL",
+      "copy": "Copy Result"
+    },
+    "output_title": "Output",
+    "output_desc_encode": "Encoded URL",
+    "output_desc_decode": "Decoded URL",
+    "toasts": {
+      "error_title": "Error",
+      "error_desc": "Invalid URL format",
+      "copied_title": "Copied!",
+      "copied_desc": "Result copied to clipboard"
+    }
+  },
+  "password_generator_page": {
+    "title": "Password Generator",
+    "subtitle": "Generate secure passwords with custom options",
+    "generate_title": "Generate Password",
+    "generate_desc": "Customize your password settings and generate a secure password",
+    "length_label": "Password Length: {{length}}",
+    "uppercase": "Uppercase (A-Z)",
+    "lowercase": "Lowercase (a-z)",
+    "numbers": "Numbers (0-9)",
+    "symbols": "Symbols (!@#$...)",
+    "generate_button": "Generate Password",
+    "result_label": "Generated Password",
+    "toasts": {
+      "error_title": "Error",
+      "charset_error": "Please select at least one character type",
+      "copied_title": "Copied!",
+      "copied_desc": "Password copied to clipboard"
+    }
+  },
+      main
   "footer": {
     "categories": "Categories",
     "popular": "Popular",

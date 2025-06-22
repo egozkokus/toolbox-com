@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 const RandomNumberGenerator = () => {
   const [min, setMin] = useState(1);
@@ -71,8 +72,13 @@ const RandomNumberGenerator = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Card>
             <CardHeader>
+        jvjkaz-codex/add-usetranslation-to-tools-pages
+              <CardTitle>{t('random_number_generator_page.settings_title')}</CardTitle>
+              <CardDescription>{t('random_number_generator_page.settings_desc')}</CardDescription>
+
           <CardTitle>{t('random_number_generator_page.settings_title')}</CardTitle>
           <CardDescription>{t('random_number_generator_page.settings_desc')}</CardDescription>
+         main
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
