@@ -6,10 +6,12 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Palette, Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 const ColorPicker = () => {
   const [color, setColor] = useState("#3b82f6");
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const hexToRgb = (hex: string) => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -58,7 +60,10 @@ const ColorPicker = () => {
 
   const copyToClipboard = (value: string) => {
     navigator.clipboard.writeText(value);
-    toast({ title: "Copied!", description: `${value} copied to clipboard` });
+    toast({
+      title: t("color_picker_page.toasts.copied_title"),
+      description: t("color_picker_page.toasts.copied_desc", { value })
+    });
   };
 
   const colorFormats = [
@@ -73,21 +78,21 @@ const ColorPicker = () => {
       <div className="container mx-auto max-w-2xl">
         <div className="mb-8 text-center">
           <Palette className="h-12 w-12 mx-auto mb-4 text-blue-600" />
-          <h1 className="text-4xl font-bold mb-2">Color Picker</h1>
-          <p className="text-gray-600">Pick colors and get values in different formats</p>
+          <h1 className="text-4xl font-bold mb-2">{t('color_picker_page.title')}</h1>
+          <p className="text-gray-600">{t('color_picker_page.subtitle')}</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>Color Selector</CardTitle>
+              <CardTitle>{t('color_picker_page.selector_title')}</CardTitle>
               <CardDescription>
-                Choose your color using the picker or enter a hex value
+                {t('color_picker_page.selector_desc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="colorPicker">Color Picker</Label>
+                <Label htmlFor="colorPicker">{t('color_picker_page.picker_label')}</Label>
                 <input
                   id="colorPicker"
                   type="color"
@@ -97,7 +102,7 @@ const ColorPicker = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="hexInput">Hex Value</Label>
+                <Label htmlFor="hexInput">{t('color_picker_page.hex_label')}</Label>
                 <Input
                   id="hexInput"
                   value={color}
@@ -114,9 +119,9 @@ const ColorPicker = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle>Color Values</CardTitle>
+              <CardTitle>{t('color_picker_page.values_title')}</CardTitle>
               <CardDescription>
-                Copy color values in different formats
+                {t('color_picker_page.values_desc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">

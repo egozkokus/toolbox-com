@@ -5,11 +5,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart3, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const CharFrequency = () => {
   const [input, setInput] = useState("");
   const [frequency, setFrequency] = useState<Array<{char: string, count: number, percentage: number}>>([]);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const analyzeFrequency = () => {
     const charCount: Record<string, number> = {};
@@ -33,47 +35,47 @@ const CharFrequency = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
       <div className="container mx-auto max-w-4xl">
-        <Button 
-          onClick={() => navigate("/categories/text-tools")} 
-          variant="outline" 
+        <Button
+          onClick={() => navigate("/categories/text-tools")}
+          variant="outline"
           className="mb-4"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Text Tools
+          {t('char_frequency_page.back')}
         </Button>
 
         <div className="mb-8 text-center">
           <BarChart3 className="h-12 w-12 mx-auto mb-4 text-blue-600" />
-          <h1 className="text-4xl font-bold mb-2">Character Frequency</h1>
-          <p className="text-gray-600">Analyze character frequency in your text</p>
+          <h1 className="text-4xl font-bold mb-2">{t('char_frequency_page.title')}</h1>
+          <p className="text-gray-600">{t('char_frequency_page.subtitle')}</p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>Input Text</CardTitle>
+              <CardTitle>{t('char_frequency_page.input_title')}</CardTitle>
               <CardDescription>
-                Enter text to analyze character frequency
+                {t('char_frequency_page.input_desc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <Textarea
-                placeholder="Enter your text here..."
+                placeholder={t('char_frequency_page.placeholder')}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="min-h-48"
               />
               <Button onClick={analyzeFrequency} className="w-full">
-                Analyze Frequency
+                {t('char_frequency_page.analyze_button')}
               </Button>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>Character Frequency</CardTitle>
+              <CardTitle>{t('char_frequency_page.result_title')}</CardTitle>
               <CardDescription>
-                Character count and percentage
+                {t('char_frequency_page.result_desc')}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -92,7 +94,7 @@ const CharFrequency = () => {
                   </div>
                 ) : (
                   <div className="text-gray-400 text-center py-8">
-                    Character frequency will appear here...
+                    {t('char_frequency_page.results_empty')}
                   </div>
                 )}
               </div>

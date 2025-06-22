@@ -5,12 +5,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code, Copy, RotateCcw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 const Base64Encoder = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [mode, setMode] = useState<"encode" | "decode">("encode");
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const processText = () => {
     try {
@@ -22,13 +24,19 @@ const Base64Encoder = () => {
         setOutput(decoded);
       }
     } catch (error) {
-      toast({ title: "Error", description: "Invalid input for decoding" });
+      toast({
+        title: t("base64_encoder_page.toasts.error_title"),
+        description: t("base64_encoder_page.toasts.error_desc")
+      });
     }
   };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(output);
-    toast({ title: "Copied!", description: "Result copied to clipboard" });
+    toast({
+      title: t("base64_encoder_page.toasts.copied_title"),
+      description: t("base64_encoder_page.toasts.copied_desc")
+    });
   };
 
   const switchMode = () => {
@@ -42,8 +50,8 @@ const Base64Encoder = () => {
       <div className="container mx-auto max-w-4xl">
         <div className="mb-8 text-center">
           <Code className="h-12 w-12 mx-auto mb-4 text-blue-600" />
-          <h1 className="text-4xl font-bold mb-2">Base64 Encoder/Decoder</h1>
-          <p className="text-gray-600">Encode and decode Base64 strings</p>
+          <h1 className="text-4xl font-bold mb-2">{t('base64_encoder_page.title')}</h1>
+          <p className="text-gray-600">{t('base64_encoder_page.subtitle')}</p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
@@ -51,35 +59,47 @@ const Base64Encoder = () => {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle>Input</CardTitle>
+                  <CardTitle>{t('base64_encoder_page.input_title')}</CardTitle>
                   <CardDescription>
-                    Enter text to {mode}
+                    {mode === 'encode'
+                      ? t('base64_encoder_page.input_desc_encode')
+                      : t('base64_encoder_page.input_desc_decode')}
                   </CardDescription>
                 </div>
                 <Button onClick={switchMode} variant="outline" size="sm">
                   <RotateCcw className="h-4 w-4 mr-2" />
-                  Switch to {mode === "encode" ? "Decode" : "Encode"}
+                  {mode === 'encode'
+                    ? t('base64_encoder_page.switch_to_decode')
+                    : t('base64_encoder_page.switch_to_encode')}
                 </Button>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
               <Textarea
-                placeholder={mode === "encode" ? "Enter text to encode..." : "Enter Base64 to decode..."}
+                placeholder={
+                  mode === 'encode'
+                    ? t('base64_encoder_page.placeholders.encode')
+                    : t('base64_encoder_page.placeholders.decode')
+                }
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="min-h-48"
               />
               <Button onClick={processText} className="w-full">
-                {mode === "encode" ? "Encode" : "Decode"}
+                {mode === 'encode'
+                  ? t('base64_encoder_page.buttons.encode')
+                  : t('base64_encoder_page.buttons.decode')}
               </Button>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>Output</CardTitle>
+              <CardTitle>{t('base64_encoder_page.output_title')}</CardTitle>
               <CardDescription>
-                {mode === "encode" ? "Encoded" : "Decoded"} result
+                {mode === 'encode'
+                  ? t('base64_encoder_page.output_desc_encode')
+                  : t('base64_encoder_page.output_desc_decode')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -87,12 +107,12 @@ const Base64Encoder = () => {
                 value={output}
                 readOnly
                 className="min-h-48 bg-gray-50"
-                placeholder="Result will appear here..."
+                placeholder={t('base64_encoder_page.placeholders.output')}
               />
               {output && (
                 <Button onClick={copyToClipboard} variant="outline" className="w-full">
                   <Copy className="h-4 w-4 mr-2" />
-                  Copy Result
+                  {t('base64_encoder_page.buttons.copy')}
                 </Button>
               )}
             </CardContent>

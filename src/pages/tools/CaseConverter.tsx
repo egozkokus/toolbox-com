@@ -5,11 +5,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Type, Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 const CaseConverter = () => {
   const [input, setInput] = useState("");
   const [results, setResults] = useState<Record<string, string>>({});
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const convertCases = () => {
     if (!input.trim()) return;
@@ -39,7 +41,10 @@ const CaseConverter = () => {
 
   const copyToClipboard = (value: string, type: string) => {
     navigator.clipboard.writeText(value);
-    toast({ title: "Copied!", description: `${type} text copied to clipboard` });
+    toast({
+      title: t("case_converter_page.toasts.copied_title"),
+      description: t("case_converter_page.toasts.copied_desc", { type })
+    });
   };
 
   return (
@@ -47,36 +52,36 @@ const CaseConverter = () => {
       <div className="container mx-auto max-w-4xl">
         <div className="mb-8 text-center">
           <Type className="h-12 w-12 mx-auto mb-4 text-blue-600" />
-          <h1 className="text-4xl font-bold mb-2">Case Converter</h1>
-          <p className="text-gray-600">Convert text to different cases and formats</p>
+          <h1 className="text-4xl font-bold mb-2">{t('case_converter_page.title')}</h1>
+          <p className="text-gray-600">{t('case_converter_page.subtitle')}</p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>Input Text</CardTitle>
+              <CardTitle>{t('case_converter_page.input_title')}</CardTitle>
               <CardDescription>
-                Enter text to convert to different cases
+                {t('case_converter_page.input_desc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <Textarea
-                placeholder="Enter your text here..."
+                placeholder={t('case_converter_page.placeholder')}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="min-h-48"
               />
               <Button onClick={convertCases} className="w-full">
-                Convert Cases
+                {t('case_converter_page.convert_button')}
               </Button>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>Converted Text</CardTitle>
+              <CardTitle>{t('case_converter_page.output_title')}</CardTitle>
               <CardDescription>
-                Text in different case formats
+                {t('case_converter_page.output_desc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -93,7 +98,7 @@ const CaseConverter = () => {
                     </Button>
                   </div>
                   <div className="p-3 bg-gray-50 rounded border text-sm font-mono">
-                    {value || "Result will appear here..."}
+                    {value || t('case_converter_page.result_placeholder')}
                   </div>
                 </div>
               ))}

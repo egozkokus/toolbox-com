@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 const RandomNumberGenerator = () => {
   const [min, setMin] = useState(1);
@@ -15,15 +16,16 @@ const RandomNumberGenerator = () => {
   const [count, setCount] = useState(1);
   const [allowDuplicates, setAllowDuplicates] = useState(true);
   const [generatedNumbers, setGeneratedNumbers] = useState<number[]>([]);
+  const { t } = useTranslation();
 
   const generateNumbers = () => {
     if (min >= max) {
-      toast.error("הערך המינימלי חייב להיות קטן מהמקסימלי");
+      toast.error(t('random_number_generator_page.toasts.range_error'));
       return;
     }
 
     if (!allowDuplicates && (max - min + 1) < count) {
-      toast.error("לא ניתן ליצור מספר זה של מספרים ייחודיים בטווח הנתון");
+      toast.error(t('random_number_generator_page.toasts.duplicate_error'));
       return;
     }
 
@@ -46,36 +48,36 @@ const RandomNumberGenerator = () => {
     }
 
     setGeneratedNumbers(numbers);
-    toast.success("מספרים אקראיים נוצרו בהצלחה!");
+    toast.success(t('random_number_generator_page.toasts.generated'));
   };
 
   const copyToClipboard = () => {
     const numbersText = generatedNumbers.join(", ");
     navigator.clipboard.writeText(numbersText);
-    toast.success("המספרים הועתקו ללוח!");
+    toast.success(t('random_number_generator_page.toasts.copied'));
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
       <div className="container mx-auto max-w-4xl">
         <PageHeader
-          title="מחולל מספרים אקראיים"
-          subtitle="צור מספרים אקראיים בטווח שתבחר"
+          title={t('random_number_generator_page.title')}
+          subtitle={t('random_number_generator_page.subtitle')}
           icon={<Dice6 className="h-16 w-16 text-indigo-600" />}
           backPath="/categories/generators"
-          backLabel="חזרה לגנרטורים"
+          backLabel={t('random_number_generator_page.back')}
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Card>
             <CardHeader>
-              <CardTitle>הגדרות</CardTitle>
-              <CardDescription>קבע את הפרמטרים ליצירת המספרים</CardDescription>
+              <CardTitle>{t('random_number_generator_page.settings_title')}</CardTitle>
+              <CardDescription>{t('random_number_generator_page.settings_desc')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="min">מינימום</Label>
+                  <Label htmlFor="min">{t('random_number_generator_page.min_label')}</Label>
                   <Input
                     id="min"
                     type="number"
@@ -84,7 +86,7 @@ const RandomNumberGenerator = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="max">מקסימום</Label>
+                  <Label htmlFor="max">{t('random_number_generator_page.max_label')}</Label>
                   <Input
                     id="max"
                     type="number"
@@ -95,7 +97,7 @@ const RandomNumberGenerator = () => {
               </div>
 
               <div>
-                <Label htmlFor="count">כמות מספרים</Label>
+                <Label htmlFor="count">{t('random_number_generator_page.count_label')}</Label>
                 <Input
                   id="count"
                   type="number"
@@ -112,7 +114,7 @@ const RandomNumberGenerator = () => {
                   checked={allowDuplicates}
                   onCheckedChange={setAllowDuplicates}
                 />
-                <Label htmlFor="duplicates">אפשר כפילויות</Label>
+                <Label htmlFor="duplicates">{t('random_number_generator_page.allow_duplicates')}</Label>
               </div>
 
               <Button 
@@ -121,15 +123,15 @@ const RandomNumberGenerator = () => {
                 size="lg"
               >
                 <RefreshCw className="h-4 w-4 mr-2" />
-                צור מספרים
+                {t('random_number_generator_page.generate_button')}
               </Button>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>תוצאות</CardTitle>
-              <CardDescription>המספרים האקראיים שנוצרו</CardDescription>
+              <CardTitle>{t('random_number_generator_page.results_title')}</CardTitle>
+              <CardDescription>{t('random_number_generator_page.results_desc')}</CardDescription>
             </CardHeader>
             <CardContent>
               {generatedNumbers.length > 0 ? (
@@ -154,7 +156,7 @@ const RandomNumberGenerator = () => {
                       className="flex-1"
                     >
                       <Copy className="h-4 w-4 mr-2" />
-                      העתק
+                      {t('random_number_generator_page.copy')}
                     </Button>
                     <Button 
                       onClick={generateNumbers} 
@@ -162,14 +164,14 @@ const RandomNumberGenerator = () => {
                       className="flex-1"
                     >
                       <RefreshCw className="h-4 w-4 mr-2" />
-                      צור שוב
+                      {t('random_number_generator_page.regenerate')}
                     </Button>
                   </div>
                 </div>
               ) : (
                 <div className="text-center text-gray-500 py-12">
                   <Dice6 className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                  <p>לחץ על "צור מספרים" כדי להתחיל</p>
+                  <p>{t('random_number_generator_page.empty_prompt')}</p>
                 </div>
               )}
             </CardContent>
