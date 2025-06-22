@@ -359,6 +359,66 @@
     "subtitle": "עצב ואמת נתוני JSON",
     "placeholder": "הדבק כאן נתוני JSON..."
   },
+  "regex_tester_page": {
+    "back": "חזרה לכלי מפתחים",
+    "title": "בודק ביטויים רגולריים",
+    "subtitle": "בדוק ופתח ביטויים רגולריים בקלות",
+    "pattern_title": "ביטוי רגולרי",
+    "pattern_desc": "הכנס את הביטוי הרגולרי שלך",
+    "test_label": "טקסט לבדיקה",
+    "regex_placeholder": "הכנס ביטוי רגולרי כאן...",
+    "text_placeholder": "הכנס טקסט לבדיקה...",
+    "test_button": "בדוק ביטוי רגולרי",
+    "matches_title": "התאמות שנמצאו: {{count}}",
+    "position": "מיקום: {{start}}-{{end}}",
+    "samples_title": "דוגמאות נפוצות",
+    "samples_desc": "לחץ להעתקה",
+    "samples": {
+      "email": "אימייל",
+      "phone": "טלפון",
+      "url": "URL",
+      "number": "מספר",
+      "word": "מילה",
+      "date": "תאריך"
+    },
+    "toasts": {
+      "error_title": "שגיאה",
+      "no_pattern": "אנא הכנס ביטוי רגולרי",
+      "success_title": "הושלם!",
+      "found": "נמצאו {{count}} התאמות",
+      "invalid": "ביטוי רגולרי לא תקין"
+    }
+  },
+  "jwt_decoder_page": {
+    "back": "חזרה לכלי מפתחים",
+    "title": "מפענח JWT",
+    "subtitle": "פענח טוקני JWT וצפה בתוכן שלהם",
+    "security_warning_title": "אזהרת אבטחה",
+    "security_warning_desc": "אל תשתף טוקני JWT אמיתיים המכילים מידע רגיש. השתמש בטוקנים לדוגמה בלבד באתרים ציבוריים.",
+    "token_title": "טוקן JWT",
+    "token_desc": "הדבק כאן את הטוקן שברצונך לפענח",
+    "decode_button": "פענח JWT",
+    "header_title": "Header",
+    "header_desc": "מידע על האלגוריתם וסוג הטוקן",
+    "payload_title": "Payload",
+    "payload_desc": "הנתונים המקודדים בטוקן",
+    "signature_title": "Signature",
+    "signature_desc": "החתימה הדיגיטלית (לא ניתן לאמת ללא המפתח הסודי)",
+    "copy_button": "העתק",
+    "toasts": {
+      "success_title": "הצלחה!",
+      "success_desc": "טוקן JWT פוענח בהצלחה",
+      "copied_title": "הועתק!",
+      "copied_desc": "{{type}} הועתק ללוח",
+      "error": "שגיאה בפענוח JWT - ודא שהטוקן תקין",
+      "invalid": "JWT לא תקין",
+      "no_token": "אנא הכנס טוקן JWT",
+      "invalid_header": "כותרת JWT לא תקינה - לא ניתן לפענח",
+      "invalid_payload": "תוכן JWT לא תקין - לא ניתן לפענח",
+      "admin_warning": "זוהה טוקן עם הרשאות מנהל - יש לבדוק את מקור הטוקן",
+      "expired": "הטוקן פג תוקף ב-{{date}}"
+    }
+  },
   "video_trimmer_page": {
     "back": "חזרה לכלי וידאו",
     "title": "חיתוך וידאו",
@@ -701,6 +761,19 @@
   },
   "common": {
     "explore": "גלו את כל הכלים",
-    "moreTools": "+{{count}} כלים נוספים..."
+    "moreTools": "+{{count}} כלים נוספים...",
+    "back": "חזרה",
+    "back_home": "חזרה לדף הבית",
+    "back_category": "חזרה לקטגוריה",
+    "use": "השתמש בכלי",
+    "download": "הורד",
+    "copy": "העתק",
+    "reset": "איפוס",
+    "generate": "חולל",
+    "upload": "העלה",
+    "save": "שמור",
+    "cancel": "ביטול",
+    "success": "הצלחה!",
+    "error": "שגיאה"
   }
 }

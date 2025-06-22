@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import PageHeader from "@/components/common/PageHeader";
 import { useErrorHandler } from "@/hooks/useErrorHandler";
 import { ERROR_CODES } from "@/lib/errorHandling";
+import { useTranslation } from "react-i18next";
 
 interface BaseMinifierProps {
   title: string;
@@ -39,15 +40,18 @@ const BaseMinifier = ({
   const { logError, handleAsyncError, validateAndHandle } = useErrorHandler({
     context: `${toolType}-minifier`
   });
+  const { t } = useTranslation();
 
   const handleMinify = async () => {
     // Validate input
-    if (!validateAndHandle(
-      input,
-      (val) => val.trim().length > 0,
-      ERROR_CODES.EMPTY_INPUT,
-      `אנא הכנס קוד ${toolType.toUpperCase()}`
-    )) {
+    if (
+      !validateAndHandle(
+        input,
+        (val) => val.trim().length > 0,
+        ERROR_CODES.EMPTY_INPUT,
+        t('base_minifier_page.toasts.error_desc', { tool: toolType.toUpperCase() })
+      )
+    ) {
       return;
     }
 
@@ -72,8 +76,11 @@ const BaseMinifier = ({
       const savedPercentage = ((originalSize - minifiedSize) / originalSize * 100).toFixed(1);
       
       toast({
-        title: "הושלם!",
-        description: `${toolType.toUpperCase()} הוקטן ב-${savedPercentage}%`
+        title: t('base_minifier_page.toasts.success_title'),
+        description: t('base_minifier_page.toasts.minify_success', {
+          tool: toolType.toUpperCase(),
+          percent: savedPercentage
+        })
       });
     }
   };
@@ -89,8 +96,8 @@ const BaseMinifier = ({
 
     if (result) {
       toast({
-        title: "הועתק!",
-        description: "הקוד המוקטן הועתק ללוח"
+        title: t('base_minifier_page.toasts.success_title'),
+        description: t('base_minifier_page.toasts.copied')
       });
     }
   };
@@ -112,8 +119,8 @@ const BaseMinifier = ({
 
     if (result) {
       toast({
-        title: "הורד בהצלחה!",
-        description: "הקובץ נשמר"
+        title: t('base_minifier_page.toasts.success_title'),
+        description: t('base_minifier_page.toasts.downloaded')
       });
     }
   };
@@ -126,14 +133,14 @@ const BaseMinifier = ({
           subtitle={subtitle}
           icon={<Minimize2 className={`h-12 w-12 mx-auto ${iconColor}`} />}
           backPath={backPath}
-          backLabel="חזרה לכלי מפתחים"
+          backLabel={t('base_minifier_page.back')}
         />
 
         <div className="grid gap-6 lg:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>קוד {toolType.toUpperCase()} מקורי</CardTitle>
-              <CardDescription>הדבק את קוד ה-{toolType.toUpperCase()} שלך כאן</CardDescription>
+              <CardTitle>{t('base_minifier_page.original_title', { tool: toolType.toUpperCase() })}</CardTitle>
+              <CardDescription>{t('base_minifier_page.original_desc', { tool: toolType.toUpperCase() })}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <Textarea
@@ -145,15 +152,15 @@ const BaseMinifier = ({
               
               <Button onClick={handleMinify} className="w-full">
                 <Minimize2 className="h-4 w-4 mr-2" />
-                הקטן {toolType.toUpperCase()}
+                {t('base_minifier_page.minify_button', { tool: toolType.toUpperCase() })}
               </Button>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>{toolType.toUpperCase()} מוקטן</CardTitle>
-              <CardDescription>הקוד המוקטן יופיע כאן</CardDescription>
+              <CardTitle>{t('base_minifier_page.minified_title', { tool: toolType.toUpperCase() })}</CardTitle>
+              <CardDescription>{t('base_minifier_page.minified_desc')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {minified ? (
@@ -166,17 +173,17 @@ const BaseMinifier = ({
                   <div className="flex gap-2">
                     <Button onClick={copyToClipboard} variant="outline" className="flex-1">
                       <Copy className="h-4 w-4 mr-2" />
-                      העתק
+                      {t('base_minifier_page.copy_button')}
                     </Button>
                     <Button onClick={downloadFile} variant="outline" className="flex-1">
                       <Download className="h-4 w-4 mr-2" />
-                      הורד
+                      {t('base_minifier_page.download_button')}
                     </Button>
                   </div>
                 </>
               ) : (
                 <div className="h-[300px] flex items-center justify-center text-gray-500">
-                  הקוד המוקטן יופיע כאן
+                  {t('base_minifier_page.minified_desc')}
                 </div>
               )}
             </CardContent>
