@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Dice6, Copy, RefreshCw } from "lucide-react";
 import PageHeader from "@/components/common/PageHeader";
 import { Button } from "@/components/ui/button";
@@ -71,8 +72,13 @@ const RandomNumberGenerator = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Card>
             <CardHeader>
+        jvjkaz-codex/add-usetranslation-to-tools-pages
               <CardTitle>{t('random_number_generator_page.settings_title')}</CardTitle>
               <CardDescription>{t('random_number_generator_page.settings_desc')}</CardDescription>
+
+          <CardTitle>{t('random_number_generator_page.settings_title')}</CardTitle>
+          <CardDescription>{t('random_number_generator_page.settings_desc')}</CardDescription>
+         main
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
@@ -150,16 +156,16 @@ const RandomNumberGenerator = () => {
                   </div>
                   
                   <div className="flex gap-2">
-                    <Button 
-                      onClick={copyToClipboard} 
-                      variant="outline" 
+                    <Button
+                      onClick={copyToClipboard}
+                      variant="outline"
                       className="flex-1"
                     >
                       <Copy className="h-4 w-4 mr-2" />
                       {t('random_number_generator_page.copy')}
                     </Button>
-                    <Button 
-                      onClick={generateNumbers} 
+                    <Button
+                      onClick={generateNumbers}
                       variant="outline"
                       className="flex-1"
                     >

@@ -968,6 +968,7 @@
       "copied": "המספרים הועתקו ללוח!"
     }
   },
+       jvjkaz-codex/add-usetranslation-to-tools-pages
   "url_encoder_page": {
     "title": "מקודד/מפענח URL",
     "subtitle": "קידוד ופענוח כתובות URL",
@@ -1015,6 +1016,7 @@
       "copied_desc": "הסיסמה הועתקה ללוח"
     }
   },
+       main
   "footer": {
     "categories": "קטגוריות",
     "popular": "פופולריים",

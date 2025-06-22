@@ -968,6 +968,7 @@
       "copied": "Numbers copied to clipboard!"
     }
   },
+       jvjkaz-codex/add-usetranslation-to-tools-pages
   "url_encoder_page": {
     "title": "URL Encoder/Decoder",
     "subtitle": "Encode and decode URL strings",
@@ -1015,6 +1016,7 @@
       "copied_desc": "Password copied to clipboard"
     }
   },
+      main
   "footer": {
     "categories": "Categories",
     "popular": "Popular",
