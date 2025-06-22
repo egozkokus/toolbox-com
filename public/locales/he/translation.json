@@ -917,6 +917,104 @@
       "copied_desc": "השורות הממויינות הועתקו ללוח"
     }
   },
+  "base64_encoder_page": {
+    "title": "מקודד/מפענח Base64",
+    "subtitle": "קידוד ופענוח מחרוזות Base64",
+    "input_title": "קלט",
+    "input_desc_encode": "הזן טקסט לקידוד",
+    "input_desc_decode": "הזן Base64 לפענוח",
+    "switch_to_encode": "החלף לקידוד",
+    "switch_to_decode": "החלף לפענוח",
+    "placeholders": {
+      "encode": "הזן טקסט לקידוד...",
+      "decode": "הזן Base64 לפענוח...",
+      "output": "התוצאה תופיע כאן..."
+    },
+    "buttons": {
+      "encode": "קודד",
+      "decode": "פענח",
+      "copy": "העתק תוצאה"
+    },
+    "output_title": "פלט",
+    "output_desc_encode": "תוצאה מקודדת",
+    "output_desc_decode": "תוצאה מפוענחת",
+    "toasts": {
+      "error_title": "שגיאה",
+      "error_desc": "קלט לא תקין לפענוח",
+      "copied_title": "הועתק!",
+      "copied_desc": "התוצאה הועתקה ללוח"
+    }
+  },
+  "random_number_generator_page": {
+    "title": "מחולל מספרים אקראיים",
+    "subtitle": "צור מספרים אקראיים בטווח שתבחר",
+    "back": "חזרה לגנרטורים",
+    "settings_title": "הגדרות",
+    "settings_desc": "קבע את הפרמטרים ליצירת המספרים",
+    "min_label": "מינימום",
+    "max_label": "מקסימום",
+    "count_label": "כמות מספרים",
+    "allow_duplicates": "אפשר כפילויות",
+    "generate_button": "צור מספרים",
+    "results_title": "תוצאות",
+    "results_desc": "המספרים האקראיים שנוצרו",
+    "copy": "העתק",
+    "regenerate": "צור שוב",
+    "empty_prompt": "לחץ על \"צור מספרים\" כדי להתחיל",
+    "toasts": {
+      "range_error": "הערך המינימלי חייב להיות קטן מהמקסימלי",
+      "duplicate_error": "לא ניתן ליצור מספר זה של מספרים ייחודיים בטווח הנתון",
+      "generated": "מספרים אקראיים נוצרו בהצלחה!",
+      "copied": "המספרים הועתקו ללוח!"
+    }
+  },
+  "url_encoder_page": {
+    "title": "מקודד/מפענח URL",
+    "subtitle": "קידוד ופענוח כתובות URL",
+    "input_title": "קלט",
+    "input_desc_encode": "הזן כתובת URL לקידוד",
+    "input_desc_decode": "הזן כתובת URL מקודדת לפענוח",
+    "switch_to_encode": "החלף לקידוד",
+    "switch_to_decode": "החלף לפענוח",
+    "placeholders": {
+      "encode": "הזן כתובת לקידוד...",
+      "decode": "הזן כתובת מקודדת לפענוח...",
+      "output": "התוצאה תופיע כאן..."
+    },
+    "buttons": {
+      "encode": "קודד URL",
+      "decode": "פענח URL",
+      "copy": "העתק תוצאה"
+    },
+    "output_title": "פלט",
+    "output_desc_encode": "URL מקודד",
+    "output_desc_decode": "URL מפוענח",
+    "toasts": {
+      "error_title": "שגיאה",
+      "error_desc": "פורמט URL לא תקין",
+      "copied_title": "הועתק!",
+      "copied_desc": "התוצאה הועתקה ללוח"
+    }
+  },
+  "password_generator_page": {
+    "title": "מחולל סיסמאות",
+    "subtitle": "צור סיסמאות מאובטחות עם אפשרויות מותאמות",
+    "generate_title": "צור סיסמה",
+    "generate_desc": "התאם את ההגדרות וייצר סיסמה מאובטחת",
+    "length_label": "אורך הסיסמה: {{length}}",
+    "uppercase": "אותיות גדולות (A-Z)",
+    "lowercase": "אותיות קטנות (a-z)",
+    "numbers": "מספרים (0-9)",
+    "symbols": "סמלים (!@#$...)",
+    "generate_button": "צור סיסמה",
+    "result_label": "סיסמה שנוצרה",
+    "toasts": {
+      "error_title": "שגיאה",
+      "charset_error": "בחר לפחות סוג תווים אחד",
+      "copied_title": "הועתק!",
+      "copied_desc": "הסיסמה הועתקה ללוח"
+    }
+  },
   "footer": {
     "categories": "קטגוריות",
     "popular": "פופולריים",
