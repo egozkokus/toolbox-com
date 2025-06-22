@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>לא מחובר - Tools4Anything</title>
+    <meta name="theme-color" content="#3B82F6">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            direction: rtl;
+        }
+        
+        .container {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: #f3f4f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .icon svg {
+            width: 60px;
+            height: 60px;
+            color: #6b7280;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            color: #111827;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        p {
+            color: #6b7280;
+            font-size: 1.125rem;
+            line-height: 1.75;
+            margin-bottom: 2rem;
+        }
+        
+        .features {
+            text-align: right;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f9fafb;
+            border-radius: 0.5rem;
+        }
+        
+        .features h2 {
+            font-size: 1.25rem;
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+        
+        .features ul {
+            list-style: none;
+        }
+        
+        .features li {
+            padding: 0.5rem 0;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .features li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .button {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .button:hover {
+            background: #2563eb;
+        }
+        
+        .button:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+        
+        .secondary-button {
+            background: #f3f4f6;
+            color: #374151;
+            margin-right: 1rem;
+        }
+        
+        .secondary-button:hover {
+            background: #e5e7eb;
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+            
+            .icon {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .icon svg {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+        
+        .icon {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon" role="img" aria-label="אין חיבור לאינטרנט">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M18.364 5.636a9 9 0 010 12.728m0 0l-2.829-2.829m2.829 2.829L21 21M15.536 8.464a5 5 0 010 7.072m0 0l-2.829-2.829m-4.243 2.829a4.978 4.978 0 01-1.414-2.83m-1.414 5.658a9 9 0 01-2.167-9.238m7.824 2.167a1 1 0 111.414 1.414m-1.414-1.414L3 3m8.293 8.293l1.414 1.414">
+                </path>
+            </svg>
+        </div>
+        
+        <h1>אתה במצב לא מקוון</h1>
+        <p>
+            נראה שאין לך חיבור לאינטרנט כרגע. 
+            אל דאגה! חלק מהכלים שלנו עדיין זמינים במצב אופליין.
+        </p>
+        
+        <div class="features">
+            <h2>כלים זמינים אופליין:</h2>
+            <ul>
+                <li>מחשבון בסיסי</li>
+                <li>המרת יחידות</li>
+                <li>עורך טקסט פשוט</li>
+                <li>מונה תווים</li>
+                <li>בוחר צבעים</li>
+            </ul>
+        </div>
+        
+        <div>
+            <button class="button secondary-button" onclick="checkConnection()">
+                בדוק חיבור
+            </button>
+            <button class="button" onclick="window.location.reload()">
+                נסה שוב
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        // Check connection status
+        function checkConnection() {
+            if (navigator.onLine) {
+                alert('יש לך חיבור לאינטרנט! הדף יתרענן כעת.');
+                window.location.reload();
+            } else {
+                alert('עדיין אין חיבור לאינטרנט. אנא בדוק את החיבור שלך.');
+            }
+        }
+        
+        // Auto-refresh when connection returns
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+        
+        // Cache status check
+        if ('caches' in window) {
+            caches.keys().then(names => {
+                if (names.length > 0) {
+                    console.log('Cached content available:', names);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

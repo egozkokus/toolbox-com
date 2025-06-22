@@ -1,0 +1,101 @@
+{
+  "site": {
+    "title": "Tools4Anything",
+    "footer_desc": "היעד המרכזי שלכם לכל הכלים והשירותים מבוססי הדפדפן."
+  },
+  "nav": {
+    "tools": "כלים",
+    "about": "אודות",
+    "contact": "יצירת קשר"
+  },
+  "hero": {
+    "title": "ארגז הכלים האולטימטיבי שלכם",
+    "subtitle": "כל הכלים שתצטרכו, במקום אחד. חינם, מהיר ומאובטח. כל העיבוד מתבצע בדפדפן שלכם.",
+    "search": "חפשו כלי...",
+    "stats": {
+      "tools": "כלים זמינים",
+      "free": "חינם וללא פרסומות",
+      "available": "זמין 24/7"
+    }
+  },
+  "categories": {
+    "title": "קטגוריות כלים",
+    "text": { "title": "כלי טקסט", "desc": "ערכו, נתחו ועבדו עם טקסט בקלות." },
+    "calculators": { "title": "מחשבונים", "desc": "מגוון מחשבונים לצרכים יומיומיים." },
+    "image": { "title": "כלי תמונה", "desc": "שנו גודל, המירו וערכו את התמונות שלכם." },
+    "video": { "title": "כלי וידאו", "desc": "ערכו, המירו ודחסו קבצי וידאו." },
+    "audio": { "title": "כלי אודיו", "desc": "ערכו והמירו קבצי אודיו (בקרוב)." },
+    "developer": { "title": "כלי מפתחים", "desc": "כלי עזר חיוניים לקידוד ופיתוח." },
+    "generators": { "title": "מחוללים", "desc": "צרו סיסמאות, מזהים ייחודיים ועוד." },
+    "pdf": { "title": "כלי PDF", "desc": "כלים מקצועיים לעיבוד קבצי PDF." }
+  },
+  "tools": {
+    "wordCounter": { "name": "סופר מילים", "category": "טקסט" },
+    "caseConverter": { "name": "ממיר אותיות (Case)", "category": "טקסט" },
+    "loremGenerator": { "name": "מחולל לורם איפסום", "category": "טקסט" },
+    "textReverser": { "name": "הופך טקסט", "category": "טקסט" },
+    "textFormatter": { "name": "מעצב טקסט", "category": "טקסט" },
+    "lineSorter": { "name": "ממיין שורות", "category": "טקסט" },
+    "unitConverter": { "name": "ממיר יחידות", "category": "מחשבונים" },
+    "percentageCalc": { "name": "מחשבון אחוזים", "category": "מחשבונים" },
+    "bmiCalculator": { "name": "מחשבון BMI", "category": "בריאות" },
+    "tipCalculator": { "name": "מחשבון טיפים", "category": "פיננסים" },
+    "loanCalculator": { "name": "מחשבון הלוואות", "category": "פיננסים" },
+    "ageCalculator": { "name": "מחשבון גיל", "category": "כללי" },
+    "imageResizer": { "name": "מקטין תמונות", "category": "תמונה" },
+    "qrGenerator": { "name": "מחולל קוד QR", "category": "שירותים" },
+    "imageCompressor": { "name": "דוחס תמונות", "category": "תמונה" },
+    "imageConverter": { "name": "ממיר תמונות", "category": "תמונה" },
+    "advancedImageEditor": { "name": "עורך תמונות מתקדם", "category": "תמונה" },
+    "backgroundRemover": { "name": "מסיר רקע מתמונות", "category": "תמונה" },
+    "videoEditor": { "name": "עורך וידאו", "category": "וידאו" },
+    "videoCompressor": { "name": "דוחס וידאו", "category": "וידאו" },
+    "videoConverter": { "name": "ממיר וידאו", "category": "וידאו" },
+    "videoTrimmer": { "name": "גוזר וידאו", "category": "וידאו" },
+    "videoMerger": { "name": "ממזג וידאו", "category": "וידאו" },
+    "gifMaker": { "name": "יוצר GIF", "category": "וידאו" },
+    "jsonFormatter": { "name": "מעצב JSON", "category": "מפתחים" },
+    "base64Encoder": { "name": "מקודד Base64", "category": "קידוד" },
+    "urlEncoder": { "name": "מקודד URL", "category": "רשת" },
+    "colorPicker": { "name": "בורר צבעים", "category": "עיצוב" },
+    "passwordGenerator": { "name": "מחולל סיסמאות", "category": "אבטחה" },
+    "hashGenerator": { "name": "מחולל Hash", "category": "הצפנה" },
+    "uuidGenerator": { "name": "מחולל UUID", "category": "מזהים" },
+    "pdfConverter": { "name": "ממיר PDF", "category": "PDF" },
+    "pdfMerger": { "name": "ממזג PDF", "category": "PDF" },
+    "pdfSplitter": { "name": "מפצל PDF", "category": "PDF" },
+    "pdfCompressor": { "name": "דוחס PDF", "category": "PDF" }
+  },
+  "featured": {
+    "title": "הכלים הפופולריים ביותר"
+  },
+  "about_page": {
+    "title": "אודות Tools4Anything",
+    "welcome": "ברוכים הבאים ל-Tools4Anything! אנחנו היעד שלכם לכלים מבוססי-דפדפן, שנועדו להפוך את החיים הדיגיטליים שלכם לקלים ופרודוקטיביים יותר.",
+    "intro": "הכל התחיל מרעיון פשוט: לרכז במקום אחד את כל כלי העזר הקטנים שאנחנו מוצאים את עצמנו מחפשים שוב ושוב. במקום לדלג בין עשרות אתרים, רצינו ליצור סביבה אחת, מהירה, מאובטחת וחינמית לחלוטין.",
+    "philosophy": "הפילוסופיה שלנו מבוססת על פרטיות, מהירות ופשטות. מכיוון שהכלים פועלים בצד-לקוח, המידע שלכם לעולם לא עוזב את המחשב שלכם. אנו מתחייבים לספק חוויה נקייה מפרסומות ומתמקדים בפונקציונליות נטו.",
+    "contact_title": "יש לכם רעיון או משוב?",
+    "contact_intro": "נתקלתם בבעיה? יש לכם הצעה לכלי חדש? נשמח לשמוע מכם! ניתן ליצור איתנו קשר בכתובת המייל: <0>your-email@example.com</0>"
+  },
+  "contact_page": {
+    "title": "יצירת קשר",
+    "intro": "נתקלתם בבעיה? יש לכם הצעה לכלי חדש? נשמח לשמוע מכם! ניתן ליצור איתנו קשר בכתובת המייל: <0>your-email@example.com</0>"
+  },
+  "footer": {
+    "categories": "קטגוריות",
+    "popular": "פופולריים",
+    "support": "תמיכה",
+    "links": {
+      "help": "מרכז עזרה",
+      "contact": "צרו קשר",
+      "privacy": "מדיניות פרטיות",
+      "terms": "תנאי שימוש",
+      "about": "אודות"
+    },
+    "rights": "© {{year}} Tools4Anything. כל הזכויות שמורות."
+  },
+  "common": {
+    "explore": "גלו את כל הכלים",
+    "moreTools": "+{{count}} כלים נוספים..."
+  }
+}
