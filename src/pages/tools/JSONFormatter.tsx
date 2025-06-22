@@ -10,7 +10,7 @@ const JSONFormatter = () => {
       const formatted = JSON.stringify(parsed, null, 2);
       return { formatted };
     } catch (err) {
-      return { formatted: '', error: 'JSON לא תקין - בדוק את התחביר' };
+      return { formatted: '', error: t('json_formatter_page.error') };
     }
   };
 

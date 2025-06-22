@@ -1,6 +1,7 @@
 // src/pages/tools/CSSMinifier.tsx
 
 import BaseMinifier from "@/components/tools/BaseMinifier";
+import { useTranslation } from "react-i18next";
 
 const CSSMinifier = () => {
   const minifyCSS = (input: string): string => {
@@ -15,20 +16,15 @@ const CSSMinifier = () => {
       .trim();
   };
 
+  const { t } = useTranslation();
+
   return (
     <BaseMinifier
-      title="מקטין CSS"
-      subtitle="הקטן את קוד ה-CSS שלך לביצועים טובים יותר"
+      title={t('css_minifier_page.title')}
+      subtitle={t('css_minifier_page.subtitle')}
       toolType="css"
       backPath="/categories/developer-tools"
-      placeholder="/* הדבק את קוד ה-CSS שלך כאן */
-.button {
-  background-color: #007bff;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-}"
+      placeholder={t('css_minifier_page.placeholder')}
       minifyFunction={minifyCSS}
       fileExtension="css"
       mimeType="text/css"

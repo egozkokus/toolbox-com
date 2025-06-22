@@ -352,12 +352,74 @@
   "html_formatter_page": {
     "title": "מעצב HTML",
     "subtitle": "עצב ונקה קוד HTML בצורה אוטומטית",
-    "placeholder": "הדבק כאן קוד HTML..."
+    "placeholder": "הדבק כאן קוד HTML...",
+    "error": "שגיאה בעיצוב HTML"
   },
   "json_formatter_page": {
     "title": "מעצב JSON",
     "subtitle": "עצב ואמת נתוני JSON",
-    "placeholder": "הדבק כאן נתוני JSON..."
+    "placeholder": "הדבק כאן נתוני JSON...",
+    "error": "JSON לא תקין - בדוק את התחביר"
+  },
+  "regex_tester_page": {
+    "back": "חזרה לכלי מפתחים",
+    "title": "בודק ביטויים רגולריים",
+    "subtitle": "בדוק ופתח ביטויים רגולריים בקלות",
+    "pattern_title": "ביטוי רגולרי",
+    "pattern_desc": "הכנס את הביטוי הרגולרי שלך",
+    "test_label": "טקסט לבדיקה",
+    "regex_placeholder": "הכנס ביטוי רגולרי כאן...",
+    "text_placeholder": "הכנס טקסט לבדיקה...",
+    "test_button": "בדוק ביטוי רגולרי",
+    "matches_title": "התאמות שנמצאו: {{count}}",
+    "position": "מיקום: {{start}}-{{end}}",
+    "samples_title": "דוגמאות נפוצות",
+    "samples_desc": "לחץ להעתקה",
+    "samples": {
+      "email": "אימייל",
+      "phone": "טלפון",
+      "url": "URL",
+      "number": "מספר",
+      "word": "מילה",
+      "date": "תאריך"
+    },
+    "toasts": {
+      "error_title": "שגיאה",
+      "no_pattern": "אנא הכנס ביטוי רגולרי",
+      "success_title": "הושלם!",
+      "found": "נמצאו {{count}} התאמות",
+      "invalid": "ביטוי רגולרי לא תקין"
+    }
+  },
+  "jwt_decoder_page": {
+    "back": "חזרה לכלי מפתחים",
+    "title": "מפענח JWT",
+    "subtitle": "פענח טוקני JWT וצפה בתוכן שלהם",
+    "security_warning_title": "אזהרת אבטחה",
+    "security_warning_desc": "אל תשתף טוקני JWT אמיתיים המכילים מידע רגיש. השתמש בטוקנים לדוגמה בלבד באתרים ציבוריים.",
+    "token_title": "טוקן JWT",
+    "token_desc": "הדבק כאן את הטוקן שברצונך לפענח",
+    "decode_button": "פענח JWT",
+    "header_title": "Header",
+    "header_desc": "מידע על האלגוריתם וסוג הטוקן",
+    "payload_title": "Payload",
+    "payload_desc": "הנתונים המקודדים בטוקן",
+    "signature_title": "Signature",
+    "signature_desc": "החתימה הדיגיטלית (לא ניתן לאמת ללא המפתח הסודי)",
+    "copy_button": "העתק",
+    "toasts": {
+      "success_title": "הצלחה!",
+      "success_desc": "טוקן JWT פוענח בהצלחה",
+      "copied_title": "הועתק!",
+      "copied_desc": "{{type}} הועתק ללוח",
+      "error": "שגיאה בפענוח JWT - ודא שהטוקן תקין",
+      "invalid": "JWT לא תקין",
+      "no_token": "אנא הכנס טוקן JWT",
+      "invalid_header": "כותרת JWT לא תקינה - לא ניתן לפענח",
+      "invalid_payload": "תוכן JWT לא תקין - לא ניתן לפענח",
+      "admin_warning": "זוהה טוקן עם הרשאות מנהל - יש לבדוק את מקור הטוקן",
+      "expired": "הטוקן פג תוקף ב-{{date}}"
+    }
   },
   "regex_tester_page": {
     "back": "חזרה לכלי מפתחים",
@@ -481,6 +543,25 @@
       "fail_desc": "נכשל ביצירת ברקוד. בדוק את הקלט"
     }
   },
+  "qr_generator_page": {
+    "title": "מחולל קוד QR",
+    "subtitle": "צור קודי QR לכל טקסט או כתובת",
+    "input_title": "קלט",
+    "input_desc": "הזן טקסט, כתובת או כל תוכן ליצירת קוד QR",
+    "text_label": "טקסט או כתובת",
+    "text_placeholder": "הכנס כאן טקסט או כתובת...",
+    "generate_button": "צור קוד QR",
+    "generated_title": "קוד QR שנוצר",
+    "generated_desc": "קוד ה-QR שלך יופיע כאן",
+    "download_button": "הורד קוד QR",
+    "placeholder": "קוד QR יופיע כאן",
+    "toasts": {
+      "success_desc": "קוד QR נוצר בהצלחה!",
+      "empty_input": "אנא הזן טקסט או כתובת",
+      "downloaded": "קוד ה-QR הורד בהצלחה",
+      "error_desc": "נכשל ביצירת קוד QR"
+    }
+  },
   "background_remover_page": {
     "back": "חזרה לכלי תמונות",
     "title": "מסיר רקע",
@@ -528,6 +609,29 @@
     "copy_all": "העתק הכל",
     "copy_toast": "UUID הועתק ללוח",
     "copy_all_toast": "כל ה-UUIDs הועתקו ללוח"
+  },
+  "name_generator_page": {
+    "title": "מחולל שמות",
+    "subtitle": "צור שמות אקראיים לבדיקה והשראה",
+    "settings": "הגדרות",
+    "settingsDesc": "קבע סוג שמות ופלט",
+    "type": "סוג שם",
+    "types": {
+      "hebrew": "עברית",
+      "english": "אנגלית",
+      "fantasy": "פנטזיה"
+    },
+    "count": "מספר שמות",
+    "includeLastName": "כלול שם משפחה",
+    "generate": "צור שמות",
+    "generated": "שמות שנוצרו",
+    "generatedDesc": "נוצרו {{count}} שמות",
+    "copyAll": "העתק הכל",
+    "generateMore": "צור עוד",
+    "clickToStart": "לחץ על \"צור שמות\" כדי להתחיל",
+    "success": "שמות נוצרו בהצלחה!",
+    "copied": "השם הועתק ללוח",
+    "copiedAll": "כל השמות הועתקו ללוח"
   },
   "advanced_image_editor_page": {
     "title": "עורך תמונות מתקדם",
@@ -577,6 +681,11 @@
       "copied": "הקוד המוקטן הועתק ללוח",
       "downloaded": "הקובץ נשמר"
     }
+  },
+  "css_minifier_page": {
+    "title": "מקטין CSS",
+    "subtitle": "הקטן את קוד ה-CSS שלך לביצועים טובים יותר",
+    "placeholder": "/* הדבק את קוד ה-CSS שלך כאן */\n.button {\n  background-color: #007bff;\n  border: none;\n  color: white;\n  padding: 10px 20px;\n  font-size: 16px;\n}"
   },
   "audio_compressor_page": {
     "back": "חזרה לכלי אודיו",
