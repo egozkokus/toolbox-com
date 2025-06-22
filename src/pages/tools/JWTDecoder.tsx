@@ -11,6 +11,7 @@ import { useErrorHandler } from "@/hooks/useErrorHandler";
 import { ERROR_CODES } from "@/lib/errorHandling";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import SafeExecutionWrapper from "@/components/SafeExecutionWrapper";
+import { useTranslation } from "react-i18next";
 
 const JWTDecoder = () => {
   const [token, setToken] = useState("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c");
@@ -22,6 +23,7 @@ const JWTDecoder = () => {
   const { logError, handleAsyncError, validateAndHandle } = useErrorHandler({
     context: 'jwt-decoder'
   });
+  const { t } = useTranslation();
 
   const decodeJWT = async () => {
     setError("");
@@ -30,12 +32,14 @@ const JWTDecoder = () => {
     setSignature("");
 
     // Validate input
-    if (!validateAndHandle(
-      token,
-      (val) => val.trim().length > 0,
-      ERROR_CODES.EMPTY_INPUT,
-      "אנא הכנס טוקן JWT"
-    )) {
+    if (
+      !validateAndHandle(
+        token,
+        (val) => val.trim().length > 0,
+        ERROR_CODES.EMPTY_INPUT,
+        t('jwt_decoder_page.toasts.no_token')
+      )
+    ) {
       return;
     }
 
@@ -43,7 +47,7 @@ const JWTDecoder = () => {
       const parts = token.split('.');
       
       if (parts.length !== 3) {
-        throw new Error("JWT לא תקין - חייב להכיל 3 חלקים (header.payload.signature)");
+        throw new Error(t('jwt_decoder_page.toasts.invalid'));
       }
 
       // Decode and validate header
@@ -51,7 +55,7 @@ const JWTDecoder = () => {
       try {
         decodedHeader = JSON.parse(atob(parts[0]));
       } catch (e) {
-        throw new Error("כותרת JWT לא תקינה - לא ניתן לפענח");
+        throw new Error(t('jwt_decoder_page.toasts.invalid_header'));
       }
 
       // Decode and validate payload
@@ -59,14 +63,14 @@ const JWTDecoder = () => {
       try {
         decodedPayload = JSON.parse(atob(parts[1]));
       } catch (e) {
-        throw new Error("תוכן JWT לא תקין - לא ניתן לפענח");
+        throw new Error(t('jwt_decoder_page.toasts.invalid_payload'));
       }
 
       // Check for security issues
       if (decodedPayload.admin === true || decodedPayload.role === 'admin') {
         logError(
           ERROR_CODES.SECURITY_VIOLATION,
-          "זוהה טוקן עם הרשאות מנהל - יש לבדוק את מקור הטוקן",
+          t('jwt_decoder_page.admin_warning'),
           'warning'
         );
       }
@@ -77,7 +81,7 @@ const JWTDecoder = () => {
         if (expirationDate < new Date()) {
           logError(
             ERROR_CODES.INVALID_FORMAT,
-            `הטוקן פג תוקף ב-${expirationDate.toLocaleString('he-IL')}`,
+            t('jwt_decoder_page.expired', { date: expirationDate.toLocaleString('he-IL') }),
             'warning'
           );
         }
@@ -95,12 +99,12 @@ const JWTDecoder = () => {
       setPayload(JSON.stringify(result.payload, null, 2));
       setSignature(result.signature);
       
-      toast({ 
-        title: "הצלחה!", 
-        description: "טוקן JWT פוענח בהצלחה" 
+      toast({
+        title: t('jwt_decoder_page.toasts.success_title'),
+        description: t('jwt_decoder_page.toasts.success_desc')
       });
     } else {
-      setError("שגיאה בפענוח JWT - ודא שהטוקן תקין");
+      setError(t('jwt_decoder_page.toasts.error'));
     }
   };
 
@@ -114,9 +118,9 @@ const JWTDecoder = () => {
     );
 
     if (result) {
-      toast({ 
-        title: "הועתק!", 
-        description: `${type} הועתק ללוח` 
+      toast({
+        title: t('jwt_decoder_page.toasts.copied_title'),
+        description: t('jwt_decoder_page.toasts.copied_desc', { type })
       });
     }
   };
@@ -162,28 +166,27 @@ const JWTDecoder = () => {
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
         <div className="container mx-auto max-w-6xl">
           <PageHeader
-            title="מפענח JWT"
-            subtitle="פענח טוקני JWT וצפה בתוכן שלהם"
+            title={t('jwt_decoder_page.title')}
+            subtitle={t('jwt_decoder_page.subtitle')}
             icon={<Key className="h-16 w-16 text-purple-600" />}
             backPath="/categories/developer-tools"
-            backLabel="חזרה לכלי מפתחים"
+            backLabel={t('jwt_decoder_page.back')}
           />
 
           {/* Security Warning */}
           <Alert className="mb-6 border-orange-200 bg-orange-50">
             <Shield className="h-4 w-4 text-orange-600" />
-            <AlertTitle className="text-orange-800">אזהרת אבטחה</AlertTitle>
+            <AlertTitle className="text-orange-800">{t('jwt_decoder_page.security_warning_title')}</AlertTitle>
             <AlertDescription className="text-orange-700">
-              אל תשתף טוקני JWT אמיתיים המכילים מידע רגיש. 
-              השתמש בטוקנים לדוגמה בלבד באתרים ציבוריים.
+              {t('jwt_decoder_page.security_warning_desc')}
             </AlertDescription>
           </Alert>
 
           <div className="grid gap-6">
             <Card>
               <CardHeader>
-                <CardTitle>טוקן JWT</CardTitle>
-                <CardDescription>הדבק כאן את הטוקן שברצונך לפענח</CardDescription>
+              <CardTitle>{t('jwt_decoder_page.token_title')}</CardTitle>
+              <CardDescription>{t('jwt_decoder_page.token_desc')}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <Textarea
@@ -195,7 +198,7 @@ const JWTDecoder = () => {
                 <div className="flex gap-2">
                   <Button onClick={decodeJWT} className="flex-1">
                     <Key className="h-4 w-4 mr-2" />
-                    פענח JWT
+                    {t('jwt_decoder_page.decode_button')}
                   </Button>
                   <Button onClick={resetFields} variant="outline">
                     <RotateCcw className="h-4 w-4" />
@@ -215,8 +218,8 @@ const JWTDecoder = () => {
                 <div className="grid gap-6 lg:grid-cols-2">
                   <Card>
                     <CardHeader>
-                      <CardTitle>Header</CardTitle>
-                      <CardDescription>מידע על האלגוריתם וסוג הטוקן</CardDescription>
+                      <CardTitle>{t('jwt_decoder_page.header_title')}</CardTitle>
+                      <CardDescription>{t('jwt_decoder_page.header_desc')}</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <Textarea
@@ -230,15 +233,15 @@ const JWTDecoder = () => {
                         disabled={!header}
                       >
                         <Copy className="h-4 w-4 mr-2" />
-                        העתק
+                        {t('jwt_decoder_page.copy_button')}
                       </Button>
                     </CardContent>
                   </Card>
 
                   <Card>
                     <CardHeader>
-                      <CardTitle>Payload</CardTitle>
-                      <CardDescription>הנתונים המקודדים בטוקן</CardDescription>
+                      <CardTitle>{t('jwt_decoder_page.payload_title')}</CardTitle>
+                      <CardDescription>{t('jwt_decoder_page.payload_desc')}</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <Textarea
@@ -246,13 +249,13 @@ const JWTDecoder = () => {
                         readOnly
                         className="min-h-32 font-mono text-sm bg-gray-50"
                       />
-                      <Button 
-                        onClick={() => copyToClipboard(payload, "Payload")} 
+                      <Button
+                        onClick={() => copyToClipboard(payload, "Payload")}
                         variant="outline"
                         disabled={!payload}
                       >
                         <Copy className="h-4 w-4 mr-2" />
-                        העתק
+                        {t('jwt_decoder_page.copy_button')}
                       </Button>
                     </CardContent>
                   </Card>
@@ -260,22 +263,22 @@ const JWTDecoder = () => {
 
                 <Card>
                   <CardHeader>
-                    <CardTitle>Signature</CardTitle>
+                    <CardTitle>{t('jwt_decoder_page.signature_title')}</CardTitle>
                     <CardDescription>
-                      החתימה הדיגיטלית (לא ניתן לאמת ללא המפתח הסודי)
+                      {t('jwt_decoder_page.signature_desc')}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <code className="block p-4 bg-gray-100 rounded text-sm break-all">
                       {signature}
                     </code>
-                    <Button 
-                      onClick={() => copyToClipboard(signature, "Signature")} 
+                    <Button
+                      onClick={() => copyToClipboard(signature, "Signature")}
                       variant="outline"
                       disabled={!signature}
                     >
                       <Copy className="h-4 w-4 mr-2" />
-                      העתק
+                      {t('jwt_decoder_page.copy_button')}
                     </Button>
                   </CardContent>
                 </Card>

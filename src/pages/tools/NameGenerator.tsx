@@ -9,10 +9,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "react-i18next";
 
 const NameGenerator = () => {
-  const { t } = useLanguage();
+  const { t } = useTranslation();
   const [nameType, setNameType] = useState("hebrew");
   const [count, setCount] = useState(10);
   const [includeLastName, setIncludeLastName] = useState(true);
