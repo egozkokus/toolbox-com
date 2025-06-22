@@ -1,5 +1,6 @@
 
 import { useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,6 +19,7 @@ const AudioSplitter = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -29,8 +31,8 @@ const AudioSplitter = () => {
       setCurrentTime(0);
     } else {
       toast({
-        title: "שגיאה",
-        description: "אנא בחר קובץ אודיו תקין"
+        title: t("audio_splitter_page.toasts.error_title"),
+        description: t("audio_splitter_page.toasts.invalid_file")
       });
     }
   };
@@ -50,8 +52,8 @@ const AudioSplitter = () => {
     if (currentTime > 0 && currentTime < duration) {
       setSplitPoints(prev => [...prev, currentTime].sort((a, b) => a - b));
       toast({
-        title: "נקודת חיתוך נוספה",
-        description: `נקודה ב-${formatTime(currentTime)}`
+        title: "t("audio_splitter_page.toasts.add_point")",
+        description: t("audio_splitter_page.toasts.point_added", { time: formatTime(currentTime) })
       });
     }
   };
@@ -79,8 +81,8 @@ const AudioSplitter = () => {
 
     setIsSplitting(true);
     toast({
-      title: "מעבד...",
-      description: "חותך את קובץ האודיו"
+      title: t("audio_splitter_page.toasts.processing_title"),
+      description: t("audio_splitter_page.toasts.processing_desc")
     });
 
     try {
@@ -95,8 +97,8 @@ const AudioSplitter = () => {
         setSplitFiles(segments);
         setIsSplitting(false);
         toast({
-          title: "הושלם!",
-          description: `הקובץ חולק ל-${segments.length} חלקים`
+          title: t("audio_splitter_page.toasts.success_title"),
+          description: t("audio_splitter_page.toasts.success_desc", { count: segments.length })
         });
       };
       reader.readAsDataURL(selectedFile);
@@ -115,8 +117,8 @@ const AudioSplitter = () => {
     link.download = `segment_${index + 1}_${selectedFile?.name}`;
     link.click();
     toast({
-      title: "הורד בהצלחה!",
-      description: `חלק ${index + 1} נשמר`
+      title: t("audio_splitter_page.toasts.success_title"),
+      description: t("audio_splitter_page.toasts.downloaded", { index: index + 1 })
     });
   };
 
@@ -147,26 +149,26 @@ const AudioSplitter = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
       <div className="container mx-auto max-w-6xl">
-        <Button 
-          onClick={() => navigate("/categories/audio-tools")} 
-          variant="outline" 
+        <Button
+          onClick={() => navigate('/categories/audio-tools')}
+          variant="outline"
           className="mb-4"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          חזרה לכלי אודיו
+          {t('audio_splitter_page.back')}
         </Button>
 
         <div className="mb-8 text-center">
           <Scissors className="h-12 w-12 mx-auto mb-4 text-indigo-600" />
-          <h1 className="text-4xl font-bold mb-2">מחלק אודיו</h1>
-          <p className="text-gray-600">חלק קובץ אודיו למספר חלקים</p>
+          <h1 className="text-4xl font-bold mb-2">{t('audio_splitter_page.title')}</h1>
+          <p className="text-gray-600">{t('audio_splitter_page.subtitle')}</p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>קובץ אודיו</CardTitle>
-              <CardDescription>העלה קובץ אודיו לחלוקה</CardDescription>
+              <CardTitle>{t('audio_splitter_page.file_title')}</CardTitle>
+              <CardDescription>{t('audio_splitter_page.file_desc')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <Input
@@ -200,7 +202,7 @@ const AudioSplitter = () => {
                     <div className="flex items-center justify-between">
                       <Button onClick={togglePlayback} size="sm">
                         {isPlaying ? <Pause className="h-4 w-4 mr-1" /> : <Play className="h-4 w-4 mr-1" />}
-                        {isPlaying ? "עצור" : "נגן"}
+                        {isPlaying ? t('audio_splitter_page.pause') : t('audio_splitter_page.play')}
                       </Button>
                       <span className="text-sm text-gray-600">
                         {formatTime(currentTime)} / {formatTime(duration)}
@@ -217,7 +219,7 @@ const AudioSplitter = () => {
 
                   <Button onClick={addSplitPoint} variant="outline" className="w-full">
                     <Plus className="h-4 w-4 mr-2" />
-                    הוסף נקודת חיתוך ב-{formatTime(currentTime)}
+                    {t('audio_splitter_page.add_point', { time: formatTime(currentTime) })}
                   </Button>
 
                   {splitPoints.length > 0 && (
@@ -284,7 +286,7 @@ const AudioSplitter = () => {
 
                   <Button onClick={downloadAll} variant="outline" className="w-full">
                     <Download className="h-4 w-4 mr-2" />
-                    הורד את כל החלקים
+                    {t("audio_splitter_page.download_all")}
                   </Button>
                 </div>
               ) : (

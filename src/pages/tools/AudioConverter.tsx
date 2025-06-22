@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,14 +14,39 @@ const AudioConverter = () => {
   const [isConverting, setIsConverting] = useState(false);
   const [convertedFile, setConvertedFile] = useState<string | null>(null);
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const audioFormats = [
-    { value: "mp3", label: "MP3", description: "פורמט דחוס פופולרי" },
-    { value: "wav", label: "WAV", description: "איכות גבוהה, לא דחוס" },
-    { value: "flac", label: "FLAC", description: "דחיסה ללא איבוד איכות" },
-    { value: "aac", label: "AAC", description: "איכות גבוהה עם דחיסה יעילה" },
-    { value: "ogg", label: "OGG", description: "פורמט קוד פתוח" },
-    { value: "m4a", label: "M4A", description: "פורמט Apple" }
+    {
+      value: 'mp3',
+      label: t('audio_converter_page.formats.mp3.label'),
+      description: t('audio_converter_page.formats.mp3.desc')
+    },
+    {
+      value: 'wav',
+      label: t('audio_converter_page.formats.wav.label'),
+      description: t('audio_converter_page.formats.wav.desc')
+    },
+    {
+      value: 'flac',
+      label: t('audio_converter_page.formats.flac.label'),
+      description: t('audio_converter_page.formats.flac.desc')
+    },
+    {
+      value: 'aac',
+      label: t('audio_converter_page.formats.aac.label'),
+      description: t('audio_converter_page.formats.aac.desc')
+    },
+    {
+      value: 'ogg',
+      label: t('audio_converter_page.formats.ogg.label'),
+      description: t('audio_converter_page.formats.ogg.desc')
+    },
+    {
+      value: 'm4a',
+      label: t('audio_converter_page.formats.m4a.label'),
+      description: t('audio_converter_page.formats.m4a.desc')
+    }
   ];
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,8 +56,8 @@ const AudioConverter = () => {
       setConvertedFile(null);
     } else {
       toast({
-        title: "שגיאה",
-        description: "אנא בחר קובץ אודיו תקין"
+        title: t('audio_converter_page.toasts.error_title'),
+        description: t('audio_converter_page.toasts.invalid_file')
       });
     }
   };
@@ -39,16 +65,16 @@ const AudioConverter = () => {
   const convertAudio = async () => {
     if (!selectedFile) {
       toast({
-        title: "שגיאה",
-        description: "אנא בחר קובץ אודיו קודם"
+        title: t('audio_converter_page.toasts.error_title'),
+        description: t('audio_converter_page.toasts.no_file')
       });
       return;
     }
 
     setIsConverting(true);
     toast({
-      title: "ממיר...",
-      description: `ממיר ל-${outputFormat.toUpperCase()}`
+      title: t('audio_converter_page.toasts.processing_title'),
+      description: t('audio_converter_page.converting', { format: outputFormat.toUpperCase() })
     });
 
     try {
@@ -61,16 +87,16 @@ const AudioConverter = () => {
         setConvertedFile(reader.result as string);
         setIsConverting(false);
         toast({
-          title: "הושלם!",
-          description: "הקובץ הומר בהצלחה"
+          title: t('audio_converter_page.toasts.success_title'),
+          description: t('audio_converter_page.toasts.success_desc')
         });
       };
       reader.readAsDataURL(selectedFile);
     } catch (error) {
       setIsConverting(false);
       toast({
-        title: "שגיאה",
-        description: "שגיאה בהמרת הקובץ"
+        title: t('audio_converter_page.toasts.error_title'),
+        description: t('audio_converter_page.toasts.convert_error')
       });
     }
   };
@@ -82,8 +108,8 @@ const AudioConverter = () => {
       link.download = `${selectedFile.name.split('.')[0]}.${outputFormat}`;
       link.click();
       toast({
-        title: "הורד בהצלחה!",
-        description: "הקובץ המומר נשמר"
+        title: t('audio_converter_page.toasts.success_title'),
+        description: t('audio_converter_page.toasts.downloaded')
       });
     }
   };
@@ -92,18 +118,18 @@ const AudioConverter = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
       <div className="container mx-auto max-w-4xl">
         <PageHeader
-          title="ממיר אודיו"
-          subtitle="המר בין פורמטים שונים של קבצי אודיו"
+          title={t('audio_converter_page.title')}
+          subtitle={t('audio_converter_page.subtitle')}
           icon={<FileAudio className="h-16 w-16 text-blue-600" />}
           backPath="/categories/audio-tools"
-          backLabel="חזרה לכלי אודיו"
+          backLabel={t('audio_converter_page.back')}
         />
 
         <div className="grid gap-6 lg:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>קובץ מקור</CardTitle>
-              <CardDescription>העלה קובץ אודיו להמרה</CardDescription>
+              <CardTitle>{t('audio_converter_page.source_title')}</CardTitle>
+              <CardDescription>{t('audio_converter_page.source_desc')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <Input
@@ -126,7 +152,7 @@ const AudioConverter = () => {
               )}
 
               <div>
-                <label className="block text-sm font-medium mb-2">פורמט יעד</label>
+                <label className="block text-sm font-medium mb-2">{t('audio_converter_page.format_label')}</label>
                 <Select value={outputFormat} onValueChange={setOutputFormat}>
                   <SelectTrigger>
                     <SelectValue />
@@ -150,15 +176,15 @@ const AudioConverter = () => {
                 className="w-full"
               >
                 <RefreshCw className="h-4 w-4 mr-2" />
-                {isConverting ? "ממיר..." : "התחל המרה"}
+                {isConverting ? t('audio_converter_page.converting') : t('audio_converter_page.convert_button')}
               </Button>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>קובץ מומר</CardTitle>
-              <CardDescription>הורד את הקובץ המומר</CardDescription>
+              <CardTitle>{t('audio_converter_page.converted_title')}</CardTitle>
+              <CardDescription>{t('audio_converter_page.converted_desc')}</CardDescription>
             </CardHeader>
             <CardContent>
               {convertedFile ? (
@@ -170,20 +196,18 @@ const AudioConverter = () => {
                         {selectedFile?.name.split('.')[0]}.{outputFormat}
                       </span>
                     </div>
-                    <div className="text-xs text-green-600 mt-1">
-                      ✓ המרה הושלמה בהצלחה
-                    </div>
+                    <div className="text-xs text-green-600 mt-1">{t('audio_converter_page.toasts.success_desc')}</div>
                   </div>
                   
                   <Button onClick={downloadConverted} className="w-full">
                     <Download className="h-4 w-4 mr-2" />
-                    הורד קובץ מומר
+                    {t('audio_converter_page.download_button')}
                   </Button>
                 </div>
               ) : (
                 <div className="h-40 flex flex-col items-center justify-center text-gray-400 border border-dashed rounded">
                   <FileAudio className="h-8 w-8 mb-2" />
-                  <div className="text-sm">הקובץ המומר יופיע כאן</div>
+                  <div className="text-sm">{t('audio_converter_page.placeholder')}</div>
                 </div>
               )}
             </CardContent>
@@ -192,7 +216,7 @@ const AudioConverter = () => {
 
         <Card className="mt-6">
           <CardHeader>
-            <CardTitle>פורמטים נתמכים</CardTitle>
+            <CardTitle>{t('audio_converter_page.formats_title')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">

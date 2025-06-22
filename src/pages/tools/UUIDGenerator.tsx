@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,6 +12,7 @@ const UUIDGenerator = () => {
   const [uuids, setUuids] = useState<string[]>([]);
   const [count, setCount] = useState(1);
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const generateUUID = () => {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -27,13 +29,19 @@ const UUIDGenerator = () => {
 
   const copyToClipboard = (uuid: string) => {
     navigator.clipboard.writeText(uuid);
-    toast({ title: "Copied!", description: "UUID copied to clipboard" });
+    toast({
+      title: t('uuid_generator_page.copy_toast'),
+      description: t('uuid_generator_page.copy_toast')
+    });
   };
 
   const copyAllUUIDs = () => {
     const allUUIDs = uuids.join('\n');
     navigator.clipboard.writeText(allUUIDs);
-    toast({ title: "Copied!", description: "All UUIDs copied to clipboard" });
+    toast({
+      title: t('uuid_generator_page.copy_all_toast'),
+      description: t('uuid_generator_page.copy_all_toast')
+    });
   };
 
   return (
@@ -41,20 +49,20 @@ const UUIDGenerator = () => {
       <div className="container mx-auto max-w-2xl">
         <div className="mb-8 text-center">
           <Fingerprint className="h-12 w-12 mx-auto mb-4 text-blue-600" />
-          <h1 className="text-4xl font-bold mb-2">UUID Generator</h1>
-          <p className="text-gray-600">Generate unique identifiers (UUID v4)</p>
+          <h1 className="text-4xl font-bold mb-2">{t('uuid_generator_page.title')}</h1>
+          <p className="text-gray-600">{t('uuid_generator_page.subtitle')}</p>
         </div>
 
         <Card className="mb-6">
           <CardHeader>
-            <CardTitle>Generate UUIDs</CardTitle>
+            <CardTitle>{t('uuid_generator_page.generate_title')}</CardTitle>
             <CardDescription>
-              Specify how many UUIDs to generate
+              {t('uuid_generator_page.generate_desc')}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="count">Number of UUIDs</Label>
+              <Label htmlFor="count">{t('uuid_generator_page.count_label')}</Label>
               <Input
                 id="count"
                 type="number"
@@ -64,9 +72,9 @@ const UUIDGenerator = () => {
                 onChange={(e) => setCount(Math.max(1, parseInt(e.target.value) || 1))}
               />
             </div>
-            <Button onClick={generateUUIDs} className="w-full">
+              <Button onClick={generateUUIDs} className="w-full">
               <RefreshCw className="h-4 w-4 mr-2" />
-              Generate UUIDs
+              {t('uuid_generator_page.generate_button')}
             </Button>
           </CardContent>
         </Card>
@@ -76,14 +84,14 @@ const UUIDGenerator = () => {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle>Generated UUIDs</CardTitle>
+                  <CardTitle>{t('uuid_generator_page.generated_title')}</CardTitle>
                   <CardDescription>
-                    {uuids.length} UUID{uuids.length > 1 ? 's' : ''} generated
+                    {t('uuid_generator_page.generated_desc', { count: uuids.length })}
                   </CardDescription>
                 </div>
                 {uuids.length > 1 && (
                   <Button onClick={copyAllUUIDs} variant="outline">
-                    Copy All
+                    {t('uuid_generator_page.copy_all')}
                   </Button>
                 )}
               </div>

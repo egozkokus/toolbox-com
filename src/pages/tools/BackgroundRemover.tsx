@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { removeBackground } from "@imgly/background-removal";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,6 +17,7 @@ const BackgroundRemover = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -28,9 +30,9 @@ const BackgroundRemover = () => {
       setOriginalImageUrl("");
       setProcessedImageUrl("");
       toast({
-        title: "קובץ לא תקין",
-        description: "אנא בחר קובץ תמונה בפורמט נתמך (PNG, JPG).",
-        variant: "destructive",
+        title: t('background_remover_page.toasts.invalid_title'),
+        description: t('background_remover_page.toasts.invalid_desc'),
+        variant: 'destructive',
       });
     }
   };
@@ -38,17 +40,17 @@ const BackgroundRemover = () => {
   const removeBackground = useCallback(async () => {
     if (!originalImage) {
       toast({
-        title: "לא נבחרה תמונה",
-        description: "יש לבחור תמונה לפני שמסירים את הרקע.",
-        variant: "destructive",
+        title: t('background_remover_page.toasts.no_image_title'),
+        description: t('background_remover_page.toasts.no_image_desc'),
+        variant: 'destructive',
       });
       return;
     }
 
     setIsProcessing(true);
     toast({
-      title: "מעבד תמונה...",
-      description: "הסרת הרקע עשויה לקחת מספר רגעים. אנא המתן.",
+      title: t('background_remover_page.toasts.processing_title'),
+      description: t('background_remover_page.toasts.processing_desc'),
     });
 
     try {
@@ -62,15 +64,15 @@ const BackgroundRemover = () => {
       const url = URL.createObjectURL(blob);
       setProcessedImageUrl(url);
       toast({
-        title: "הצלחה!",
-        description: "הרקע הוסר בהצלחה מהתמונה.",
+        title: t('background_remover_page.toasts.success_title'),
+        description: t('background_remover_page.toasts.success_desc'),
       });
     } catch (error) {
       console.error(error);
       toast({
-        title: "שגיאה בעיבוד",
-        description: "לא הצלחנו להסיר את הרקע. נסה שוב עם תמונה אחרת.",
-        variant: "destructive",
+        title: t('background_remover_page.toasts.error_title'),
+        description: t('background_remover_page.toasts.error_desc'),
+        variant: 'destructive',
       });
     } finally {
       setIsProcessing(false);
@@ -92,28 +94,28 @@ const BackgroundRemover = () => {
       <div className="container mx-auto max-w-6xl">
         <Button onClick={() => navigate("/categories/image-tools")} variant="outline" className="mb-4">
           <ArrowLeft className="h-4 w-4 mr-2" />
-          חזרה לכלי תמונות
+          {t('background_remover_page.back')}
         </Button>
 
         <div className="mb-8 text-center">
           <Wand2 className="h-12 w-12 mx-auto mb-4 text-purple-600" />
-          <h1 className="text-4xl font-bold mb-2">הסרת רקע מתמונות</h1>
-          <p className="text-gray-600">הסר רקע מתמונות באופן אוטומטי וישירות בדפדפן</p>
+          <h1 className="text-4xl font-bold mb-2">{t('background_remover_page.title')}</h1>
+          <p className="text-gray-600">{t('background_remover_page.subtitle')}</p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Input Card */}
           <Card>
             <CardHeader>
-              <CardTitle>1. העלאת תמונה</CardTitle>
-              <CardDescription>בחר תמונה להסרת הרקע</CardDescription>
+              <CardTitle>{t('background_remover_page.upload_card.title')}</CardTitle>
+              <CardDescription>{t('background_remover_page.upload_card.desc')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Label htmlFor="image-upload" className="block text-sm font-medium mb-2">בחר קובץ תמונה</Label>
+              <Label htmlFor="image-upload" className="block text-sm font-medium mb-2">{t('background_remover_page.upload_card.label')}</Label>
               <Input id="image-upload" type="file" accept="image/png, image/jpeg" onChange={handleFileChange} />
               {originalImageUrl && (
                 <div className="mt-4">
-                  <h3 className="text-sm font-medium mb-2">תצוגה מקדימה:</h3>
+                  <h3 className="text-sm font-medium mb-2">{t('background_remover_page.upload_card.preview_label')}</h3>
                   <img src={originalImageUrl} alt="Original" className="max-w-full rounded-lg border bg-gray-100" />
                 </div>
               )}
@@ -123,7 +125,7 @@ const BackgroundRemover = () => {
                 ) : (
                   <Wand2 className="h-4 w-4 mr-2" />
                 )}
-                {isProcessing ? "מעבד..." : "הסר את הרקע"}
+                {isProcessing ? t('background_remover_page.upload_card.processing') : t('background_remover_page.upload_card.button')}
               </Button>
             </CardContent>
           </Card>
@@ -131,8 +133,8 @@ const BackgroundRemover = () => {
           {/* Output Card */}
           <Card>
             <CardHeader>
-              <CardTitle>2. תוצאה</CardTitle>
-              <CardDescription>התמונה לאחר הסרת הרקע</CardDescription>
+              <CardTitle>{t('background_remover_page.result_card.title')}</CardTitle>
+              <CardDescription>{t('background_remover_page.result_card.desc')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="aspect-square bg-transparent bg-[linear-gradient(45deg,#ccc_25%,transparent_25%),linear-gradient(-45deg,#ccc_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#ccc_75%),linear-gradient(-45deg,transparent_75%,#ccc_75%)] bg-[length:20px_20px] bg-[0_0,0_10px,10px_-10px,-10px_0px] rounded-lg overflow-hidden flex items-center justify-center">
@@ -141,13 +143,13 @@ const BackgroundRemover = () => {
                 ) : (
                   <div className="text-center text-gray-400 p-4">
                     <ImageIcon className="h-12 w-12 mx-auto mb-2" />
-                    <p>התמונה המעובדת תופיע כאן</p>
+                    <p>{t('background_remover_page.result_card.placeholder')}</p>
                   </div>
                 )}
               </div>
               <Button onClick={downloadImage} disabled={!processedImageUrl} className="w-full">
                 <Download className="h-4 w-4 mr-2" />
-                הורד תמונה
+                {t('background_remover_page.result_card.download')}
               </Button>
             </CardContent>
           </Card>
@@ -155,9 +157,9 @@ const BackgroundRemover = () => {
 
         <Alert className="mt-6">
           <Wand2 className="h-4 w-4" />
-          <AlertTitle>איך זה עובד?</AlertTitle>
+          <AlertTitle>{t('background_remover_page.alert.title')}</AlertTitle>
           <AlertDescription>
-            הכלי משתמש בספריית קוד פתוח המריצה מודל בינה מלאכותית (AI) ישירות בדפדפן שלך. התמונה שלך לא נשלחת לשום שרת, והתהליך כולו מתבצע על המחשב שלך, מה שמבטיח פרטיות מלאה.
+            {t('background_remover_page.alert.desc')}
           </AlertDescription>
         </Alert>
       </div>

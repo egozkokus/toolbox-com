@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Key, Copy, RefreshCw, Settings } from "lucide-react";
 import PageHeader from "@/components/common/PageHeader";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 
 const APIKeyGenerator = () => {
+  const { t } = useTranslation();
   const [length, setLength] = useState(32);
   const [prefix, setPrefix] = useState("");
   const [format, setFormat] = useState("hex");
@@ -57,29 +59,29 @@ const APIKeyGenerator = () => {
 
     const newKeys = [key, ...generatedKeys.slice(0, 9)]; // Keep last 10 keys
     setGeneratedKeys(newKeys);
-    toast.success("מפתח API נוצר בהצלחה!");
+    toast.success(t('api_key_generator_page.generated'));
   };
 
   const copyKey = (key: string) => {
     navigator.clipboard.writeText(key);
-    toast.success("המפתח הועתק ללוח!");
+    toast.success(t('api_key_generator_page.copied_single'));
   };
 
   const copyAllKeys = () => {
     const allKeys = generatedKeys.join('\n');
     navigator.clipboard.writeText(allKeys);
-    toast.success("כל המפתחות הועתקו ללוח!");
+    toast.success(t('api_key_generator_page.copied_all'));
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
       <div className="container mx-auto max-w-4xl">
         <PageHeader
-          title="מחולל מפתחות API"
-          subtitle="צור מפתחות API מאובטחים לשירותים שלך"
+          title={t('api_key_generator_page.title')}
+          subtitle={t('api_key_generator_page.subtitle')}
           icon={<Key className="h-16 w-16 text-indigo-600" />}
           backPath="/categories/generators"
-          backLabel="חזרה לגנרטורים"
+          backLabel={t('api_key_generator_page.back')}
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -87,13 +89,13 @@ const APIKeyGenerator = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Settings className="h-5 w-5" />
-                הגדרות מפתח
+                {t('api_key_generator_page.settings')}
               </CardTitle>
-              <CardDescription>קבע את הפרמטרים למפתח ה-API</CardDescription>
+              <CardDescription>{t('api_key_generator_page.settings_desc')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <Label htmlFor="prefix">קידומת (אופציונלי)</Label>
+                <Label htmlFor="prefix">{t('api_key_generator_page.prefix')}</Label>
                 <Input
                   id="prefix"
                   placeholder="api, sk, pk"
@@ -103,7 +105,7 @@ const APIKeyGenerator = () => {
               </div>
 
               <div>
-                <Label htmlFor="format">פורמט מפתח</Label>
+                <Label htmlFor="format">{t('api_key_generator_page.format')}</Label>
                 <Select value={format} onValueChange={setFormat}>
                   <SelectTrigger>
                     <SelectValue />
@@ -119,7 +121,7 @@ const APIKeyGenerator = () => {
 
               {format !== "uuid" && (
                 <div>
-                  <Label htmlFor="length">אורך מפתח</Label>
+                  <Label htmlFor="length">{t('api_key_generator_page.length')}</Label>
                   <Input
                     id="length"
                     type="number"
@@ -137,20 +139,20 @@ const APIKeyGenerator = () => {
                   checked={includeTimestamp}
                   onCheckedChange={(checked) => setIncludeTimestamp(checked === true)}
                 />
-                <Label htmlFor="timestamp">כלול חותמת זמן</Label>
+                <Label htmlFor="timestamp">{t('api_key_generator_page.include_timestamp')}</Label>
               </div>
 
               <Button onClick={generateKey} className="w-full" size="lg">
                 <RefreshCw className="h-4 w-4 mr-2" />
-                צור מפתח API
+                {t('api_key_generator_page.generate_button')}
               </Button>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>מפתחות שנוצרו</CardTitle>
-              <CardDescription>המפתחות האחרונים שנוצרו</CardDescription>
+              <CardTitle>{t('api_key_generator_page.generated_keys_title')}</CardTitle>
+              <CardDescription>{t('api_key_generator_page.generated_keys_desc')}</CardDescription>
             </CardHeader>
             <CardContent>
               {generatedKeys.length > 0 ? (
@@ -183,7 +185,7 @@ const APIKeyGenerator = () => {
                       className="flex-1"
                     >
                       <Copy className="h-4 w-4 mr-2" />
-                      העתק הכל
+                      {t('api_key_generator_page.copy_all')}
                     </Button>
                     <Button 
                       onClick={generateKey} 
@@ -191,14 +193,14 @@ const APIKeyGenerator = () => {
                       className="flex-1"
                     >
                       <RefreshCw className="h-4 w-4 mr-2" />
-                      צור עוד
+                      {t('api_key_generator_page.generate_more')}
                     </Button>
                   </div>
                 </div>
               ) : (
                 <div className="text-center text-gray-500 py-12">
                   <Key className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                  <p>לחץ על "צור מפתח API" כדי להתחיל</p>
+                  <p>{t('api_key_generator_page.empty_placeholder')}</p>
                 </div>
               )}
             </CardContent>
@@ -207,15 +209,13 @@ const APIKeyGenerator = () => {
 
         <Card className="mt-6">
           <CardHeader>
-            <CardTitle>טיפים לאבטחה</CardTitle>
+            <CardTitle>{t('api_key_generator_page.security_tips')}</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="list-disc list-inside space-y-2 text-sm text-gray-600">
-              <li>השתמש במפתחות ארוכים (לפחות 32 תווים) לאבטחה מקסימלית</li>
-              <li>אל תשתף מפתחות API בקוד או בגרסיונות</li>
-              <li>החלף מפתחות באופן קבוע</li>
-              <li>השתמש בהרשאות מוגבלות לכל מפתח</li>
-              <li>עקוב אחר השימוש במפתחות ובקש אירועים חשודים</li>
+              {t('api_key_generator_page.tips_list', { returnObjects: true })?.map((tip: string, idx: number) => (
+                <li key={idx}>{tip}</li>
+              ))}
             </ul>
           </CardContent>
         </Card>

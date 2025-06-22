@@ -1,5 +1,6 @@
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { Search, Hash, ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -7,21 +8,28 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useNavigate } from "react-router-dom";
 
 const Generators = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
-  const generatorTools = [
-    { name: "Password Generator", description: "Generate secure passwords", route: "/tools/password-generator", icon: "🔐" },
-    { name: "Hash Generator", description: "Generate cryptographic hashes", route: "/tools/hash-generator", icon: "#️⃣" },
-    { name: "UUID Generator", description: "Generate unique identifiers", route: "/tools/uuid-generator", icon: "🆔" },
-    { name: "Random Number Generator", description: "Generate random numbers", route: "/tools/random-number", icon: "🎲" },
-    { name: "Lorem Ipsum Generator", description: "Generate placeholder text", route: "/tools/lorem-generator", icon: "📄" },
-    { name: "Mock Data Generator", description: "Generate fake data for testing", route: "/tools/mock-data", icon: "📊" },
-    { name: "API Key Generator", description: "Generate API keys", route: "/tools/api-key-generator", icon: "🔑" },
-    { name: "Credit Card Generator", description: "Generate test credit card numbers", route: "/tools/credit-card-generator", icon: "💳" },
-    { name: "Name Generator", description: "Generate random names", route: "/tools/name-generator", icon: "👤" },
-    { name: "Email Generator", description: "Generate random email addresses", route: "/tools/email-generator", icon: "📧" }
-  ];
+  const generatorToolsConfig = useMemo(() => [
+    { key: "passwordGenerator", route: "/tools/password-generator", icon: "🔐" },
+    { key: "hashGenerator", route: "/tools/hash-generator", icon: "#️⃣" },
+    { key: "uuidGenerator", route: "/tools/uuid-generator", icon: "🆔" },
+    { key: "randomNumber", route: "/tools/random-number", icon: "🎲" },
+    { key: "loremGenerator", route: "/tools/lorem-generator", icon: "📄" },
+    { key: "mockData", route: "/tools/mock-data", icon: "📊" },
+    { key: "apiKeyGenerator", route: "/tools/api-key-generator", icon: "🔑" },
+    { key: "creditCardGenerator", route: "/tools/credit-card-generator", icon: "💳" },
+    { key: "nameGenerator", route: "/tools/name-generator", icon: "👤" },
+    { key: "emailGenerator", route: "/tools/email-generator", icon: "📧" }
+  ], []);
+
+  const generatorTools = useMemo(() => generatorToolsConfig.map(tool => ({
+    ...tool,
+    name: t(`generators_page.tools.${tool.key}.name`),
+    description: t(`generators_page.tools.${tool.key}.description`)
+  })), [t, generatorToolsConfig]);
 
   const filteredTools = generatorTools.filter(tool =>
     tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -39,15 +47,15 @@ const Generators = () => {
             className="mb-4"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Home
+            {t('generators_page.back_to_home')}
           </Button>
           
           <div className="text-center">
             <Hash className="h-16 w-16 mx-auto mb-4 text-indigo-600" />
             <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
-              Generators
+            {t('generators_page.title')}
             </h1>
-            <p className="text-gray-600 text-lg">Generate passwords, hashes and more</p>
+            <p className="text-gray-600 text-lg">{t('generators_page.subtitle')}</p>
           </div>
         </div>
 
@@ -57,7 +65,7 @@ const Generators = () => {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <Input
               type="text"
-              placeholder="Search generators..."
+              placeholder={t('generators_page.search_placeholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 py-3"
@@ -82,7 +90,7 @@ const Generators = () => {
               </CardHeader>
               <CardContent>
                 <Button className="w-full">
-                  Use Tool
+                  {t('generators_page.use_tool_button')}
                 </Button>
               </CardContent>
             </Card>

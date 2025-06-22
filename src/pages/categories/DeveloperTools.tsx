@@ -1,5 +1,6 @@
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { Search, Code, ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -7,23 +8,29 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useNavigate } from "react-router-dom";
 
 const DeveloperTools = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+  const developerToolsConfig = useMemo(() => [
+    { key: "jsonFormatter", route: "/tools/json-formatter", icon: "⚡" },
+    { key: "base64Encoder", route: "/tools/base64-encoder", icon: "🔒" },
+    { key: "urlEncoder", route: "/tools/url-encoder", icon: "🌐" },
+    { key: "colorPicker", route: "/tools/color-picker", icon: "🎨" },
+    { key: "cssMinifier", route: "/tools/css-minifier", icon: "🎯" },
+    { key: "jsMinifier", route: "/tools/js-minifier", icon: "📄" },
+    { key: "htmlFormatter", route: "/tools/html-formatter", icon: "📝" },
+    { key: "sqlFormatter", route: "/tools/sql-formatter", icon: "🗄️" },
+    { key: "xmlFormatter", route: "/tools/xml-formatter", icon: "🏷️" },
+    { key: "regexTester", route: "/tools/regex-tester", icon: "🔍" },
+    { key: "jwtDecoder", route: "/tools/jwt-decoder", icon: "🔐" },
+    { key: "markdownConverter", route: "/tools/markdown-converter", icon: "📖" }
+  ], []);
 
-  const developerTools = [
-    { name: "JSON Formatter", description: "Format and validate JSON", route: "/tools/json-formatter", icon: "⚡" },
-    { name: "Base64 Encoder", description: "Encode/decode Base64 strings", route: "/tools/base64-encoder", icon: "🔒" },
-    { name: "URL Encoder", description: "Encode/decode URLs", route: "/tools/url-encoder", icon: "🌐" },
-    { name: "Color Picker", description: "Pick and convert colors", route: "/tools/color-picker", icon: "🎨" },
-    { name: "CSS Minifier", description: "Minify CSS code", route: "/tools/css-minifier", icon: "🎯" },
-    { name: "JavaScript Minifier", description: "Minify JavaScript code", route: "/tools/js-minifier", icon: "📄" },
-    { name: "HTML Formatter", description: "Format and beautify HTML", route: "/tools/html-formatter", icon: "📝" },
-    { name: "SQL Formatter", description: "Format SQL queries", route: "/tools/sql-formatter", icon: "🗄️" },
-    { name: "XML Formatter", description: "Format and validate XML", route: "/tools/xml-formatter", icon: "🏷️" },
-    { name: "Regex Tester", description: "Test regular expressions", route: "/tools/regex-tester", icon: "🔍" },
-    { name: "JWT Decoder", description: "Decode JWT tokens", route: "/tools/jwt-decoder", icon: "🔐" },
-    { name: "Markdown to HTML", description: "Convert Markdown to HTML", route: "/tools/markdown-converter", icon: "📖" }
-  ];
+  const developerTools = useMemo(() => developerToolsConfig.map(tool => ({
+    ...tool,
+    name: t(`developer_tools_page.tools.${tool.key}.name`),
+    description: t(`developer_tools_page.tools.${tool.key}.description`)
+  })), [t, developerToolsConfig]);
 
   const filteredTools = developerTools.filter(tool =>
     tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -41,15 +48,15 @@ const DeveloperTools = () => {
             className="mb-4"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Home
+            {t('developer_tools_page.back_to_home')}
           </Button>
           
           <div className="text-center">
             <Code className="h-16 w-16 mx-auto mb-4 text-orange-600" />
             <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-              Developer Tools
+              {t('developer_tools_page.title')}
             </h1>
-            <p className="text-gray-600 text-lg">Essential tools for developers</p>
+            <p className="text-gray-600 text-lg">{t('developer_tools_page.subtitle')}</p>
           </div>
         </div>
 
@@ -59,7 +66,7 @@ const DeveloperTools = () => {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <Input
               type="text"
-              placeholder="Search developer tools..."
+              placeholder={t('developer_tools_page.search_placeholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 py-3"
@@ -84,7 +91,7 @@ const DeveloperTools = () => {
               </CardHeader>
               <CardContent>
                 <Button className="w-full">
-                  Use Tool
+                  {t('developer_tools_page.use_tool_button')}
                 </Button>
               </CardContent>
             </Card>

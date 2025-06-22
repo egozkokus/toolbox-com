@@ -1,5 +1,6 @@
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { Video, Search, ArrowLeft, Play, Film, Scissors, FileVideo, Image as ImageIcon, Merge } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -7,53 +8,24 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useNavigate } from "react-router-dom";
 
 const VideoTools = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
-  const videoTools = [
-    {
-      name: "Video Editor",
-      description: "Professional video editing with timeline, effects, and transitions",
-      icon: Film,
-      route: "/tools/video-editor",
-      gradient: "from-red-500 to-pink-500"
-    },
-    {
-      name: "Video Compressor",
-      description: "Compress video files to reduce size while maintaining quality",
-      icon: FileVideo,
-      route: "/tools/video-compressor",
-      gradient: "from-blue-500 to-purple-500"
-    },
-    {
-      name: "Video Converter",
-      description: "Convert videos between different formats (MP4, AVI, MOV, etc.)",
-      icon: Video,
-      route: "/tools/video-converter",
-      gradient: "from-green-500 to-teal-500"
-    },
-    {
-      name: "Video Trimmer",
-      description: "Cut and trim video clips to specific durations",
-      icon: Scissors,
-      route: "/tools/video-trimmer",
-      gradient: "from-orange-500 to-red-500"
-    },
-    {
-      name: "GIF Maker",
-      description: "Create animated GIFs from video files",
-      icon: ImageIcon,
-      route: "/tools/gif-maker",
-      gradient: "from-purple-500 to-indigo-500"
-    },
-    {
-      name: "Video Merger",
-      description: "Combine multiple video files into one",
-      icon: Merge,
-      route: "/tools/video-merger",
-      gradient: "from-cyan-500 to-blue-500"
-    }
-  ];
+  const videoToolsConfig = useMemo(() => [
+    { key: "videoEditor", icon: Film, route: "/tools/video-editor", gradient: "from-red-500 to-pink-500" },
+    { key: "videoCompressor", icon: FileVideo, route: "/tools/video-compressor", gradient: "from-blue-500 to-purple-500" },
+    { key: "videoConverter", icon: Video, route: "/tools/video-converter", gradient: "from-green-500 to-teal-500" },
+    { key: "videoTrimmer", icon: Scissors, route: "/tools/video-trimmer", gradient: "from-orange-500 to-red-500" },
+    { key: "gifMaker", icon: ImageIcon, route: "/tools/gif-maker", gradient: "from-purple-500 to-indigo-500" },
+    { key: "videoMerger", icon: Merge, route: "/tools/video-merger", gradient: "from-cyan-500 to-blue-500" }
+  ], []);
+
+  const videoTools = useMemo(() => videoToolsConfig.map(tool => ({
+    ...tool,
+    name: t(`video_tools_page.tools.${tool.key}.name`),
+    description: t(`video_tools_page.tools.${tool.key}.description`)
+  })), [t, videoToolsConfig]);
 
   const filteredTools = videoTools.filter(tool =>
     tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -69,13 +41,13 @@ const VideoTools = () => {
           className="mb-4"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Home
+          {t('video_tools_page.back_to_home')}
         </Button>
 
         <div className="mb-8 text-center">
           <Video className="h-16 w-16 mx-auto mb-4 text-red-600" />
-          <h1 className="text-4xl font-bold mb-2 text-gray-800">Video Tools</h1>
-          <p className="text-gray-600 text-lg">Professional video editing and processing tools</p>
+          <h1 className="text-4xl font-bold mb-2 text-gray-800">{t('video_tools_page.title')}</h1>
+          <p className="text-gray-600 text-lg">{t('video_tools_page.subtitle')}</p>
         </div>
 
         <div className="mb-8 max-w-md mx-auto">
@@ -83,7 +55,7 @@ const VideoTools = () => {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <Input
               type="text"
-              placeholder="Search video tools..."
+              placeholder={t('video_tools_page.search_placeholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 py-3 text-lg border-2 border-gray-200 focus:border-red-500 rounded-xl"
@@ -111,7 +83,7 @@ const VideoTools = () => {
                   className={`w-full bg-gradient-to-r ${tool.gradient} hover:opacity-90 transition-opacity border-0`}
                 >
                   <Play className="h-4 w-4 mr-2" />
-                  Use Tool
+                  {t('video_tools_page.use_tool_button')}
                 </Button>
               </CardContent>
             </Card>
@@ -121,8 +93,8 @@ const VideoTools = () => {
         {filteredTools.length === 0 && (
           <div className="text-center py-12">
             <Video className="h-16 w-16 mx-auto mb-4 text-gray-400" />
-            <h3 className="text-xl font-semibold text-gray-600 mb-2">No tools found</h3>
-            <p className="text-gray-500">Try adjusting your search term</p>
+            <h3 className="text-xl font-semibold text-gray-600 mb-2">{t('video_tools_page.no_results_title')}</h3>
+            <p className="text-gray-500">{t('video_tools_page.no_results_subtitle')}</p>
           </div>
         )}
       </div>

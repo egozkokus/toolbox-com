@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,6 +14,7 @@ const AudioMerger = () => {
   const [mergedFile, setMergedFile] = useState<string | null>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []);
@@ -20,8 +22,8 @@ const AudioMerger = () => {
     
     if (audioFiles.length !== files.length) {
       toast({
-        title: "אזהרה",
-        description: "חלק מהקבצים לא הם קבצי אודיו ולא נוספו"
+        title: t('audio_merger_page.toasts.warning_title'),
+        description: t('audio_merger_page.toasts.non_audio')
       });
     }
     
@@ -48,16 +50,16 @@ const AudioMerger = () => {
   const mergeAudioFiles = async () => {
     if (audioFiles.length < 2) {
       toast({
-        title: "שגיאה",
-        description: "נדרשים לפחות 2 קבצי אודיו למיזוג"
+        title: t('audio_merger_page.toasts.error_title'),
+        description: t('audio_merger_page.toasts.need_two')
       });
       return;
     }
 
     setIsMerging(true);
     toast({
-      title: "מעבד...",
-      description: "מאחד את קבצי האודיו"
+      title: t('audio_merger_page.toasts.processing_title'),
+      description: t('audio_merger_page.toasts.processing_title')
     });
 
     try {
@@ -70,16 +72,16 @@ const AudioMerger = () => {
         setMergedFile(reader.result as string);
         setIsMerging(false);
         toast({
-          title: "הושלם!",
-          description: `${audioFiles.length} קבצי אודיו אוחדו בהצלחה`
+          title: t('audio_merger_page.toasts.success_title'),
+          description: t('audio_merger_page.toasts.success_desc', { count: audioFiles.length })
         });
       };
       reader.readAsDataURL(audioFiles[0]);
     } catch (error) {
       setIsMerging(false);
       toast({
-        title: "שגיאה",
-        description: "שגיאה במיזוג הקבצים"
+        title: t('audio_merger_page.toasts.error_title'),
+        description: t('audio_merger_page.toasts.merge_error')
       });
     }
   };
@@ -91,8 +93,8 @@ const AudioMerger = () => {
       link.download = 'merged_audio.mp3';
       link.click();
       toast({
-        title: "הורד בהצלחה!",
-        description: "הקובץ המאוחד נשמר"
+        title: t('audio_merger_page.toasts.success_title'),
+        description: t('audio_merger_page.toasts.downloaded')
       });
     }
   };
@@ -113,26 +115,26 @@ const AudioMerger = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
       <div className="container mx-auto max-w-6xl">
-        <Button 
-          onClick={() => navigate("/categories/audio-tools")} 
-          variant="outline" 
+        <Button
+          onClick={() => navigate('/categories/audio-tools')}
+          variant="outline"
           className="mb-4"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          חזרה לכלי אודיו
+          {t('audio_merger_page.back')}
         </Button>
 
         <div className="mb-8 text-center">
           <Music className="h-12 w-12 mx-auto mb-4 text-purple-600" />
-          <h1 className="text-4xl font-bold mb-2">מאחד אודיו</h1>
-          <p className="text-gray-600">אחד מספר קבצי אודיו לקובץ אחד</p>
+          <h1 className="text-4xl font-bold mb-2">{t('audio_merger_page.title')}</h1>
+          <p className="text-gray-600">{t('audio_merger_page.subtitle')}</p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>קבצי אודיו</CardTitle>
-              <CardDescription>העלה קבצי אודיו לאיחוד</CardDescription>
+              <CardTitle>{t('audio_merger_page.files_title')}</CardTitle>
+              <CardDescription>{t('audio_merger_page.files_desc')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <Input
@@ -146,7 +148,7 @@ const AudioMerger = () => {
               {audioFiles.length > 0 && (
                 <div className="space-y-2">
                   <div className="text-sm font-medium text-gray-700">
-                    קבצים נבחרים ({audioFiles.length}):
+                    {t('audio_merger_page.selected_files', { count: audioFiles.length })}
                   </div>
                   
                   <div className="max-h-60 overflow-y-auto space-y-2">
@@ -193,8 +195,7 @@ const AudioMerger = () => {
 
                   <div className="p-3 bg-blue-50 rounded">
                     <div className="text-sm text-blue-800">
-                      סך הכל: {audioFiles.length} קבצים | 
-                      משך כולל משוער: {getTotalDuration().toFixed(1)} דקות
+                      {t('audio_merger_page.total', { count: audioFiles.length, minutes: getTotalDuration().toFixed(1) })}
                     </div>
                   </div>
                 </div>
@@ -206,15 +207,15 @@ const AudioMerger = () => {
                 className="w-full"
               >
                 <Plus className="h-4 w-4 mr-2" />
-                {isMerging ? "מאחד..." : "אחד קבצים"}
+                {isMerging ? t('audio_merger_page.merging') : t('audio_merger_page.merge_button')}
               </Button>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>קובץ מאוחד</CardTitle>
-              <CardDescription>הורד את הקובץ המאוחד</CardDescription>
+              <CardTitle>{t('audio_merger_page.merged_title')}</CardTitle>
+              <CardDescription>{t('audio_merger_page.merged_desc')}</CardDescription>
             </CardHeader>
             <CardContent>
               {mergedFile ? (
@@ -226,20 +227,18 @@ const AudioMerger = () => {
                         merged_audio.mp3
                       </span>
                     </div>
-                    <div className="text-xs text-green-600 mt-1">
-                      ✓ איחוד הושלם בהצלחה
-                    </div>
+                    <div className="text-xs text-green-600 mt-1">{t('audio_merger_page.toasts.success_desc', { count: audioFiles.length })}</div>
                   </div>
                   
                   <Button onClick={downloadMerged} className="w-full">
                     <Download className="h-4 w-4 mr-2" />
-                    הורד קובץ מאוחד
+                    {t('audio_merger_page.download_button')}
                   </Button>
                 </div>
               ) : (
                 <div className="h-40 flex flex-col items-center justify-center text-gray-400 border border-dashed rounded">
                   <Music className="h-8 w-8 mb-2" />
-                  <div className="text-sm">הקובץ המאוחד יופיע כאן</div>
+                  <div className="text-sm">{t('audio_merger_page.placeholder')}</div>
                 </div>
               )}
             </CardContent>
@@ -248,26 +247,16 @@ const AudioMerger = () => {
 
         <Card className="mt-6">
           <CardHeader>
-            <CardTitle>הוראות שימוש</CardTitle>
+            <CardTitle>{t('audio_merger_page.instructions_title')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-4 gap-4 text-sm">
-              <div className="p-3 bg-blue-50 rounded">
-                <div className="font-medium text-blue-800 mb-1">1. העלה קבצים</div>
-                <div className="text-blue-700">בחר מספר קבצי אודיו</div>
-              </div>
-              <div className="p-3 bg-green-50 rounded">
-                <div className="font-medium text-green-800 mb-1">2. סדר מחדש</div>
-                <div className="text-green-700">שנה את סדר הקבצים</div>
-              </div>
-              <div className="p-3 bg-purple-50 rounded">
-                <div className="font-medium text-purple-800 mb-1">3. אחד</div>
-                <div className="text-purple-700">לחץ על "אחד קבצים"</div>
-              </div>
-              <div className="p-3 bg-orange-50 rounded">
-                <div className="font-medium text-orange-800 mb-1">4. הורד</div>
-                <div className="text-orange-700">שמור את הקובץ המאוחד</div>
-              </div>
+              {t('audio_merger_page.instructions', { returnObjects: true })?.map((step: string, idx: number) => (
+                <div key={idx} className={`p-3 rounded ${['bg-blue-50','bg-green-50','bg-purple-50','bg-orange-50'][idx]}`}> 
+                  <div className={`font-medium mb-1 ${['text-blue-800','text-green-800','text-purple-800','text-orange-800'][idx]}`}>{step.split('|')[0]}</div>
+                  <div className={`text-${['blue','green','purple','orange'][idx]}-700`}>{step.split('|')[1]}</div>
+                </div>
+              ))}
             </div>
           </CardContent>
         </Card>

@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -14,6 +15,7 @@ const BarcodeGenerator = () => {
   const [barcodeUrl, setBarcodeUrl] = useState("");
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const barcodeTypes = [
     { value: "code128", label: "Code 128" },
@@ -29,9 +31,15 @@ const BarcodeGenerator = () => {
       // Using a free barcode API service
       const barcodeApiUrl = `https://bwipjs-api.metafloor.com/?bcid=${barcodeType}&text=${encodeURIComponent(text)}&scale=3&includetext`;
       setBarcodeUrl(barcodeApiUrl);
-      toast({ title: "Success!", description: "Barcode generated successfully" });
+      toast({
+        title: t('barcode_generator_page.toasts.success_title'),
+        description: t('barcode_generator_page.toasts.success_desc')
+      });
     } else {
-      toast({ title: "Error", description: "Please enter text to generate barcode" });
+      toast({
+        title: t('barcode_generator_page.toasts.error_title'),
+        description: t('barcode_generator_page.toasts.error_desc')
+      });
     }
   };
 
@@ -53,39 +61,39 @@ const BarcodeGenerator = () => {
           className="mb-4"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Image Tools
+          {t('barcode_generator_page.back')}
         </Button>
 
         <div className="mb-8 text-center">
           <Hash className="h-12 w-12 mx-auto mb-4 text-purple-600" />
-          <h1 className="text-4xl font-bold mb-2">Barcode Generator</h1>
-          <p className="text-gray-600">Generate barcodes from text or numbers</p>
+          <h1 className="text-4xl font-bold mb-2">{t('barcode_generator_page.title')}</h1>
+          <p className="text-gray-600">{t('barcode_generator_page.subtitle')}</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>Input & Settings</CardTitle>
+              <CardTitle>{t('barcode_generator_page.input_title')}</CardTitle>
               <CardDescription>
-                Enter text and select barcode type
+                {t('barcode_generator_page.input_desc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Text or Numbers</label>
+                <label className="block text-sm font-medium mb-2">{t('barcode_generator_page.text_label')}</label>
                 <Input
                   type="text"
-                  placeholder="Enter text or numbers..."
+                  placeholder={t('barcode_generator_page.text_ph')}
                   value={text}
                   onChange={(e) => setText(e.target.value)}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Barcode Type</label>
+                <label className="block text-sm font-medium mb-2">{t('barcode_generator_page.type_label')}</label>
                 <Select value={barcodeType} onValueChange={setBarcodeType}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select barcode type" />
+                    <SelectValue placeholder={t('barcode_generator_page.type_ph')} />
                   </SelectTrigger>
                   <SelectContent>
                     {barcodeTypes.map((type) => (
@@ -98,16 +106,16 @@ const BarcodeGenerator = () => {
               </div>
 
               <Button onClick={generateBarcode} className="w-full">
-                Generate Barcode
+                {t('barcode_generator_page.generate_button')}
               </Button>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>Generated Barcode</CardTitle>
+              <CardTitle>{t('barcode_generator_page.output_title')}</CardTitle>
               <CardDescription>
-                Your barcode will appear here
+                {t('barcode_generator_page.output_desc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
@@ -117,16 +125,21 @@ const BarcodeGenerator = () => {
                     src={barcodeUrl} 
                     alt="Generated Barcode" 
                     className="mx-auto border rounded bg-white p-4"
-                    onError={() => toast({ title: "Error", description: "Failed to generate barcode. Check your input." })}
+                    onError={() =>
+                      toast({
+                        title: t('barcode_generator_page.toasts.error_title'),
+                        description: t('barcode_generator_page.toasts.fail_desc')
+                      })
+                    }
                   />
                   <Button onClick={downloadBarcode} variant="outline" className="w-full">
                     <Download className="h-4 w-4 mr-2" />
-                    Download Barcode
+                    {t('barcode_generator_page.download_button')}
                   </Button>
                 </div>
               ) : (
                 <div className="h-64 flex items-center justify-center text-gray-400 border border-dashed rounded">
-                  Barcode will appear here
+                  {t('barcode_generator_page.placeholder')}
                 </div>
               )}
             </CardContent>

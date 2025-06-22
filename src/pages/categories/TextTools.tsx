@@ -1,5 +1,6 @@
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { Search, Type, ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -7,19 +8,26 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useNavigate } from "react-router-dom";
 
 const TextTools = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
-  const textTools = [
-    { name: "Word Counter", description: "Count words, characters, and paragraphs", route: "/tools/word-counter", icon: "📝" },
-    { name: "Case Converter", description: "Convert text to different cases", route: "/tools/case-converter", icon: "🔤" },
-    { name: "Lorem Generator", description: "Generate Lorem Ipsum text", route: "/tools/lorem-generator", icon: "📄" },
-    { name: "Text Reverser", description: "Reverse text characters", route: "/tools/text-reverser", icon: "↩️" },
-    { name: "Text Formatter", description: "Format and clean text", route: "/tools/text-formatter", icon: "✨" },
-    { name: "Line Sorter", description: "Sort lines alphabetically", route: "/tools/line-sorter", icon: "📋" },
-    { name: "Text Diff", description: "Compare two texts", route: "/tools/text-diff", icon: "🔍" },
-    { name: "Character Frequency", description: "Count character frequency", route: "/tools/char-frequency", icon: "📊" }
-  ];
+  const textToolsConfig = useMemo(() => [
+    { key: "wordCounter", route: "/tools/word-counter", icon: "📝" },
+    { key: "caseConverter", route: "/tools/case-converter", icon: "🔤" },
+    { key: "loremGenerator", route: "/tools/lorem-generator", icon: "📄" },
+    { key: "textReverser", route: "/tools/text-reverser", icon: "↩️" },
+    { key: "textFormatter", route: "/tools/text-formatter", icon: "✨" },
+    { key: "lineSorter", route: "/tools/line-sorter", icon: "📋" },
+    { key: "textDiff", route: "/tools/text-diff", icon: "🔍" },
+    { key: "charFrequency", route: "/tools/char-frequency", icon: "📊" }
+  ], []);
+
+  const textTools = useMemo(() => textToolsConfig.map(tool => ({
+    ...tool,
+    name: t(`text_tools_page.tools.${tool.key}.name`),
+    description: t(`text_tools_page.tools.${tool.key}.description`)
+  })), [t, textToolsConfig]);
 
   const filteredTools = textTools.filter(tool =>
     tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -37,15 +45,15 @@ const TextTools = () => {
             className="mb-4"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Home
+            {t('text_tools_page.back_to_home')}
           </Button>
           
           <div className="text-center">
             <Type className="h-16 w-16 mx-auto mb-4 text-blue-600" />
             <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Text Tools
+            {t('text_tools_page.title')}
             </h1>
-            <p className="text-gray-600 text-lg">Transform and manipulate text with ease</p>
+            <p className="text-gray-600 text-lg">{t('text_tools_page.subtitle')}</p>
           </div>
         </div>
 
@@ -55,7 +63,7 @@ const TextTools = () => {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <Input
               type="text"
-              placeholder="Search text tools..."
+              placeholder={t('text_tools_page.search_placeholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 py-3"
@@ -80,7 +88,7 @@ const TextTools = () => {
               </CardHeader>
               <CardContent>
                 <Button className="w-full">
-                  Use Tool
+                  {t('text_tools_page.use_tool_button')}
                 </Button>
               </CardContent>
             </Card>

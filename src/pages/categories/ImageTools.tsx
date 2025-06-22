@@ -1,5 +1,6 @@
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { Search, Image, ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -7,19 +8,26 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useNavigate } from "react-router-dom";
 
 const ImageTools = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
-  const imageTools = [
-    { name: "Image Resizer", description: "Resize images to any dimension", route: "/tools/image-resizer", icon: "🖼️" },
-    { name: "QR Generator", description: "Generate QR codes", route: "/tools/qr-generator", icon: "📱" },
-    { name: "Image Compressor", description: "Compress images without quality loss", route: "/tools/image-compressor", icon: "🗜️" },
-    { name: "Image Format Converter", description: "Convert between image formats", route: "/tools/image-converter", icon: "🔄" },
-    { name: "Image Cropper", description: "Crop images to specific dimensions", route: "/tools/image-cropper", icon: "✂️" },
-    { name: "Image Filter", description: "Apply filters to images", route: "/tools/image-filter", icon: "🎨" },
-    { name: "Barcode Generator", description: "Generate various barcodes", route: "/tools/barcode-generator", icon: "📊" },
-    { name: "Image Metadata Viewer", description: "View image EXIF data", route: "/tools/image-metadata", icon: "📋" }
-  ];
+  const imageToolsConfig = useMemo(() => [
+    { key: "imageResizer", route: "/tools/image-resizer", icon: "🖼️" },
+    { key: "qrGenerator", route: "/tools/qr-generator", icon: "📱" },
+    { key: "imageCompressor", route: "/tools/image-compressor", icon: "🗜️" },
+    { key: "imageConverter", route: "/tools/image-converter", icon: "🔄" },
+    { key: "imageCropper", route: "/tools/image-cropper", icon: "✂️" },
+    { key: "imageFilter", route: "/tools/image-filter", icon: "🎨" },
+    { key: "barcodeGenerator", route: "/tools/barcode-generator", icon: "📊" },
+    { key: "imageMetadata", route: "/tools/image-metadata", icon: "📋" }
+  ], []);
+
+  const imageTools = useMemo(() => imageToolsConfig.map(tool => ({
+    ...tool,
+    name: t(`image_tools_page.tools.${tool.key}.name`),
+    description: t(`image_tools_page.tools.${tool.key}.description`)
+  })), [t, imageToolsConfig]);
 
   const filteredTools = imageTools.filter(tool =>
     tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -37,15 +45,15 @@ const ImageTools = () => {
             className="mb-4"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Home
+            {t('image_tools_page.back_to_home')}
           </Button>
           
           <div className="text-center">
             <Image className="h-16 w-16 mx-auto mb-4 text-purple-600" />
             <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Image Tools
+            {t('image_tools_page.title')}
             </h1>
-            <p className="text-gray-600 text-lg">Edit and optimize your images</p>
+            <p className="text-gray-600 text-lg">{t('image_tools_page.subtitle')}</p>
           </div>
         </div>
 
@@ -55,7 +63,7 @@ const ImageTools = () => {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <Input
               type="text"
-              placeholder="Search image tools..."
+              placeholder={t('image_tools_page.search_placeholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 py-3"
@@ -80,7 +88,7 @@ const ImageTools = () => {
               </CardHeader>
               <CardContent>
                 <Button className="w-full">
-                  Use Tool
+                  {t('image_tools_page.use_tool_button')}
                 </Button>
               </CardContent>
             </Card>
