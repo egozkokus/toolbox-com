@@ -917,6 +917,57 @@
       "copied_desc": "השורות הממויינות הועתקו ללוח"
     }
   },
+  "base64_encoder_page": {
+    "title": "מקודד/מפענח Base64",
+    "subtitle": "קידוד ופענוח מחרוזות Base64",
+    "input_title": "קלט",
+    "input_desc_encode": "הזן טקסט לקידוד",
+    "input_desc_decode": "הזן Base64 לפענוח",
+    "switch_to_encode": "החלף לקידוד",
+    "switch_to_decode": "החלף לפענוח",
+    "placeholders": {
+      "encode": "הזן טקסט לקידוד...",
+      "decode": "הזן Base64 לפענוח...",
+      "output": "התוצאה תופיע כאן..."
+    },
+    "buttons": {
+      "encode": "קודד",
+      "decode": "פענח",
+      "copy": "העתק תוצאה"
+    },
+    "output_title": "פלט",
+    "output_desc_encode": "תוצאה מקודדת",
+    "output_desc_decode": "תוצאה מפוענחת",
+    "toasts": {
+      "error_title": "שגיאה",
+      "error_desc": "קלט לא תקין לפענוח",
+      "copied_title": "הועתק!",
+      "copied_desc": "התוצאה הועתקה ללוח"
+    }
+  },
+  "random_number_generator_page": {
+    "title": "מחולל מספרים אקראיים",
+    "subtitle": "צור מספרים אקראיים בטווח שתבחר",
+    "back": "חזרה לגנרטורים",
+    "settings_title": "הגדרות",
+    "settings_desc": "קבע את הפרמטרים ליצירת המספרים",
+    "min_label": "מינימום",
+    "max_label": "מקסימום",
+    "count_label": "כמות מספרים",
+    "allow_duplicates": "אפשר כפילויות",
+    "generate_button": "צור מספרים",
+    "results_title": "תוצאות",
+    "results_desc": "המספרים האקראיים שנוצרו",
+    "copy": "העתק",
+    "regenerate": "צור שוב",
+    "empty_prompt": "לחץ על \"צור מספרים\" כדי להתחיל",
+    "toasts": {
+      "range_error": "הערך המינימלי חייב להיות קטן מהמקסימלי",
+      "duplicate_error": "לא ניתן ליצור מספר זה של מספרים ייחודיים בטווח הנתון",
+      "generated": "מספרים אקראיים נוצרו בהצלחה!",
+      "copied": "המספרים הועתקו ללוח!"
+    }
+  },
   "footer": {
     "categories": "קטגוריות",
     "popular": "פופולריים",
