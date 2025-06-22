@@ -861,6 +861,20 @@
     "play": "Play",
     "pause": "Pause"
   },
+  "currency_converter_page": {
+    "back": "Back to Finance Tools",
+    "title": "Currency Converter",
+    "subtitle": "Convert between currencies with up-to-date exchange rates.",
+    "loading": "Loading currency list...",
+    "amount_label": "Amount",
+    "from_label": "From Currency",
+    "to_label": "To Currency",
+    "equal": "is equal to:",
+    "toasts": {
+      "load_error": "Error loading currencies",
+      "convert_error": "Error converting currency"
+    }
+  },
   "footer": {
     "categories": "Categories",
     "popular": "Popular",

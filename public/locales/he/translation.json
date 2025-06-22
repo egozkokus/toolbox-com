@@ -861,6 +861,20 @@
     "play": "נגן",
     "pause": "הפסק"
   },
+  "currency_converter_page": {
+    "back": "חזרה לכלי פיננסים",
+    "title": "ממיר מטבעות",
+    "subtitle": "המר בין מטבעות שונים עם שערי חליפין עדכניים.",
+    "loading": "טוען רשימת מטבעות...",
+    "amount_label": "סכום",
+    "from_label": "ממטבע",
+    "to_label": "למטבע",
+    "equal": "שווה ל:",
+    "toasts": {
+      "load_error": "שגיאה בטעינת המטבעות",
+      "convert_error": "שגיאה בהמרת המטבע"
+    }
+  },
   "footer": {
     "categories": "קטגוריות",
     "popular": "פופולריים",
