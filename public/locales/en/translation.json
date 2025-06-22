@@ -875,6 +875,25 @@
       "convert_error": "Error converting currency"
     }
   },
+  "line_sorter_page": {
+    "back": "Back to Text Tools",
+    "title": "Line Sorter",
+    "subtitle": "Sort lines of text alphabetically",
+    "input_title": "Input Text",
+    "input_desc": "Enter lines of text to sort",
+    "placeholder": "Enter lines of text here...",
+    "az_button": "A-Z",
+    "za_button": "Z-A",
+    "sort_button": "Sort Lines",
+    "sorted_title": "Sorted Lines",
+    "sorted_desc": "Your lines sorted alphabetically",
+    "sorted_placeholder": "Sorted lines will appear here...",
+    "copy_button": "Copy Result",
+    "toasts": {
+      "copied_title": "Copied!",
+      "copied_desc": "Sorted lines copied to clipboard"
+    }
+  },
   "footer": {
     "categories": "Categories",
     "popular": "Popular",
