@@ -4,7 +4,7 @@ import React, { useRef, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "react-i18next";
 import { useRoutePreloader } from '@/services/routePreloader';
 
 interface ToolInfo {
@@ -23,7 +23,7 @@ interface OptimizedToolCardProps {
 
 const OptimizedToolCard: React.FC<OptimizedToolCardProps> = ({ tool, searchTerm = "" }) => {
   const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t } = useTranslation();
   const cardRef = useRef<HTMLDivElement>(null);
   const { preloadOnHover } = useRoutePreloader();
 

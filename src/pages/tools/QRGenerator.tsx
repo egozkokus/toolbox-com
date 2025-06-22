@@ -8,14 +8,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { QrCode, Download, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "react-i18next";
 
 const QRGenerator = () => {
   const [text, setText] = useState("");
   const [qrUrl, setQrUrl] = useState("");
   const { toast } = useToast();
   const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t } = useTranslation();
 
   const generateQR = () => {
     if (text.trim()) {
@@ -23,12 +23,12 @@ const QRGenerator = () => {
       setQrUrl(qrApiUrl);
       toast({ 
         title: t('common.success'), 
-        description: "QR code generated successfully!" 
+        description: t("qr_generator_page.toasts.success_desc") 
       });
     } else {
       toast({ 
         title: t('common.error'), 
-        description: "Please enter text or URL" 
+        description: t("qr_generator_page.toasts.empty_input") 
       });
     }
   };
@@ -41,7 +41,7 @@ const QRGenerator = () => {
       link.click();
       toast({ 
         title: t('common.success'), 
-        description: "QR code downloaded successfully!" 
+        description: t("qr_generator_page.toasts.downloaded") 
       });
     }
   };
@@ -60,24 +60,24 @@ const QRGenerator = () => {
 
         <div className="mb-8 text-center">
           <QrCode className="h-12 w-12 mx-auto mb-4 text-blue-600" />
-          <h1 className="text-3xl sm:text-4xl font-bold mb-2">QR Code Generator</h1>
-          <p className="text-gray-600">Create QR codes for any text or URL</p>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-2">{t('qr_generator_page.title')}</h1>
+          <p className="text-gray-600">{t('qr_generator_page.subtitle')}</p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>Input</CardTitle>
+              <CardTitle>{t('qr_generator_page.input_title')}</CardTitle>
               <CardDescription>
-                Enter text, URL, or any content to generate QR code
+                {t('qr_generator_page.input_desc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="text">Text or URL</Label>
+                <Label htmlFor="text">{t('qr_generator_page.text_label')}</Label>
                 <Textarea
                   id="text"
-                  placeholder="Enter your text or URL here..."
+                  placeholder={t('qr_generator_page.text_placeholder')}
                   value={text}
                   onChange={(e) => setText(e.target.value)}
                   rows={4}
@@ -86,16 +86,16 @@ const QRGenerator = () => {
               </div>
               <Button onClick={generateQR} className="w-full" disabled={!text.trim()}>
                 <QrCode className="h-4 w-4 mr-2" />
-                {t('common.generate')} QR Code
+                {t('qr_generator_page.generate_button')}
               </Button>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>Generated QR Code</CardTitle>
+              <CardTitle>{t('qr_generator_page.generated_title')}</CardTitle>
               <CardDescription>
-                Your QR code will appear here
+                {t('qr_generator_page.generated_desc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
@@ -109,7 +109,7 @@ const QRGenerator = () => {
                       onError={() => {
                         toast({ 
                           title: t('common.error'), 
-                          description: "Failed to generate QR code" 
+                          description: t("qr_generator_page.toasts.error_desc") 
                         });
                         setQrUrl("");
                       }}
@@ -117,12 +117,12 @@ const QRGenerator = () => {
                   </div>
                   <Button onClick={downloadQR} variant="outline" className="w-full">
                     <Download className="h-4 w-4 mr-2" />
-                    {t('common.download')} QR Code
+                    {t('qr_generator_page.download_button')}
                   </Button>
                 </div>
               ) : (
                 <div className="h-64 flex items-center justify-center text-gray-400 border border-dashed rounded">
-                  QR code will appear here
+                  {t('qr_generator_page.placeholder')}
                 </div>
               )}
             </CardContent>

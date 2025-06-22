@@ -36,7 +36,7 @@ const HTMLFormatter = () => {
 
       return { formatted };
     } catch (err) {
-      return { formatted: '', error: 'שגיאה בעיצוב HTML' };
+      return { formatted: '', error: t('html_formatter_page.error') };
     }
   };
 

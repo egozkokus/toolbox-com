@@ -9,10 +9,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "react-i18next";
 
 const NameGenerator = () => {
-  const { t } = useLanguage();
+  const { t } = useTranslation();
   const [nameType, setNameType] = useState("hebrew");
   const [count, setCount] = useState(10);
   const [includeLastName, setIncludeLastName] = useState(true);
@@ -67,26 +67,26 @@ const NameGenerator = () => {
     }
 
     setGeneratedNames(names);
-    toast.success(t('tools.nameGenerator.success'));
+    toast.success(t('name_generator_page.success'));
   };
 
   const copyName = (name: string) => {
     navigator.clipboard.writeText(name);
-    toast.success(t('tools.nameGenerator.copied'));
+    toast.success(t('name_generator_page.copied'));
   };
 
   const copyAllNames = () => {
     const allNames = generatedNames.join('\n');
     navigator.clipboard.writeText(allNames);
-    toast.success(t('tools.nameGenerator.copiedAll'));
+    toast.success(t('name_generator_page.copiedAll'));
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
       <div className="container mx-auto max-w-4xl">
         <PageHeader
-          title={t('tools.nameGenerator.title')}
-          subtitle={t('tools.nameGenerator.subtitle')}
+          title={t('name_generator_page.title')}
+          subtitle={t('name_generator_page.subtitle')}
           icon={<User className="h-16 w-16 text-indigo-600" />}
           backPath="/categories/generators"
           backLabel={t('common.back.category')}
@@ -97,27 +97,27 @@ const NameGenerator = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Settings className="h-5 w-5" />
-                {t('tools.nameGenerator.settings')}
+                {t('name_generator_page.settings')}
               </CardTitle>
-              <CardDescription>{t('tools.nameGenerator.settingsDesc')}</CardDescription>
+              <CardDescription>{t('name_generator_page.settingsDesc')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <Label htmlFor="nameType">{t('tools.nameGenerator.type')}</Label>
+                <Label htmlFor="nameType">{t('name_generator_page.type')}</Label>
                 <Select value={nameType} onValueChange={setNameType}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="hebrew">{t('tools.nameGenerator.types.hebrew')}</SelectItem>
-                    <SelectItem value="english">{t('tools.nameGenerator.types.english')}</SelectItem>
-                    <SelectItem value="fantasy">{t('tools.nameGenerator.types.fantasy')}</SelectItem>
+                    <SelectItem value="hebrew">{t('name_generator_page.types.hebrew')}</SelectItem>
+                    <SelectItem value="english">{t('name_generator_page.types.english')}</SelectItem>
+                    <SelectItem value="fantasy">{t('name_generator_page.types.fantasy')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
               <div>
-                <Label htmlFor="count">{t('tools.nameGenerator.count')}</Label>
+                <Label htmlFor="count">{t('name_generator_page.count')}</Label>
                 <Input
                   id="count"
                   type="number"
@@ -134,20 +134,20 @@ const NameGenerator = () => {
                   checked={includeLastName}
                   onCheckedChange={(checked) => setIncludeLastName(checked === true)}
                 />
-                <Label htmlFor="lastName">{t('tools.nameGenerator.includeLastName')}</Label>
+                <Label htmlFor="lastName">{t('name_generator_page.includeLastName')}</Label>
               </div>
 
               <Button onClick={generateNames} className="w-full" size="lg">
                 <RefreshCw className="h-4 w-4 mr-2" />
-                {t('tools.nameGenerator.generate')}
+                {t('name_generator_page.generate')}
               </Button>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>{t('tools.nameGenerator.generated')}</CardTitle>
-              <CardDescription>{t('tools.nameGenerator.generatedDesc')}</CardDescription>
+              <CardTitle>{t('name_generator_page.generated')}</CardTitle>
+              <CardDescription>{t('name_generator_page.generatedDesc')}</CardDescription>
             </CardHeader>
             <CardContent>
               {generatedNames.length > 0 ? (
@@ -180,7 +180,7 @@ const NameGenerator = () => {
                       className="flex-1"
                     >
                       <Copy className="h-4 w-4 mr-2" />
-                      {t('tools.nameGenerator.copyAll')}
+                      {t('name_generator_page.copyAll')}
                     </Button>
                     <Button 
                       onClick={generateNames} 
@@ -188,14 +188,14 @@ const NameGenerator = () => {
                       className="flex-1"
                     >
                       <RefreshCw className="h-4 w-4 mr-2" />
-                      {t('tools.nameGenerator.generateMore')}
+                      {t('name_generator_page.generateMore')}
                     </Button>
                   </div>
                 </div>
               ) : (
                 <div className="text-center text-gray-500 py-12">
                   <User className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                  <p>{t('tools.nameGenerator.clickToStart')}</p>
+                  <p>{t('name_generator_page.clickToStart')}</p>
                 </div>
               )}
             </CardContent>
