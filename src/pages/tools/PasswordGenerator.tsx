@@ -8,6 +8,7 @@ import { Slider } from "@/components/ui/slider";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Copy, RefreshCw, Shield } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 const PasswordGenerator = () => {
   const [password, setPassword] = useState("");
@@ -17,6 +18,7 @@ const PasswordGenerator = () => {
   const [includeNumbers, setIncludeNumbers] = useState(true);
   const [includeSymbols, setIncludeSymbols] = useState(false);
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const generatePassword = () => {
     let charset = "";
@@ -26,7 +28,10 @@ const PasswordGenerator = () => {
     if (includeSymbols) charset += "!@#$%^&*()_+-=[]{}|;:,.<>?";
 
     if (charset === "") {
-      toast({ title: "Error", description: "Please select at least one character type" });
+      toast({
+        title: t('password_generator_page.toasts.error_title'),
+        description: t('password_generator_page.toasts.charset_error')
+      });
       return;
     }
 
@@ -39,7 +44,10 @@ const PasswordGenerator = () => {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(password);
-    toast({ title: "Copied!", description: "Password copied to clipboard" });
+    toast({
+      title: t('password_generator_page.toasts.copied_title'),
+      description: t('password_generator_page.toasts.copied_desc')
+    });
   };
 
   return (
@@ -47,20 +55,20 @@ const PasswordGenerator = () => {
       <div className="container mx-auto max-w-2xl">
         <div className="mb-8 text-center">
           <Shield className="h-12 w-12 mx-auto mb-4 text-blue-600" />
-          <h1 className="text-4xl font-bold mb-2">Password Generator</h1>
-          <p className="text-gray-600">Generate secure passwords with custom options</p>
+          <h1 className="text-4xl font-bold mb-2">{t('password_generator_page.title')}</h1>
+          <p className="text-gray-600">{t('password_generator_page.subtitle')}</p>
         </div>
 
         <Card>
           <CardHeader>
-            <CardTitle>Generate Password</CardTitle>
+            <CardTitle>{t('password_generator_page.generate_title')}</CardTitle>
             <CardDescription>
-              Customize your password settings and generate a secure password
+              {t('password_generator_page.generate_desc')}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-2">
-              <Label>Password Length: {length[0]}</Label>
+              <Label>{t('password_generator_page.length_label', { length: length[0] })}</Label>
               <Slider
                 value={length}
                 onValueChange={setLength}
@@ -78,7 +86,7 @@ const PasswordGenerator = () => {
                   checked={includeUppercase}
                   onCheckedChange={(checked) => setIncludeUppercase(checked === true)}
                 />
-                <Label htmlFor="uppercase">Uppercase (A-Z)</Label>
+                <Label htmlFor="uppercase">{t('password_generator_page.uppercase')}</Label>
               </div>
               <div className="flex items-center space-x-2">
                 <Checkbox
@@ -86,7 +94,7 @@ const PasswordGenerator = () => {
                   checked={includeLowercase}
                   onCheckedChange={(checked) => setIncludeLowercase(checked === true)}
                 />
-                <Label htmlFor="lowercase">Lowercase (a-z)</Label>
+                <Label htmlFor="lowercase">{t('password_generator_page.lowercase')}</Label>
               </div>
               <div className="flex items-center space-x-2">
                 <Checkbox
@@ -94,7 +102,7 @@ const PasswordGenerator = () => {
                   checked={includeNumbers}
                   onCheckedChange={(checked) => setIncludeNumbers(checked === true)}
                 />
-                <Label htmlFor="numbers">Numbers (0-9)</Label>
+                <Label htmlFor="numbers">{t('password_generator_page.numbers')}</Label>
               </div>
               <div className="flex items-center space-x-2">
                 <Checkbox
@@ -102,18 +110,18 @@ const PasswordGenerator = () => {
                   checked={includeSymbols}
                   onCheckedChange={(checked) => setIncludeSymbols(checked === true)}
                 />
-                <Label htmlFor="symbols">Symbols (!@#$...)</Label>
+                <Label htmlFor="symbols">{t('password_generator_page.symbols')}</Label>
               </div>
             </div>
 
             <Button onClick={generatePassword} className="w-full" size="lg">
               <RefreshCw className="h-4 w-4 mr-2" />
-              Generate Password
+              {t('password_generator_page.generate_button')}
             </Button>
 
             {password && (
               <div className="space-y-2">
-                <Label>Generated Password</Label>
+                <Label>{t('password_generator_page.result_label')}</Label>
                 <div className="flex gap-2">
                   <Input value={password} readOnly className="font-mono" />
                   <Button onClick={copyToClipboard} variant="outline">
